@@ -22,18 +22,21 @@ class LoginPage extends StatelessWidget {
 Widget actionButton(BuildContext context, String actionName) {
   double containerWidth = MediaQuery.of(context).size.width * 0.6;
   double containerHeight = MediaQuery.of(context).size.height * 0.06;
-  return Container(
-    decoration: BoxDecoration(
-      color: AppColor.primaryColor,
-      borderRadius: BorderRadius.circular(containerWidth * 0.05),
-    ),
-    width: containerWidth,
-    height: containerHeight,
-    child: Center(
-      child: Text(
-        actionName,
-        style: const TextStyle(
-            fontSize: 18, color: Colors.white, fontWeight: FontWeight.bold),
+  return GestureDetector(
+    onTap: () {},
+    child: Container(
+      decoration: BoxDecoration(
+        color: AppColor.primaryColor,
+        borderRadius: BorderRadius.circular(containerWidth * 0.05),
+      ),
+      width: containerWidth,
+      height: containerHeight,
+      child: Center(
+        child: Text(
+          actionName,
+          style: const TextStyle(
+              fontSize: 18, color: Colors.white, fontWeight: FontWeight.bold),
+        ),
       ),
     ),
   );
