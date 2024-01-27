@@ -19,10 +19,11 @@ class LoginPage extends StatelessWidget {
                 redoLogo(context, 0.3),
                 const Padding(padding: EdgeInsets.all(30)),
                 const AuthForm(),
+                const Padding(padding: EdgeInsets.all(5)),
                 actionButton(context, "Login"),
-                const Padding(padding: EdgeInsets.all(30)),
+                const Padding(padding: EdgeInsets.all(20)),
                 seperation("OR"),
-                const Padding(padding: EdgeInsets.all(30)),
+                const Padding(padding: EdgeInsets.all(20)),
                 const Text(
                   "Login Using",
                   style: TextStyle(fontSize: 12),
