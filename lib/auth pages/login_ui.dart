@@ -12,6 +12,8 @@ class LoginPage extends StatelessWidget {
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
             redoLogo(context, 0.3),
+            const Padding(padding: EdgeInsets.all(30)),
+            actionButton(context, "Login")
           ],
         ),
       ),
