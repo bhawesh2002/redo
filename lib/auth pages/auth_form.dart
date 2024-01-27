@@ -22,7 +22,7 @@ class _AuthFormState extends State<AuthForm> {
               "Login",
               style: TextStyle(fontSize: 25, fontWeight: FontWeight.bold),
             ),
-            const Padding(padding: EdgeInsets.all(20)),
+            const Padding(padding: EdgeInsets.all(10)),
             TextFormField(
               controller: emailController,
               autofocus: false,
@@ -34,7 +34,7 @@ class _AuthFormState extends State<AuthForm> {
               ),
               keyboardType: TextInputType.emailAddress,
             ),
-            const Padding(padding: EdgeInsets.all(10)),
+            const Padding(padding: EdgeInsets.all(5)),
             TextFormField(
               controller: passwordController,
               autofocus: false,
