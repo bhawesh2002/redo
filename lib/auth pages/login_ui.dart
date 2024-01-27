@@ -18,6 +18,11 @@ class LoginPage extends StatelessWidget {
             const Padding(padding: EdgeInsets.all(30)),
             seperation("OR"),
             const Padding(padding: EdgeInsets.all(30)),
+            const Text(
+              "Login Using",
+              style: TextStyle(fontSize: 12),
+            ),
+            const Padding(padding: EdgeInsets.all(10)),
             authAlternatives(
               context,
               "Google",
