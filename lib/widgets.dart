@@ -17,7 +17,7 @@ Widget redoLogo(BuildContext context, double scale) {
               blurRadius: 10,
               offset: const Offset(2, 4))
         ]),
-    padding: const EdgeInsets.all(10),
+    padding: EdgeInsets.all(containerSize * 0.1),
     width: containerSize,
     height: containerSize,
     child: Center(
