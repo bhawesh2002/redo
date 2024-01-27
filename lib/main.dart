@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:redo/auth%20pages/login_ui.dart';
 
 void main() => runApp(const Redo());
 
@@ -9,7 +10,7 @@ class Redo extends StatelessWidget {
     return MaterialApp(
       title: 'Redo',
       theme: ThemeData(primarySwatch: Colors.blue),
-      home: const Home(),
+      home: const LoginPage(),
     );
   }
 }
