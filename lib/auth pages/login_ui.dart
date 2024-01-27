@@ -31,7 +31,9 @@ Widget actionButton(BuildContext context, String actionName) {
   double containerWidth = MediaQuery.of(context).size.width * 0.6;
   double containerHeight = MediaQuery.of(context).size.height * 0.06;
   return GestureDetector(
-    onTap: () {},
+    onTap: () {
+      debugPrint("$actionName Pressed");
+    },
     child: Container(
       decoration: BoxDecoration(
         color: AppColor.primaryColor,
