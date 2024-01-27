@@ -5,10 +5,11 @@ import 'package:redo/assets/colors/colors.dart';
 Widget redoLogo(BuildContext context, double scale) {
   double containerSize = MediaQuery.of(context).size.width * scale;
   double logoSize = containerSize * 0.8;
+  double borderRadiusRatio = 0.1;
   return Container(
     decoration: BoxDecoration(
         color: AppColor.primaryColor,
-        borderRadius: BorderRadius.circular(10),
+        borderRadius: BorderRadius.circular(containerSize * borderRadiusRatio),
         boxShadow: [
           BoxShadow(
               color: Colors.black.withOpacity(0.2),
