@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:redo/assets/colors/colors.dart';
+import 'package:redo/auth%20pages/auth_form.dart';
 import 'package:redo/widgets.dart';
 
 class LoginPage extends StatelessWidget {
@@ -9,51 +10,55 @@ class LoginPage extends StatelessWidget {
   Widget build(BuildContext context) {
     return SafeArea(
       child: Scaffold(
+        resizeToAvoidBottomInset: false,
         body: Center(
-          child: Column(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: [
-              redoLogo(context, 0.3),
-              const Padding(padding: EdgeInsets.all(30)),
-              actionButton(context, "Login"),
-              const Padding(padding: EdgeInsets.all(30)),
-              seperation("OR"),
-              const Padding(padding: EdgeInsets.all(30)),
-              const Text(
-                "Login Using",
-                style: TextStyle(fontSize: 12),
-              ),
-              const Padding(padding: EdgeInsets.all(10)),
-              authAlternatives(
-                context,
-                "Google",
-                imgPath: "lib/assets/images/google-color-icon.svg",
-              ),
-              const Padding(padding: EdgeInsets.all(30)),
-              const Text(
-                "Don't have an Account",
-                style: TextStyle(fontSize: 12, fontWeight: FontWeight.w500),
-              ),
-              GestureDetector(
-                onTap: () {
-                  debugPrint("Opening Signup Page");
-                },
-                child: Container(
-                  color: Colors.transparent,
-                  width: MediaQuery.of(context).size.width * 0.3,
-                  height: MediaQuery.of(context).size.height * 0.05,
-                  child: const Center(
-                    child: Text(
-                      "SignUp",
-                      style: TextStyle(
-                          color: AppColor.primaryColor,
-                          fontSize: 15,
-                          fontWeight: FontWeight.bold),
+          child: SingleChildScrollView(
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                redoLogo(context, 0.3),
+                const Padding(padding: EdgeInsets.all(30)),
+                const AuthForm(),
+                actionButton(context, "Login"),
+                const Padding(padding: EdgeInsets.all(30)),
+                seperation("OR"),
+                const Padding(padding: EdgeInsets.all(30)),
+                const Text(
+                  "Login Using",
+                  style: TextStyle(fontSize: 12),
+                ),
+                const Padding(padding: EdgeInsets.all(10)),
+                authAlternatives(
+                  context,
+                  "Google",
+                  imgPath: "lib/assets/images/google-color-icon.svg",
+                ),
+                const Padding(padding: EdgeInsets.all(30)),
+                const Text(
+                  "Don't have an Account",
+                  style: TextStyle(fontSize: 12, fontWeight: FontWeight.w500),
+                ),
+                GestureDetector(
+                  onTap: () {
+                    debugPrint("Opening Signup Page");
+                  },
+                  child: Container(
+                    color: Colors.transparent,
+                    width: MediaQuery.of(context).size.width * 0.3,
+                    height: MediaQuery.of(context).size.height * 0.05,
+                    child: const Center(
+                      child: Text(
+                        "SignUp",
+                        style: TextStyle(
+                            color: AppColor.primaryColor,
+                            fontSize: 15,
+                            fontWeight: FontWeight.bold),
+                      ),
                     ),
                   ),
-                ),
-              )
-            ],
+                )
+              ],
+            ),
           ),
         ),
       ),
