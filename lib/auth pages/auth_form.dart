@@ -25,7 +25,7 @@ class _AuthFormState extends State<AuthForm> {
             const Padding(padding: EdgeInsets.all(20)),
             TextFormField(
               controller: emailController,
-              autofocus: true,
+              autofocus: false,
               decoration: InputDecoration(
                 labelText: "Enter Your Email",
                 border: OutlineInputBorder(
@@ -37,7 +37,7 @@ class _AuthFormState extends State<AuthForm> {
             const Padding(padding: EdgeInsets.all(10)),
             TextFormField(
               controller: passwordController,
-              autofocus: true,
+              autofocus: false,
               obscureText: true,
               decoration: InputDecoration(
                 labelText: "Enter Your Password",
