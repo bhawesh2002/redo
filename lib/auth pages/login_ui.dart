@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_svg/flutter_svg.dart';
 import 'package:redo/assets/colors/colors.dart';
 import 'package:redo/widgets.dart';
 
@@ -15,7 +16,7 @@ class LoginPage extends StatelessWidget {
             const Padding(padding: EdgeInsets.all(30)),
             actionButton(context, "Login"),
             const Padding(padding: EdgeInsets.all(30)),
-            seperation("OR")
+            seperation("OR"),
           ],
         ),
       ),
@@ -72,6 +73,45 @@ Widget seperation(String seperationName) {
           ),
         ),
       ],
+    ),
+  );
+}
+
+Widget authAlternatives(BuildContext context, String label,
+    {String imgPath = ''}) {
+  double buttonWidth = MediaQuery.of(context).size.width * 0.4;
+  double buttonHeight = MediaQuery.of(context).size.height * 0.06;
+  return GestureDetector(
+    onTap: () {
+      debugPrint("Logging with $label");
+    },
+    child: Container(
+      decoration: BoxDecoration(
+        border: Border.all(width: 1),
+        borderRadius: BorderRadius.circular(buttonWidth),
+      ),
+      width: buttonWidth,
+      height: buttonHeight,
+      child: Row(
+        mainAxisAlignment: MainAxisAlignment.center,
+        children: [
+          Expanded(
+            child: CircleAvatar(
+              radius: 20,
+              backgroundColor: Colors.white,
+              child: imgPath.isEmpty
+                  ? const Icon(Icons.alternate_email)
+                  : SvgPicture.asset(imgPath),
+            ),
+          ),
+          Expanded(
+            child: Text(
+              label,
+              style: const TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
+            ),
+          )
+        ],
+      ),
     ),
   );
 }
