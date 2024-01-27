@@ -14,6 +14,8 @@ class LoginPage extends StatelessWidget {
             redoLogo(context, 0.3),
             const Padding(padding: EdgeInsets.all(30)),
             actionButton(context, "Login"),
+            const Padding(padding: EdgeInsets.all(30)),
+            seperation("OR")
           ],
         ),
       ),
