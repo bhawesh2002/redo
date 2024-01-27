@@ -13,7 +13,7 @@ class LoginPage extends StatelessWidget {
           children: [
             redoLogo(context, 0.3),
             const Padding(padding: EdgeInsets.all(30)),
-            actionButton(context, "Login")
+            actionButton(context, "Login"),
           ],
         ),
       ),
@@ -40,6 +40,36 @@ Widget actionButton(BuildContext context, String actionName) {
               fontSize: 18, color: Colors.white, fontWeight: FontWeight.bold),
         ),
       ),
+    ),
+  );
+}
+
+Widget seperation(String seperationName) {
+  return Padding(
+    padding: const EdgeInsets.only(left: 30, right: 30),
+    child: Row(
+      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+      children: [
+        Expanded(
+          child: Container(
+            height: 2,
+            color: Colors.grey.shade300,
+          ),
+        ),
+        const Padding(padding: EdgeInsets.all(10)),
+        Text(
+          seperationName,
+          style: TextStyle(
+              color: Colors.grey.shade800, fontWeight: FontWeight.w500),
+        ),
+        const Padding(padding: EdgeInsets.all(10)),
+        Expanded(
+          child: Container(
+            height: 2,
+            color: Colors.grey.shade300,
+          ),
+        ),
+      ],
     ),
   );
 }
