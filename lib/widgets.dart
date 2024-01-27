@@ -1,0 +1,31 @@
+import 'package:flutter/material.dart';
+import 'package:flutter_svg/flutter_svg.dart';
+import 'package:redo/assets/colors/colors.dart';
+
+Widget redoLogo(BuildContext context, double scale) {
+  double containerSize = MediaQuery.of(context).size.width * scale;
+  double logoSize = containerSize * 0.8;
+  return Container(
+    decoration: BoxDecoration(
+        color: AppColor.primaryColor,
+        borderRadius: BorderRadius.circular(10),
+        boxShadow: [
+          BoxShadow(
+              color: Colors.black.withOpacity(0.2),
+              spreadRadius: 0,
+              blurRadius: 10,
+              offset: const Offset(2, 4))
+        ]),
+    padding: const EdgeInsets.all(10),
+    width: containerSize,
+    height: containerSize,
+    child: Center(
+      child: SvgPicture.asset(
+        'lib/assets/images/REDO Logo(White).svg',
+        width: logoSize,
+        height: logoSize,
+        fit: BoxFit.contain,
+      ),
+    ),
+  );
+}
