@@ -18,8 +18,35 @@ class LoginPage extends StatelessWidget {
             const Padding(padding: EdgeInsets.all(30)),
             seperation("OR"),
             const Padding(padding: EdgeInsets.all(30)),
-            authAlternatives(context, "Google",
-                imgPath: "lib/assets/images/google-color-icon.svg"),
+            authAlternatives(
+              context,
+              "Google",
+              imgPath: "lib/assets/images/google-color-icon.svg",
+            ),
+            const Padding(padding: EdgeInsets.all(30)),
+            const Text(
+              "Don't have an Account",
+              style: TextStyle(fontSize: 12, fontWeight: FontWeight.w500),
+            ),
+            GestureDetector(
+              onTap: () {
+                debugPrint("Opening Signup Page");
+              },
+              child: Container(
+                color: Colors.transparent,
+                width: MediaQuery.of(context).size.width * 0.3,
+                height: MediaQuery.of(context).size.height * 0.05,
+                child: const Center(
+                  child: Text(
+                    "SignUp",
+                    style: TextStyle(
+                        color: AppColor.primaryColor,
+                        fontSize: 15,
+                        fontWeight: FontWeight.bold),
+                  ),
+                ),
+              ),
+            )
           ],
         ),
       ),
