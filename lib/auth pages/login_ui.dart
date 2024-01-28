@@ -17,7 +17,7 @@ class LoginPage extends StatelessWidget {
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
                 redoLogo(context, 0.3),
-                const Padding(padding: EdgeInsets.all(30)),
+                const Padding(padding: EdgeInsets.all(10)),
                 const AuthForm(),
                 const Padding(padding: EdgeInsets.all(5)),
                 actionButton(context, "Login"),
@@ -34,7 +34,7 @@ class LoginPage extends StatelessWidget {
                   "Google",
                   imgPath: "lib/assets/images/google-color-icon.svg",
                 ),
-                const Padding(padding: EdgeInsets.all(30)),
+                const Padding(padding: EdgeInsets.all(20)),
                 const Text(
                   "Don't have an Account",
                   style: TextStyle(fontSize: 12, fontWeight: FontWeight.w500),
