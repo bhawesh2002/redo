@@ -34,7 +34,7 @@ class _AuthFormState extends State<AuthForm> {
               decoration: InputDecoration(
                 labelText: "Enter Your Email",
                 contentPadding: const EdgeInsets.all(15),
-                border: OutlineInputBorder(
+                focusedBorder: OutlineInputBorder(
                   borderRadius: BorderRadius.circular(10),
                 ),
                 enabledBorder: const OutlineInputBorder(),
@@ -50,7 +50,7 @@ class _AuthFormState extends State<AuthForm> {
               decoration: InputDecoration(
                 labelText: "Enter Your Password",
                 contentPadding: const EdgeInsets.all(15),
-                border: OutlineInputBorder(
+                focusedBorder: OutlineInputBorder(
                   borderRadius: BorderRadius.circular(10),
                 ),
                 enabledBorder: const OutlineInputBorder(),
