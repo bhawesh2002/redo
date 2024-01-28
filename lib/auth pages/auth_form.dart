@@ -91,17 +91,24 @@ class _AuthFormState extends State<AuthForm> {
                     keyboardType: TextInputType.emailAddress,
                   ),
             Padding(padding: EdgeInsets.all(height * 0.005)),
-            Align(
-              alignment: Alignment.centerRight,
-              child: GestureDetector(
-                onTap: () {
-                  debugPrint("Proceed to reset Password");
-                },
-                child: const Text(
-                  "Forgot Password?",
-                ),
-              ),
-            ),
+            widget.authMode == AuthMode.login
+                ? Align(
+                    alignment: Alignment.centerRight,
+                    child: GestureDetector(
+                      onTap: () {
+                        debugPrint("Proceed to reset Password");
+                      },
+                      child: const Text(
+                        "Forgot Password?",
+                      ),
+                    ),
+                  )
+                : const Align(
+                    alignment: Alignment.centerRight,
+                    child: Text(
+                      "Username Check",
+                    ),
+                  ),
           ],
         ),
       ),
