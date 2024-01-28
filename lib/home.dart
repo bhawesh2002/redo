@@ -9,7 +9,7 @@ class Home extends StatelessWidget {
     return SafeArea(
       child: Scaffold(
         appBar: AppBar(
-          leading: redoLogo(context, 0.1),
+          leading: redoLogo(context, 0.2),
           title: const Text("Redo"),
         ),
       ),
