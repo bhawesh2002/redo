@@ -20,26 +20,27 @@ class LoginPage extends StatelessWidget {
               children: [
                 Padding(
                   padding: EdgeInsets.symmetric(
-                      vertical: height * 0.05, horizontal: 0),
+                    vertical: height * 0.05,
+                  ),
                   child: redoLogo(context, 0.3),
                 ),
                 const AuthForm(),
-                const Padding(padding: EdgeInsets.all(5)),
+                Padding(padding: EdgeInsets.all(height * 0.01)),
                 actionButton(context, "Login"),
-                const Padding(padding: EdgeInsets.all(15)),
+                Padding(padding: EdgeInsets.all(height * 0.02)),
                 seperation("OR"),
-                const Padding(padding: EdgeInsets.all(15)),
+                Padding(padding: EdgeInsets.all(height * 0.02)),
                 const Text(
                   "Login Using",
                   style: TextStyle(fontSize: 12),
                 ),
-                const Padding(padding: EdgeInsets.all(5)),
+                Padding(padding: EdgeInsets.all(height * 0.01)),
                 authAlternatives(
                   context,
                   "Google",
                   imgPath: "lib/assets/images/google-color-icon.svg",
                 ),
-                const Padding(padding: EdgeInsets.all(30)),
+                Padding(padding: EdgeInsets.all(height * 0.02)),
                 const Text(
                   "Don't have an Account",
                   style: TextStyle(fontSize: 12, fontWeight: FontWeight.w500),
