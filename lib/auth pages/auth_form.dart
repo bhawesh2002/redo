@@ -13,10 +13,11 @@ class _AuthFormState extends State<AuthForm> {
   TextEditingController passwordController = TextEditingController();
   @override
   Widget build(BuildContext context) {
+    double height = MediaQuery.of(context).size.height;
     return Form(
       key: _formKey,
       child: Padding(
-        padding: const EdgeInsets.all(20),
+        padding: EdgeInsets.all(height * 0.02),
         child: Column(
           children: [
             const Align(
@@ -26,7 +27,7 @@ class _AuthFormState extends State<AuthForm> {
                 style: TextStyle(fontSize: 25, fontWeight: FontWeight.bold),
               ),
             ),
-            const Padding(padding: EdgeInsets.all(10)),
+            Padding(padding: EdgeInsets.all(height * 0.01)),
             TextFormField(
               controller: emailController,
               autofocus: false,
@@ -43,7 +44,7 @@ class _AuthFormState extends State<AuthForm> {
               ),
               keyboardType: TextInputType.emailAddress,
             ),
-            const Padding(padding: EdgeInsets.all(10)),
+            Padding(padding: EdgeInsets.all(height * 0.01)),
             TextFormField(
               controller: passwordController,
               autofocus: false,
@@ -60,7 +61,7 @@ class _AuthFormState extends State<AuthForm> {
               ),
               keyboardType: TextInputType.emailAddress,
             ),
-            const Padding(padding: EdgeInsets.all(2)),
+            Padding(padding: EdgeInsets.all(height * 0.005)),
             Align(
               alignment: Alignment.centerRight,
               child: GestureDetector(
