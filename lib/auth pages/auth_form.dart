@@ -18,9 +18,12 @@ class _AuthFormState extends State<AuthForm> {
         padding: const EdgeInsets.all(20),
         child: Column(
           children: [
-            const Text(
-              "Login",
-              style: TextStyle(fontSize: 25, fontWeight: FontWeight.bold),
+            const Align(
+              alignment: Alignment.centerLeft,
+              child: Text(
+                "Login",
+                style: TextStyle(fontSize: 25, fontWeight: FontWeight.bold),
+              ),
             ),
             const Padding(padding: EdgeInsets.all(10)),
             TextFormField(
