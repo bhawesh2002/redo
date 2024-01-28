@@ -24,7 +24,7 @@ class _AuthFormState extends State<AuthForm> {
             Align(
               alignment: Alignment.centerLeft,
               child: Text(
-                "${widget.authType}",
+                widget.authType,
                 style:
                     const TextStyle(fontSize: 25, fontWeight: FontWeight.bold),
               ),
