@@ -1,9 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:redo/assets/colors/colors.dart';
 
+enum AuthMode { login, signup }
+
 class AuthForm extends StatefulWidget {
-  final String authType;
-  const AuthForm({super.key, required this.authType});
+  final AuthMode authMode;
+  const AuthForm({super.key, required this.authMode});
   @override
   State<AuthForm> createState() => _AuthFormState();
 }
@@ -24,7 +26,7 @@ class _AuthFormState extends State<AuthForm> {
             Align(
               alignment: Alignment.centerLeft,
               child: Text(
-                widget.authType,
+                widget.authMode == AuthMode.login ? 'Log In' : 'Sign Up',
                 style:
                     const TextStyle(fontSize: 25, fontWeight: FontWeight.bold),
               ),

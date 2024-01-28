@@ -23,7 +23,9 @@ class LoginPage extends StatelessWidget {
                   ),
                   child: redoLogo(context, 0.3),
                 ),
-                const AuthForm(),
+                const AuthForm(
+                  authMode: AuthMode.login,
+                ),
                 Padding(padding: EdgeInsets.all(height * 0.01)),
                 actionButton(context, "Login"),
                 Padding(padding: EdgeInsets.all(height * 0.02)),
