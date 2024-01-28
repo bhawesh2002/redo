@@ -18,4 +18,16 @@ class Todo {
     required this.endTime,
     required this.isComleted,
   });
+
+  factory Todo.fromJson(Map<String, dynamic> json) {
+    return Todo(
+      id: json['id'],
+      title: json['title'],
+      description: json['description'],
+      date: DateTime.parse(json['date']),
+      startTime: TimeOfDay.fromDateTime(DateTime.parse(json['startTime'])),
+      endTime: TimeOfDay.fromDateTime(DateTime.parse(json['endTime'])),
+      isComleted: json['isComleted'] ?? false,
+    );
+  }
 }
