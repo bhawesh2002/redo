@@ -1,93 +1,92 @@
 [
-    {
-      "id": "1",
-      "title": "Buy groceries",
-      "description": "Visit the supermarket and buy essential items.",
-      "date": "2023-02-01",
-      "startTime": "08:00",
-      "endTime": "09:30",
-      "isCompleted": false
-    },
-    {
-      "id": "2",
-      "title": "Read a book",
-      "description": "Finish reading 'The Great Gatsby' for the book club.",
-      "date": "2023-02-02",
-      "startTime": "19:00",
-      "endTime": "20:30",
-      "isCompleted": true
-    },
-    {
-      "id": "3",
-      "title": "Go for a run",
-      "description": "Run in the park for at least 30 minutes.",
-      "date": "2023-02-03",
-      "startTime": "06:30",
-      "endTime": "07:15",
-      "isCompleted": false
-    },
-    {
-      "id": "4",
-      "title": "Write a blog post",
-      "description": "Create a new blog post on Flutter development.",
-      "date": "2023-02-04",
-      "startTime": "14:00",
-      "endTime": "16:00",
-      "isCompleted": false
-    },
-    {
-      "id": "5",
-      "title": "Attend team meeting",
-      "description": "Join the weekly team meeting at the office.",
-      "date": "2023-02-05",
-      "startTime": "10:00",
-      "endTime": "11:30",
-      "isCompleted": false
-    },
-    {
-      "id": "6",
-      "title": "Prepare dinner",
-      "description": "Cook a healthy dinner with fresh ingredients.",
-      "date": "2023-02-06",
-      "startTime": "18:30",
-      "endTime": "19:45",
-      "isCompleted": false
-    },
-    {
-      "id": "7",
-      "title": "Review project proposal",
-      "description": "Review and provide feedback on the upcoming project proposal.",
-      "date": "2023-02-07",
-      "startTime": "13:00",
-      "endTime": "15:00",
-      "isCompleted": false
-    },
-    {
-      "id": "8",
-      "title": "Call a friend",
-      "description": "Catch up with a friend over a phone call.",
-      "date": "2023-02-08",
-      "startTime": "20:00",
-      "endTime": "21:00",
-      "isCompleted": false
-    },
-    {
-      "id": "9",
-      "title": "Learn a new language",
-      "description": "Spend 30 minutes learning basic phrases in a new language.",
-      "date": "2023-02-09",
-      "startTime": "09:30",
-      "endTime": "10:00",
-      "isCompleted": false
-    },
-    {
-      "id": "10",
-      "title": "Movie night",
-      "description": "Watch a classic movie with popcorn.",
-      "date": "2023-02-10",
-      "startTime": "21:00",
-      "endTime": "23:00",
-      "isCompleted": false
-    }
-  ]
-  
+  {
+    "id": "1",
+    "title": "Buy groceries",
+    "description": "Visit the supermarket and buy essential items.",
+    "date": "2023-02-01",
+    "startTime": "08:00",
+    "endTime": "09:30",
+    "isCompleted": false
+  },
+  {
+    "id": "2",
+    "title": "Read a book",
+    "description": "Finish reading 'The Great Gatsby' for the book club.",
+    "date": "2023-02-02",
+    "startTime": "19:00",
+    "endTime": "20:30",
+    "isCompleted": true
+  },
+  {
+    "id": "3",
+    "title": "Go for a run",
+    "description": "Run in the park for at least 30 minutes.",
+    "date": "2023-02-03",
+    "startTime": "06:30",
+    "endTime": "07:15",
+    "isCompleted": false
+  },
+  {
+    "id": "4",
+    "title": "Write a blog post",
+    "description": "Create a new blog post on Flutter development.",
+    "date": "2023-02-04",
+    "startTime": "14:00",
+    "endTime": "16:00",
+    "isCompleted": false
+  },
+  {
+    "id": "5",
+    "title": "Attend team meeting",
+    "description": "Join the weekly team meeting at the office.",
+    "date": "2023-02-05",
+    "startTime": "10:00",
+    "endTime": "11:30",
+    "isCompleted": false
+  },
+  {
+    "id": "6",
+    "title": "Prepare dinner",
+    "description": "Cook a healthy dinner with fresh ingredients.",
+    "date": "2023-02-06",
+    "startTime": "18:30",
+    "endTime": "19:45",
+    "isCompleted": false
+  },
+  {
+    "id": "7",
+    "title": "Review project proposal",
+    "description": "Review and provide feedback on the upcoming project proposal.",
+    "date": "2023-02-07",
+    "startTime": "13:00",
+    "endTime": "15:00",
+    "isCompleted": false
+  },
+  {
+    "id": "8",
+    "title": "Call a friend",
+    "description": "Catch up with a friend over a phone call.",
+    "date": "2023-02-08",
+    "startTime": "20:00",
+    "endTime": "21:00",
+    "isCompleted": false
+  },
+  {
+    "id": "9",
+    "title": "Learn a new language",
+    "description": "Spend 30 minutes learning basic phrases in a new language.",
+    "date": "2023-02-09",
+    "startTime": "09:30",
+    "endTime": "10:00",
+    "isCompleted": false
+  },
+  {
+    "id": "10",
+    "title": "Movie night",
+    "description": "Watch a classic movie with popcorn.",
+    "date": "2023-02-10",
+    "startTime": "21:00",
+    "endTime": "23:00",
+    "isCompleted": false
+  }
+]
