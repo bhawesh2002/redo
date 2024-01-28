@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:redo/assets/colors/colors.dart';
 
 class AuthForm extends StatefulWidget {
   const AuthForm({super.key});
@@ -29,6 +30,7 @@ class _AuthFormState extends State<AuthForm> {
             TextFormField(
               controller: emailController,
               autofocus: false,
+              cursorColor: AppColor.primaryColor,
               decoration: InputDecoration(
                 labelText: "Enter Your Email",
                 border: OutlineInputBorder(
@@ -42,6 +44,7 @@ class _AuthFormState extends State<AuthForm> {
               controller: passwordController,
               autofocus: false,
               obscureText: true,
+              cursorColor: AppColor.primaryColor,
               decoration: InputDecoration(
                 labelText: "Enter Your Password",
                 border: OutlineInputBorder(
