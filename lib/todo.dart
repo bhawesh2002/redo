@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
+import 'dart:convert';
 
 class Todo {
   final String id;
@@ -54,4 +56,14 @@ class Todo {
       'isCompleted': isComleted,
     };
   }
+}
+
+Future<List<Todo>> loadTasks(String jsonPath) async {
+  return rootBundle.loadString(jsonPath).then(
+    (jsonData) {
+      List<dynamic> jsonList = json.decode(jsonData);
+      List<Todo> tasks = jsonList.map((json) => Todo.fromJson(json)).toList();
+      return tasks;
+    },
+  );
 }
