@@ -52,7 +52,14 @@ class _AuthFormState extends State<AuthForm> {
                 ),
               ),
               keyboardType: TextInputType.emailAddress,
-            )
+            ),
+            const Padding(padding: EdgeInsets.all(2)),
+            const Align(
+              alignment: Alignment.centerRight,
+              child: Text(
+                "Forgot Password?",
+              ),
+            ),
           ],
         ),
       ),
