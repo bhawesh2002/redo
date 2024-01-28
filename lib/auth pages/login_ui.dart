@@ -8,6 +8,8 @@ class LoginPage extends StatelessWidget {
   const LoginPage({super.key});
   @override
   Widget build(BuildContext context) {
+    double height = MediaQuery.of(context).size.height;
+    double width = MediaQuery.of(context).size.width;
     return SafeArea(
       child: Scaffold(
         resizeToAvoidBottomInset: false,
@@ -16,25 +18,28 @@ class LoginPage extends StatelessWidget {
             child: Column(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
-                redoLogo(context, 0.3),
-                const Padding(padding: EdgeInsets.all(10)),
+                Padding(
+                  padding: EdgeInsets.symmetric(
+                      vertical: height * 0.05, horizontal: 0),
+                  child: redoLogo(context, 0.3),
+                ),
                 const AuthForm(),
                 const Padding(padding: EdgeInsets.all(5)),
                 actionButton(context, "Login"),
-                const Padding(padding: EdgeInsets.all(20)),
+                const Padding(padding: EdgeInsets.all(15)),
                 seperation("OR"),
-                const Padding(padding: EdgeInsets.all(20)),
+                const Padding(padding: EdgeInsets.all(15)),
                 const Text(
                   "Login Using",
                   style: TextStyle(fontSize: 12),
                 ),
-                const Padding(padding: EdgeInsets.all(10)),
+                const Padding(padding: EdgeInsets.all(5)),
                 authAlternatives(
                   context,
                   "Google",
                   imgPath: "lib/assets/images/google-color-icon.svg",
                 ),
-                const Padding(padding: EdgeInsets.all(20)),
+                const Padding(padding: EdgeInsets.all(30)),
                 const Text(
                   "Don't have an Account",
                   style: TextStyle(fontSize: 12, fontWeight: FontWeight.w500),
