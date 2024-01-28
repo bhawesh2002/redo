@@ -27,7 +27,7 @@ class SignupPage extends StatelessWidget {
                   authMode: AuthMode.signup,
                 ),
                 Padding(padding: EdgeInsets.all(height * 0.01)),
-                actionButton(context, "Signup"),
+                actionButton(context, "Continue"),
                 Padding(padding: EdgeInsets.all(height * 0.02)),
                 seperation("OR"),
                 Padding(padding: EdgeInsets.all(height * 0.02)),
