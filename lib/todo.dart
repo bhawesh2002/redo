@@ -30,4 +30,28 @@ class Todo {
       isComleted: json['isComleted'] ?? false,
     );
   }
+
+  Map<String, dynamic> toJson() {
+    return {
+      'id': id,
+      'title': title,
+      'description': description,
+      'date': date.toIso8601String(),
+      'startTime': DateTime(
+        date.year,
+        date.month,
+        date.day,
+        startTime.hour,
+        startTime.minute,
+      ).toIso8601String(),
+      'endTime': DateTime(
+        date.year,
+        date.month,
+        date.day,
+        endTime.hour,
+        endTime.minute,
+      ).toIso8601String(),
+      'isCompleted': isComleted,
+    };
+  }
 }
