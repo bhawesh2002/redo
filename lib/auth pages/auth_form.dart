@@ -54,10 +54,15 @@ class _AuthFormState extends State<AuthForm> {
               keyboardType: TextInputType.emailAddress,
             ),
             const Padding(padding: EdgeInsets.all(2)),
-            const Align(
+            Align(
               alignment: Alignment.centerRight,
-              child: Text(
-                "Forgot Password?",
+              child: GestureDetector(
+                onTap: () {
+                  debugPrint("Proceed to reset Password");
+                },
+                child: const Text(
+                  "Forgot Password?",
+                ),
               ),
             ),
           ],
