@@ -36,6 +36,8 @@ class _AuthFormState extends State<AuthForm> {
                 contentPadding: const EdgeInsets.all(15),
                 focusedBorder: OutlineInputBorder(
                   borderRadius: BorderRadius.circular(10),
+                  borderSide:
+                      const BorderSide(width: 2, color: AppColor.primaryColor),
                 ),
                 enabledBorder: const OutlineInputBorder(),
               ),
@@ -51,8 +53,9 @@ class _AuthFormState extends State<AuthForm> {
                 labelText: "Enter Your Password",
                 contentPadding: const EdgeInsets.all(15),
                 focusedBorder: OutlineInputBorder(
-                  borderRadius: BorderRadius.circular(10),
-                ),
+                    borderRadius: BorderRadius.circular(10),
+                    borderSide: const BorderSide(
+                        width: 2, color: AppColor.primaryColor)),
                 enabledBorder: const OutlineInputBorder(),
               ),
               keyboardType: TextInputType.emailAddress,
