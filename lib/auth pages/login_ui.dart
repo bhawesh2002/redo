@@ -124,8 +124,8 @@ Widget seperation(String seperationName) {
 
 Widget authAlternatives(BuildContext context, String label,
     {String imgPath = ''}) {
-  double buttonWidth = MediaQuery.of(context).size.width * 0.4;
-  double buttonHeight = MediaQuery.of(context).size.height * 0.06;
+  double buttonWidth = MediaQuery.of(context).size.width * 0.35;
+  double buttonHeight = MediaQuery.of(context).size.height * 0.05;
   return GestureDetector(
     onTap: () {
       debugPrint("Logging with $label");
@@ -142,7 +142,7 @@ Widget authAlternatives(BuildContext context, String label,
         children: [
           Expanded(
             child: CircleAvatar(
-              radius: 20,
+              radius: 15,
               backgroundColor: Colors.white,
               child: imgPath.isEmpty
                   ? const Icon(Icons.alternate_email)
