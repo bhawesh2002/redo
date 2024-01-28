@@ -57,22 +57,39 @@ class _AuthFormState extends State<AuthForm> {
               keyboardType: TextInputType.emailAddress,
             ),
             Padding(padding: EdgeInsets.all(height * 0.01)),
-            TextFormField(
-              controller: passwordController,
-              autofocus: false,
-              obscureText: true,
-              cursorColor: AppColor.primaryColor,
-              decoration: InputDecoration(
-                labelText: "Enter Your Password",
-                contentPadding: const EdgeInsets.all(15),
-                focusedBorder: OutlineInputBorder(
-                    borderRadius: BorderRadius.circular(10),
-                    borderSide: const BorderSide(
-                        width: 2, color: AppColor.primaryColor)),
-                enabledBorder: const OutlineInputBorder(),
-              ),
-              keyboardType: TextInputType.emailAddress,
-            ),
+            widget.authMode == AuthMode.login
+                ? TextFormField(
+                    controller: passwordController,
+                    autofocus: false,
+                    obscureText: true,
+                    cursorColor: AppColor.primaryColor,
+                    decoration: InputDecoration(
+                      labelText: "Enter Your Password",
+                      contentPadding: const EdgeInsets.all(15),
+                      focusedBorder: OutlineInputBorder(
+                          borderRadius: BorderRadius.circular(10),
+                          borderSide: const BorderSide(
+                              width: 2, color: AppColor.primaryColor)),
+                      enabledBorder: const OutlineInputBorder(),
+                    ),
+                    keyboardType: TextInputType.emailAddress,
+                  )
+                : TextFormField(
+                    controller: passwordController,
+                    autofocus: false,
+                    obscureText: true,
+                    cursorColor: AppColor.primaryColor,
+                    decoration: InputDecoration(
+                      labelText: "Enter Your Username",
+                      contentPadding: const EdgeInsets.all(15),
+                      focusedBorder: OutlineInputBorder(
+                          borderRadius: BorderRadius.circular(10),
+                          borderSide: const BorderSide(
+                              width: 2, color: AppColor.primaryColor)),
+                      enabledBorder: const OutlineInputBorder(),
+                    ),
+                    keyboardType: TextInputType.emailAddress,
+                  ),
             Padding(padding: EdgeInsets.all(height * 0.005)),
             Align(
               alignment: Alignment.centerRight,
