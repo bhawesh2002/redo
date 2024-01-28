@@ -2,7 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:redo/assets/colors/colors.dart';
 
 class AuthForm extends StatefulWidget {
-  const AuthForm({super.key});
+  final String authType;
+  const AuthForm({super.key, required this.authType});
   @override
   State<AuthForm> createState() => _AuthFormState();
 }
@@ -20,11 +21,12 @@ class _AuthFormState extends State<AuthForm> {
         padding: EdgeInsets.all(height * 0.02),
         child: Column(
           children: [
-            const Align(
+            Align(
               alignment: Alignment.centerLeft,
               child: Text(
-                "Login",
-                style: TextStyle(fontSize: 25, fontWeight: FontWeight.bold),
+                "${widget.authType}",
+                style:
+                    const TextStyle(fontSize: 25, fontWeight: FontWeight.bold),
               ),
             ),
             Padding(padding: EdgeInsets.all(height * 0.01)),
