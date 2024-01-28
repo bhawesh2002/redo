@@ -33,13 +33,14 @@ class _AuthFormState extends State<AuthForm> {
               cursorColor: AppColor.primaryColor,
               decoration: InputDecoration(
                 labelText: "Enter Your Email",
+                contentPadding: const EdgeInsets.all(15),
                 border: OutlineInputBorder(
                   borderRadius: BorderRadius.circular(15),
                 ),
               ),
               keyboardType: TextInputType.emailAddress,
             ),
-            const Padding(padding: EdgeInsets.all(5)),
+            const Padding(padding: EdgeInsets.all(10)),
             TextFormField(
               controller: passwordController,
               autofocus: false,
@@ -47,6 +48,7 @@ class _AuthFormState extends State<AuthForm> {
               cursorColor: AppColor.primaryColor,
               decoration: InputDecoration(
                 labelText: "Enter Your Password",
+                contentPadding: const EdgeInsets.all(15),
                 border: OutlineInputBorder(
                   borderRadius: BorderRadius.circular(15),
                 ),
