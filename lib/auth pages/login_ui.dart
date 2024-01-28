@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:redo/assets/colors/colors.dart';
 import 'package:redo/auth%20pages/auth_form.dart';
+import 'package:redo/auth%20pages/signup_ui.dart';
 import 'package:redo/widgets.dart';
 
 class LoginPage extends StatelessWidget {
@@ -48,7 +49,10 @@ class LoginPage extends StatelessWidget {
                 ),
                 GestureDetector(
                   onTap: () {
-                    debugPrint("Opening Signup Page");
+                    Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                            builder: (context) => const SignupPage()));
                   },
                   child: Container(
                     color: Colors.transparent,
