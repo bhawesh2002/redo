@@ -1,6 +1,18 @@
 import 'package:flutter/services.dart';
 import 'dart:convert';
 
+enum Field {
+  id,
+  title,
+  description,
+  startDate,
+  startTime,
+  endDate,
+  endTime,
+  isCompleted,
+  instance
+}
+
 class Todo {
   final String id;
   final String title;
