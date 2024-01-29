@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:redo/assets/colors/colors.dart';
+import 'package:redo/todo.dart';
 
 class TestPage extends StatelessWidget {
   const TestPage({super.key});
@@ -35,6 +36,10 @@ class TaskWidget extends StatelessWidget {
               ),
               Text("Container Width ${width * 0.85}"),
               Text("Container Height ${height * 0.2}"),
+              const TaskValue(
+                index: 2,
+                field: Field.title,
+              )
             ],
           );
         },
