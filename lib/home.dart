@@ -40,6 +40,11 @@ class _HomeState extends State<Home> {
                     return ListTile(
                       title: Text(todo.title),
                       subtitle: Text(todo.description),
+                      onTap: () {
+                        debugPrint(
+                            "Start Date: ${todo.startDate}\tStart Time: ${todo.startTime}\n"
+                            "End Date: ${todo.endDate}\t\tEnd Time: ${todo.endTime}");
+                      },
                     );
                   },
                 );
