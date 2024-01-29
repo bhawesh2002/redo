@@ -52,11 +52,6 @@ class Todo {
 
 Future<List<Todo>> getTasks() async {
   final jsonData = await rootBundle.loadString('lib/assets/tasks/tasks.json');
-  final tasks = loadTasks(jsonData);
-  return tasks;
-}
-
-List<Todo> loadTasks(String jsonData) {
   List<dynamic> jsonList = json.decode(jsonData);
   List<Todo> tasks = jsonList.map((json) => Todo.fromJson(json)).toList();
   return tasks;
