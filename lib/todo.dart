@@ -22,7 +22,7 @@ class Todo {
   final String startTime;
   final String endDate;
   final String endTime;
-  final bool isComleted;
+  final bool isCompleted;
 
   Todo({
     required this.id,
@@ -32,7 +32,7 @@ class Todo {
     required this.startTime,
     required this.endDate,
     required this.endTime,
-    required this.isComleted,
+    required this.isCompleted,
   });
   factory Todo.fromJson(Map<String, dynamic> json) {
     final List<String> start = json['start'].toString().split(' ');
@@ -45,7 +45,7 @@ class Todo {
       startTime: start[1],
       endDate: end[0],
       endTime: end[1],
-      isComleted: json['isComleted'] ?? false,
+      isCompleted: json['isComleted'] ?? false,
     );
   }
 
@@ -58,7 +58,7 @@ class Todo {
       'description': description,
       'start': start,
       'end': end,
-      'isCompleted': isComleted,
+      'isCompleted': isCompleted,
     };
   }
 }
@@ -110,7 +110,7 @@ class _GetTasksState extends State<TaskValue> {
             case Field.endTime:
               return Text(todo.endTime);
             case Field.isCompleted:
-              return Text(todo.isComleted.toString());
+              return Text(todo.isCompleted.toString());
             default:
               return Text(todo.toString());
           }
