@@ -39,7 +39,8 @@ class TaskWidget extends StatelessWidget {
               const TaskValue(
                 index: 2,
                 field: Field.title,
-              )
+                textStyle: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
+              ),
             ],
           );
         },
