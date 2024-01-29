@@ -1,3 +1,4 @@
+import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'dart:convert';
 
@@ -67,4 +68,54 @@ Future<List<Todo>> getTasks() async {
   List<dynamic> jsonList = json.decode(jsonData);
   List<Todo> tasks = jsonList.map((json) => Todo.fromJson(json)).toList();
   return tasks;
+}
+
+class TaskValue extends StatefulWidget {
+  final int index;
+  final Field field;
+  const TaskValue(
+      {super.key, required this.index, this.field = Field.instance});
+
+  @override
+  State<StatefulWidget> createState() => _GetTasksState();
+}
+
+class _GetTasksState extends State<TaskValue> {
+  @override
+  Widget build(BuildContext context) {
+    return FutureBuilder<List<Todo>>(
+      future: getTasks(),
+      builder: (context, snapshot) {
+        if (snapshot.connectionState == ConnectionState.waiting) {
+          return const CircularProgressIndicator();
+        } else if (snapshot.hasError) {
+          return Text("Error : ${snapshot.error}");
+        } else if (!snapshot.hasData || snapshot.data!.isEmpty) {
+          return const Text('No tasks available.');
+        } else {
+          Todo todo = snapshot.data![widget.index];
+          switch (widget.field) {
+            case Field.id:
+              return Text(todo.id);
+            case Field.title:
+              return Text(todo.title);
+            case Field.description:
+              return Text(todo.description);
+            case Field.startDate:
+              return Text(todo.startDate);
+            case Field.startTime:
+              return Text(todo.startTime);
+            case Field.endDate:
+              return Text(todo.endDate);
+            case Field.endTime:
+              return Text(todo.endTime);
+            case Field.isCompleted:
+              return Text(todo.isComleted.toString());
+            default:
+              return Text(todo.toString());
+          }
+        }
+      },
+    );
+  }
 }
