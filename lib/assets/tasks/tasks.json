@@ -3,90 +3,120 @@
     "id": "1",
     "title": "Buy groceries",
     "description": "Visit the supermarket and buy essential items.",
-    "date": "2023-02-01",
-    "startTime": "08:00",
-    "endTime": "09:30",
+    "start": "2024-01-29 08:00:00.000",
+    "end": "2024-01-29 09:30:00.000",
     "isCompleted": false
   },
   {
     "id": "2",
-    "title": "Read a book",
-    "description": "Finish reading 'The Great Gatsby' for the book club.",
-    "date": "2023-02-02",
-    "startTime": "19:00",
-    "endTime": "20:30",
+    "title": "Prepare presentation",
+    "description": "Create slides and prepare notes for upcoming presentation.",
+    "start": "2024-01-30 10:15:00.000",
+    "end": "2024-01-30 12:00:00.000",
     "isCompleted": true
   },
   {
     "id": "3",
-    "title": "Go for a run",
-    "description": "Run in the park for at least 30 minutes.",
-    "date": "2023-02-03",
-    "startTime": "06:30",
-    "endTime": "07:15",
+    "title": "Meeting with team",
+    "description": "Discuss project progress and plan next steps with the team.",
+    "start": "2024-02-01 14:30:00.000",
+    "end": "2024-02-01 16:45:00.000",
     "isCompleted": false
   },
   {
     "id": "4",
-    "title": "Write a blog post",
-    "description": "Create a new blog post on Flutter development.",
-    "date": "2023-02-04",
-    "startTime": "14:00",
-    "endTime": "16:00",
-    "isCompleted": false
+    "title": "Workout session",
+    "description": "Go to the gym and do a full-body workout.",
+    "start": "2024-02-02 09:00:00.000",
+    "end": "2024-02-02 11:30:00.000",
+    "isCompleted": true
   },
   {
     "id": "5",
-    "title": "Attend team meeting",
-    "description": "Join the weekly team meeting at the office.",
-    "date": "2023-02-05",
-    "startTime": "10:00",
-    "endTime": "11:30",
+    "title": "Call mom",
+    "description": "Catch up with mom and share updates.",
+    "start": "2024-02-03 13:45:00.000",
+    "end": "2024-02-03 15:15:00.000",
     "isCompleted": false
   },
   {
     "id": "6",
-    "title": "Prepare dinner",
-    "description": "Cook a healthy dinner with fresh ingredients.",
-    "date": "2023-02-06",
-    "startTime": "18:30",
-    "endTime": "19:45",
-    "isCompleted": false
+    "title": "Complete assignment",
+    "description": "Finish the assignment and submit it before the deadline.",
+    "start": "2024-02-05 11:00:00.000",
+    "end": "2024-02-05 12:30:00.000",
+    "isCompleted": true
   },
   {
     "id": "7",
-    "title": "Review project proposal",
-    "description": "Review and provide feedback on the upcoming project proposal.",
-    "date": "2023-02-07",
-    "startTime": "13:00",
-    "endTime": "15:00",
+    "title": "Read book",
+    "description": "Start reading the new book and spend some time relaxing.",
+    "start": "2024-02-06 16:00:00.000",
+    "end": "2024-02-06 17:30:00.000",
     "isCompleted": false
   },
   {
     "id": "8",
-    "title": "Call a friend",
-    "description": "Catch up with a friend over a phone call.",
-    "date": "2023-02-08",
-    "startTime": "20:00",
-    "endTime": "21:00",
-    "isCompleted": false
+    "title": "Prepare dinner",
+    "description": "Cook a delicious dinner for the family.",
+    "start": "2024-02-07 09:45:00.000",
+    "end": "2024-02-07 11:00:00.000",
+    "isCompleted": true
   },
   {
     "id": "9",
-    "title": "Learn a new language",
-    "description": "Spend 30 minutes learning basic phrases in a new language.",
-    "date": "2023-02-09",
-    "startTime": "09:30",
-    "endTime": "10:00",
+    "title": "Write blog post",
+    "description": "Work on the new blog post and publish it on the website.",
+    "start": "2024-02-08 14:15:00.000",
+    "end": "2024-02-08 15:45:00.000",
     "isCompleted": false
   },
   {
     "id": "10",
-    "title": "Movie night",
-    "description": "Watch a classic movie with popcorn.",
-    "date": "2023-02-10",
-    "startTime": "21:00",
-    "endTime": "23:00",
+    "title": "Go for a walk",
+    "description": "Take a walk in the park and enjoy nature.",
+    "start": "2024-02-10 08:30:00.000",
+    "end": "2024-02-10 10:00:00.000",
+    "isCompleted": true
+  },
+  {
+    "id": "11",
+    "title": "Visit dentist",
+    "description": "Appointment for dental checkup and cleaning.",
+    "start": "2024-02-11 12:45:00.000",
+    "end": "2024-02-11 14:00:00.000",
+    "isCompleted": false
+  },
+  {
+    "id": "12",
+    "title": "Plan vacation",
+    "description": "Research destinations and plan upcoming vacation.",
+    "start": "2024-02-12 15:30:00.000",
+    "end": "2024-02-12 17:00:00.000",
+    "isCompleted": true
+  },
+  {
+    "id": "13",
+    "title": "Attend webinar",
+    "description": "Register for webinar on new technology trends.",
+    "start": "2024-02-14 11:00:00.000",
+    "end": "2024-02-14 12:15:00.000",
+    "isCompleted": false
+  },
+  {
+    "id": "14",
+    "title": "Complete project",
+    "description": "Finalize project deliverables and submit them to the client.",
+    "start": "2024-02-15 14:45:00.000",
+    "end": "2024-02-15 16:00:00.000",
+    "isCompleted": true
+  },
+  {
+    "id": "15",
+    "title": "Call friend",
+    "description": "Catch up with a friend over phone and plan a meetup.",
+    "start": "2024-02-16 10:30:00.000",
+    "end": "2024-02-16 10:50:00.000",
     "isCompleted": false
   }
 ]
