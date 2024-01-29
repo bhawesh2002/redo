@@ -73,8 +73,12 @@ Future<List<Todo>> getTasks() async {
 class TaskValue extends StatefulWidget {
   final int index;
   final Field field;
+  final TextStyle textStyle;
   const TaskValue(
-      {super.key, required this.index, this.field = Field.instance});
+      {super.key,
+      required this.index,
+      this.field = Field.instance,
+      this.textStyle = const TextStyle()});
 
   @override
   State<StatefulWidget> createState() => _GetTasksState();
@@ -96,19 +100,19 @@ class _GetTasksState extends State<TaskValue> {
           Todo todo = snapshot.data![widget.index];
           switch (widget.field) {
             case Field.id:
-              return Text(todo.id);
+              return Text(todo.id, style: widget.textStyle);
             case Field.title:
-              return Text(todo.title);
+              return Text(todo.title, style: widget.textStyle);
             case Field.description:
-              return Text(todo.description);
+              return Text(todo.description, style: widget.textStyle);
             case Field.startDate:
-              return Text(todo.startDate);
+              return Text(todo.startDate, style: widget.textStyle);
             case Field.startTime:
-              return Text(todo.startTime);
+              return Text(todo.startTime, style: widget.textStyle);
             case Field.endDate:
-              return Text(todo.endDate);
+              return Text(todo.endDate, style: widget.textStyle);
             case Field.endTime:
-              return Text(todo.endTime);
+              return Text(todo.endTime, style: widget.textStyle);
             case Field.isCompleted:
               return Text(todo.isCompleted.toString());
             default:
