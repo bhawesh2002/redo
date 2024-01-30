@@ -107,7 +107,7 @@ class _GetTasksState extends State<TaskValue> {
               return Text(
                 todo.description,
                 style: widget.textStyle,
-                maxLines: 3,
+                softWrap: true,
               );
             case Field.startDate:
               return Text(todo.startDate, style: widget.textStyle);
