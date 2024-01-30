@@ -18,8 +18,10 @@ class Todo {
   final String id;
   final String title;
   final String description;
+  final DateTime start;
   final String startDate;
   final String startTime;
+  final DateTime end;
   final String endDate;
   final String endTime;
   final bool isCompleted;
@@ -28,8 +30,10 @@ class Todo {
     required this.id,
     required this.title,
     required this.description,
+    required this.start,
     required this.startDate,
     required this.startTime,
+    required this.end,
     required this.endDate,
     required this.endTime,
     required this.isCompleted,
@@ -41,8 +45,10 @@ class Todo {
       id: json['id'],
       title: json['title'],
       description: json['description'],
+      start: DateTime.parse(json['start']),
       startDate: start[0],
       startTime: start[1],
+      end: DateTime.parse(json['end']),
       endDate: end[0],
       endTime: end[1],
       isCompleted: json['isComleted'] ?? false,
@@ -50,14 +56,12 @@ class Todo {
   }
 
   Map<String, dynamic> toJson() {
-    final String start = "$startDate $startTime";
-    final String end = "$endDate $endTime";
     return {
       'id': id,
       'title': title,
       'description': description,
-      'start': start,
-      'end': end,
+      'start': start.toString(),
+      'end': end.toString(),
       'isCompleted': isCompleted,
     };
   }
