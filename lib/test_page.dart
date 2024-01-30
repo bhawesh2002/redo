@@ -33,7 +33,7 @@ class TaskWidget extends StatelessWidget {
     double height = MediaQuery.of(context).size.height;
     return Container(
       width: width * 0.85,
-      height: height * 0.2,
+      height: height * 0.15,
       decoration: BoxDecoration(
         border: Border.all(color: AppColor.primaryColor, width: 3),
         borderRadius: BorderRadius.circular(20),
