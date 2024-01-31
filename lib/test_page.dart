@@ -253,6 +253,8 @@ class _CircularProgressWidgetState extends State<CircularProgressWidget> {
                   child: CircularProgressIndicator(
                     value: progress,
                     color: AppColor.primaryColor,
+                    strokeWidth: 5,
+                    strokeCap: StrokeCap.round,
                   ),
                 ),
               ),
