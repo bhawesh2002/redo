@@ -44,9 +44,11 @@ class _TaskTileState extends State<TaskTile> {
   bool isCompleted = false;
   @override
   Widget build(BuildContext context) {
+    double tileWidth = MediaQuery.of(context).size.width * 0.85;
+    double tileHeight = MediaQuery.of(context).size.height * 0.1;
     return Container(
-      width: MediaQuery.of(context).size.width * 0.85,
-      height: MediaQuery.of(context).size.height * 0.1,
+      width: tileWidth,
+      height: tileHeight,
       decoration: BoxDecoration(
         border: Border.all(color: AppColor.primaryColor, width: 3),
         borderRadius: BorderRadius.circular(10),
