@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:redo/assets/colors/colors.dart';
+import 'package:redo/task_widget.dart';
 import 'package:redo/todo.dart';
 import 'package:redo/widgets.dart';
 
@@ -29,28 +30,47 @@ class _TestPageState extends State<TestPage> {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        title: const Text("Redo"),
-        leading: redoLogo(context, 0.2),
-        toolbarHeight: MediaQuery.of(context).size.height * 0.08,
-        actions: [
-          CircleAvatar(
-            radius: MediaQuery.of(context).size.height * 0.04,
-          )
-        ],
-      ),
-      body: ListView.builder(
-        itemCount: taskList.length,
-        itemBuilder: (context, index) {
-          return Padding(
-            padding: const EdgeInsets.symmetric(vertical: 5, horizontal: 15),
-            child: TaskTile(
-              index: index,
-            ),
-          );
-        },
-      ),
+    return SafeArea(
+      child: Scaffold(
+          appBar: AppBar(
+            title: const Text("Redo"),
+            leading: redoLogo(context, 0.2),
+            toolbarHeight: MediaQuery.of(context).size.height * 0.08,
+            actions: [
+              CircleAvatar(
+                radius: MediaQuery.of(context).size.height * 0.04,
+              )
+            ],
+          ),
+          body: LayoutBuilder(builder: (context, BoxConstraints constraints) {
+            return const Column(
+              children: [
+                Align(
+                  alignment: Alignment.topLeft,
+                  child: Text(
+                    "Ongoing,",
+                    style: TextStyle(
+                      fontSize: 25,
+                      fontWeight: FontWeight.w700,
+                    ),
+                  ),
+                ),
+                Center(
+                  child: TaskWidget(),
+                ),
+                Align(
+                  alignment: Alignment.topLeft,
+                  child: Text(
+                    "Tasks",
+                    style: TextStyle(
+                      fontSize: 25,
+                      fontWeight: FontWeight.w700,
+                    ),
+                  ),
+                ),
+              ],
+            );
+          })),
     );
   }
 }
