@@ -72,6 +72,7 @@ class _TaskTileState extends State<TaskTile> {
     double tileHeight = MediaQuery.of(context).size.height * 0.08;
     return AnimatedContainer(
       duration: const Duration(milliseconds: 200),
+      curve: Curves.easeInOut,
       width: tileWidth,
       height: isExpanded ? (tileHeight * 2) : tileHeight,
       decoration: BoxDecoration(
