@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/rendering.dart';
 import 'package:redo/assets/colors/colors.dart';
 import 'package:redo/task_widget.dart';
+import 'package:redo/todo.dart';
 import 'package:redo/widgets.dart';
 
 class TestPage extends StatelessWidget {
@@ -26,7 +26,9 @@ class TestPage extends StatelessWidget {
           children: [
             TaskWidget(),
             Padding(padding: EdgeInsets.all(10)),
-            TaskTile(),
+            TaskTile(
+              index: 1,
+            ),
           ],
         ),
       ),
@@ -35,7 +37,8 @@ class TestPage extends StatelessWidget {
 }
 
 class TaskTile extends StatefulWidget {
-  const TaskTile({super.key});
+  final int index;
+  const TaskTile({super.key, required this.index});
 
   @override
   State<TaskTile> createState() => _TaskTileState();
@@ -43,20 +46,90 @@ class TaskTile extends StatefulWidget {
 
 class _TaskTileState extends State<TaskTile> {
   bool isCompleted = false;
+  bool isExpanded = false;
   @override
   Widget build(BuildContext context) {
     double tileWidth = MediaQuery.of(context).size.width * 0.85;
-    double tileHeight = MediaQuery.of(context).size.height * 0.1;
-    return Container(
+    double tileHeight = MediaQuery.of(context).size.height * 0.08;
+    return AnimatedContainer(
+      duration: const Duration(milliseconds: 200),
       width: tileWidth,
-      height: tileHeight,
+      height: isExpanded ? (tileHeight * 2) : tileHeight,
       decoration: BoxDecoration(
         border: Border.all(color: AppColor.primaryColor, width: 3),
         borderRadius: BorderRadius.circular(10),
       ),
       padding: EdgeInsets.symmetric(
-        vertical: tileHeight * 0.05,
-        horizontal: tileWidth * 0.02,
+        vertical: tileHeight * 0.15,
+        horizontal: tileWidth * 0.01,
+      ),
+      child: LayoutBuilder(
+        builder: (context, BoxConstraints constraints) {
+          return Row(
+            mainAxisAlignment: MainAxisAlignment.spaceAround,
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              Checkbox(
+                value: isCompleted,
+                onChanged: (value) {
+                  setState(() {
+                    isCompleted = value!;
+                  });
+                },
+                activeColor: AppColor.primaryColor,
+              ),
+              Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Flexible(
+                    child: TaskValue(
+                      index: widget.index,
+                      field: Field.title,
+                      textStyle: const TextStyle(
+                        fontSize: 15,
+                        fontWeight: FontWeight.w600,
+                      ),
+                    ),
+                  ),
+                  const Padding(
+                    padding: EdgeInsets.symmetric(vertical: 2),
+                  ),
+                  Expanded(
+                    child: AnimatedContainer(
+                      duration: const Duration(milliseconds: 200),
+                      width: constraints.maxWidth * 0.7,
+                      constraints: BoxConstraints(
+                        maxWidth: constraints.maxWidth * 0.7,
+                        maxHeight: isExpanded
+                            ? constraints.maxHeight * 0.8
+                            : constraints.maxHeight * 0.1,
+                      ),
+                      child: TaskValue(
+                        index: widget.index,
+                        field: Field.description,
+                        textStyle: const TextStyle(
+                          fontSize: 12,
+                        ),
+                        textWrap: isExpanded ? true : false,
+                        maxLines: isExpanded ? 3 : 1,
+                      ),
+                    ),
+                  )
+                ],
+              ),
+              IconButton(
+                onPressed: () {
+                  setState(() {
+                    isExpanded = !isExpanded;
+                  });
+                },
+                icon: isExpanded
+                    ? const Icon(Icons.keyboard_arrow_up_rounded)
+                    : const Icon(Icons.keyboard_arrow_down_rounded),
+              ),
+            ],
+          );
+        },
       ),
     );
   }
