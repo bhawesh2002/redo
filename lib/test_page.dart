@@ -24,6 +24,8 @@ class TestPage extends StatelessWidget {
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
             TaskWidget(),
+            Padding(padding: EdgeInsets.all(10)),
+            TaskTile(),
           ],
         ),
       ),
