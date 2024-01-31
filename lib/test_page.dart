@@ -5,6 +5,7 @@ import 'package:redo/widgets.dart';
 
 class TestPage extends StatelessWidget {
   const TestPage({super.key});
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -19,7 +20,12 @@ class TestPage extends StatelessWidget {
         ],
       ),
       body: const Center(
-        child: TaskWidget(),
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            TaskWidget(),
+          ],
+        ),
       ),
     );
   }
@@ -48,7 +54,7 @@ class TaskWidget extends StatelessWidget {
               Flexible(
                 flex: 1,
                 child: TaskValue(
-                  index: 0,
+                  index: 1,
                   field: Field.title,
                   textStyle: TextStyle(
                       fontSize: width * 0.04, fontWeight: FontWeight.w600),
@@ -64,7 +70,7 @@ class TaskWidget extends StatelessWidget {
                     height: constraints.maxHeight * 0.5,
                     child: SingleChildScrollView(
                       child: TaskValue(
-                        index: 0,
+                        index: 1,
                         field: Field.description,
                         textStyle: TextStyle(
                           fontSize: width * 0.03,
