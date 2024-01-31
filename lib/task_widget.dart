@@ -79,7 +79,7 @@ class TaskWidget extends StatelessWidget {
                                   color: Colors.black,
                                 ),
                                 Text(
-                                  "Previous",
+                                  "Prev",
                                   overflow: TextOverflow.ellipsis,
                                   style: TextStyle(
                                       fontSize: width * 0.025,
