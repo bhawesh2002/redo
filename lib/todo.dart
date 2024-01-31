@@ -79,12 +79,15 @@ class TaskValue extends StatefulWidget {
   final Field field;
   final TextStyle textStyle;
   final bool textWrap;
-  const TaskValue(
-      {super.key,
-      required this.index,
-      this.field = Field.instance,
-      this.textStyle = const TextStyle(),
-      this.textWrap = true});
+  final int maxLines;
+  const TaskValue({
+    super.key,
+    required this.index,
+    this.field = Field.instance,
+    this.textStyle = const TextStyle(),
+    this.textWrap = true,
+    this.maxLines = 1,
+  });
 
   @override
   State<StatefulWidget> createState() => _GetTasksState();
@@ -113,7 +116,12 @@ class _GetTasksState extends State<TaskValue> {
               return Text(
                 todo.description,
                 style: widget.textStyle,
+                maxLines: widget.maxLines,
                 softWrap: widget.textWrap,
+                overflow: widget.textWrap
+                    ? null
+                    : TextOverflow
+                        .ellipsis, //Check textWrap Since overflow and softWrap cannot exist together
               );
             case Field.startDate:
               return Text(todo.startDate, style: widget.textStyle);
