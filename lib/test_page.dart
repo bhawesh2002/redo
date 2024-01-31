@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/rendering.dart';
 import 'package:redo/assets/colors/colors.dart';
 import 'package:redo/task_widget.dart';
 import 'package:redo/widgets.dart';
@@ -52,6 +53,10 @@ class _TaskTileState extends State<TaskTile> {
       decoration: BoxDecoration(
         border: Border.all(color: AppColor.primaryColor, width: 3),
         borderRadius: BorderRadius.circular(10),
+      ),
+      padding: EdgeInsets.symmetric(
+        vertical: tileHeight * 0.05,
+        horizontal: tileWidth * 0.02,
       ),
     );
   }
