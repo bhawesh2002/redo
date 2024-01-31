@@ -32,7 +32,7 @@ class TaskWidget extends StatelessWidget {
                   Flexible(
                     flex: 1,
                     child: TaskValue(
-                      index: 1,
+                      index: index,
                       field: Field.title,
                       textStyle: TextStyle(
                           fontSize: width * 0.04, fontWeight: FontWeight.w600),
@@ -48,7 +48,7 @@ class TaskWidget extends StatelessWidget {
                         height: constraints.maxHeight * 0.5,
                         child: SingleChildScrollView(
                           child: TaskValue(
-                            index: 1,
+                            index: index,
                             field: Field.description,
                             textStyle: TextStyle(
                               fontSize: width * 0.03,
