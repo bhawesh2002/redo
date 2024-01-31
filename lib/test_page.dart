@@ -48,9 +48,9 @@ class _TestPageState extends State<TestPage> {
                 horizontal: MediaQuery.of(context).size.width * 0.04),
             child:
                 LayoutBuilder(builder: (context, BoxConstraints constraints) {
-              return const Column(
+              return Column(
                 children: [
-                  Align(
+                  const Align(
                     alignment: Alignment.topLeft,
                     child: Text(
                       "Ongoing,",
@@ -60,10 +60,18 @@ class _TestPageState extends State<TestPage> {
                       ),
                     ),
                   ),
-                  Center(
+                  Padding(
+                    padding: EdgeInsets.symmetric(
+                        vertical: constraints.maxHeight * 0.005),
+                  ),
+                  const Center(
                     child: TaskWidget(),
                   ),
-                  Align(
+                  Padding(
+                    padding: EdgeInsets.symmetric(
+                        vertical: constraints.maxHeight * 0.01),
+                  ),
+                  const Align(
                     alignment: Alignment.topLeft,
                     child: Text(
                       "Tasks",
@@ -73,6 +81,25 @@ class _TestPageState extends State<TestPage> {
                       ),
                     ),
                   ),
+                  Padding(
+                    padding: EdgeInsets.symmetric(
+                        vertical: constraints.maxHeight * 0.005),
+                  ),
+                  Expanded(
+                    child: SizedBox(
+                      height: constraints.maxHeight * 0.5,
+                      child: ListView.builder(
+                          itemCount: taskList.length,
+                          itemBuilder: (context, index) {
+                            return Padding(
+                              padding: EdgeInsets.symmetric(
+                                  vertical: constraints.maxHeight * 0.01,
+                                  horizontal: constraints.maxWidth * 0.02),
+                              child: TaskTile(index: index),
+                            );
+                          }),
+                    ),
+                  )
                 ],
               );
             }),
