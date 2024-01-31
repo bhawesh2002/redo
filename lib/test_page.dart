@@ -65,7 +65,9 @@ class _TestPageState extends State<TestPage> {
                         vertical: constraints.maxHeight * 0.005),
                   ),
                   const Center(
-                    child: TaskWidget(),
+                    child: TaskWidget(
+                      index: 2,
+                    ),
                   ),
                   Padding(
                     padding: EdgeInsets.symmetric(
