@@ -42,35 +42,41 @@ class _TestPageState extends State<TestPage> {
               )
             ],
           ),
-          body: LayoutBuilder(builder: (context, BoxConstraints constraints) {
-            return const Column(
-              children: [
-                Align(
-                  alignment: Alignment.topLeft,
-                  child: Text(
-                    "Ongoing,",
-                    style: TextStyle(
-                      fontSize: 25,
-                      fontWeight: FontWeight.w700,
+          body: Padding(
+            padding: EdgeInsets.symmetric(
+                vertical: MediaQuery.of(context).size.height * 0.01,
+                horizontal: MediaQuery.of(context).size.width * 0.04),
+            child:
+                LayoutBuilder(builder: (context, BoxConstraints constraints) {
+              return const Column(
+                children: [
+                  Align(
+                    alignment: Alignment.topLeft,
+                    child: Text(
+                      "Ongoing,",
+                      style: TextStyle(
+                        fontSize: 25,
+                        fontWeight: FontWeight.w700,
+                      ),
                     ),
                   ),
-                ),
-                Center(
-                  child: TaskWidget(),
-                ),
-                Align(
-                  alignment: Alignment.topLeft,
-                  child: Text(
-                    "Tasks",
-                    style: TextStyle(
-                      fontSize: 25,
-                      fontWeight: FontWeight.w700,
+                  Center(
+                    child: TaskWidget(),
+                  ),
+                  Align(
+                    alignment: Alignment.topLeft,
+                    child: Text(
+                      "Tasks",
+                      style: TextStyle(
+                        fontSize: 25,
+                        fontWeight: FontWeight.w700,
+                      ),
                     ),
                   ),
-                ),
-              ],
-            );
-          })),
+                ],
+              );
+            }),
+          )),
     );
   }
 }
