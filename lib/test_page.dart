@@ -1,11 +1,31 @@
 import 'package:flutter/material.dart';
 import 'package:redo/assets/colors/colors.dart';
-import 'package:redo/task_widget.dart';
 import 'package:redo/todo.dart';
 import 'package:redo/widgets.dart';
 
-class TestPage extends StatelessWidget {
+class TestPage extends StatefulWidget {
   const TestPage({super.key});
+
+  @override
+  State<TestPage> createState() => _TestPageState();
+}
+
+class _TestPageState extends State<TestPage> {
+  List<Todo> taskList = [];
+
+  @override
+  void initState() {
+    super.initState();
+    _gettaskList();
+  }
+
+  Future<void> _gettaskList() async {
+    List<Todo> fetchTasks = await getTasks();
+    setState(() {
+      taskList = fetchTasks;
+      debugPrint('Tasks Lenght: ${taskList.length}');
+    });
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -20,17 +40,16 @@ class TestPage extends StatelessWidget {
           )
         ],
       ),
-      body: const Center(
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: [
-            TaskWidget(),
-            Padding(padding: EdgeInsets.all(10)),
-            TaskTile(
-              index: 1,
+      body: ListView.builder(
+        itemCount: taskList.length,
+        itemBuilder: (context, index) {
+          return Padding(
+            padding: const EdgeInsets.symmetric(vertical: 5, horizontal: 15),
+            child: TaskTile(
+              index: index,
             ),
-          ],
-        ),
+          );
+        },
       ),
     );
   }
