@@ -146,6 +146,11 @@ class TaskWidget extends StatelessWidget {
                   )
                 ],
               ),
+              Container(
+                width: constraints.maxWidth * 0.005,
+                height: constraints.maxHeight,
+                color: Colors.grey.shade300,
+              ),
             ],
           );
         },
