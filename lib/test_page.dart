@@ -1,3 +1,5 @@
+import 'dart:async';
+
 import 'package:flutter/material.dart';
 import 'package:redo/assets/colors/colors.dart';
 import 'package:redo/todo.dart';
@@ -140,6 +142,133 @@ class TaskWidget extends StatelessWidget {
           );
         },
       ),
+    );
+  }
+}
+
+class CircularProgressWidget extends StatefulWidget {
+  final int index;
+  final Size indicatorSize;
+  const CircularProgressWidget(
+      {super.key,
+      required this.index,
+      this.indicatorSize = const Size(50, 50)});
+
+  @override
+  State<CircularProgressWidget> createState() => _CircularProgressWidgetState();
+}
+
+class _CircularProgressWidgetState extends State<CircularProgressWidget> {
+  DateTime startTime = DateTime.now();
+  DateTime endTime = DateTime.now();
+  double progress = 0;
+  double remaining = 0;
+  late Timer timer;
+  @override
+  void initState() {
+    super.initState();
+    _updateTimeValues(widget.index);
+    timer = Timer.periodic(const Duration(seconds: 1), (timer) {
+      setState(() {
+        progress = calculateProgress();
+        remaining = calculateRemaining();
+      });
+    });
+  }
+
+  @override
+  void dispose() {
+    if (progress == 1.0) {
+      timer.cancel();
+    }
+    super.dispose();
+  }
+
+  Future<void> _updateTimeValues(int index) async {
+    List<Todo> tasks = await getTasks();
+    setState(() {
+      startTime = tasks[index].start;
+      endTime = tasks[index].end;
+    });
+    DateTime now = DateTime.now();
+    debugPrint('nowTime: ${now.toString()}');
+    debugPrint('startTime: $startTime');
+    debugPrint('endTime: $endTime');
+  }
+
+  double calculateProgress() {
+    DateTime now = DateTime.now();
+    if (now.isBefore(startTime)) {
+      return 0.0;
+    } else if (now.isAfter(endTime)) {
+      return 1.0;
+    } else {
+      double totalDuration = endTime.difference(startTime).inSeconds.toDouble();
+      double elapsedDuration = now.difference(startTime).inSeconds.toDouble();
+      return elapsedDuration / totalDuration;
+    }
+  }
+
+  double calculateRemaining() {
+    DateTime now = DateTime.now();
+    double totalDuration = endTime.difference(startTime).inMinutes.toDouble();
+    double elapsedDuration = now.difference(startTime).inMinutes.toDouble();
+    double remainingDuration = totalDuration - elapsedDuration;
+    if (remainingDuration <= 0) {
+      remainingDuration = 0;
+    }
+    return remainingDuration;
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    return Column(
+      mainAxisAlignment: MainAxisAlignment.center,
+      children: [
+        SizedBox(
+          width: widget.indicatorSize.width,
+          height: widget.indicatorSize.height,
+          child: Stack(
+            children: [
+              Align(
+                alignment: Alignment.center,
+                child: SizedBox(
+                  width: widget.indicatorSize.width,
+                  height: widget.indicatorSize.height,
+                  child: CircularProgressIndicator(
+                    value: progress,
+                    color: AppColor.primaryColor,
+                  ),
+                ),
+              ),
+              Align(
+                alignment: Alignment.center,
+                child: Text('${(progress * 100).toInt()}%'),
+              ),
+            ],
+          ),
+        ),
+        const Padding(padding: EdgeInsets.symmetric(vertical: 5)),
+        RichText(
+          text: TextSpan(
+            style: DefaultTextStyle.of(context).style,
+            children: [
+              TextSpan(
+                text: '${remaining.toInt()} ',
+                style: const TextStyle(fontWeight: FontWeight.w600),
+              ),
+              const TextSpan(
+                text: 'min',
+                style: TextStyle(fontWeight: FontWeight.w600),
+              ),
+            ],
+          ),
+        ),
+        const Text(
+          "Remaining",
+          style: TextStyle(fontSize: 10, fontWeight: FontWeight.w300),
+        )
+      ],
     );
   }
 }
