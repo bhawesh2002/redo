@@ -151,6 +151,7 @@ class TaskWidget extends StatelessWidget {
                 height: constraints.maxHeight,
                 color: Colors.grey.shade300,
               ),
+              const CircularProgressWidget(index: 1)
             ],
           );
         },
