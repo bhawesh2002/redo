@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:redo/assets/colors/colors.dart';
 import 'package:redo/task_widget.dart';
 import 'package:redo/widgets.dart';
 
@@ -25,6 +26,28 @@ class TestPage extends StatelessWidget {
             TaskWidget(),
           ],
         ),
+      ),
+    );
+  }
+}
+
+class TaskTile extends StatefulWidget {
+  const TaskTile({super.key});
+
+  @override
+  State<TaskTile> createState() => _TaskTileState();
+}
+
+class _TaskTileState extends State<TaskTile> {
+  bool isCompleted = false;
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      width: MediaQuery.of(context).size.width * 0.85,
+      height: MediaQuery.of(context).size.height * 0.1,
+      decoration: BoxDecoration(
+        border: Border.all(color: AppColor.primaryColor, width: 3),
+        borderRadius: BorderRadius.circular(10),
       ),
     );
   }
