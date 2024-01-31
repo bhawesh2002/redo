@@ -260,7 +260,10 @@ class _CircularProgressWidgetState extends State<CircularProgressWidget> {
               ),
               Align(
                 alignment: Alignment.center,
-                child: Text('${(progress * 100).toInt()}%'),
+                child: Text(
+                  '${(progress * 100).toInt()}%',
+                  style: const TextStyle(fontSize: 10),
+                ),
               ),
             ],
           ),
