@@ -78,11 +78,13 @@ class TaskValue extends StatefulWidget {
   final int index;
   final Field field;
   final TextStyle textStyle;
+  final bool textWrap;
   const TaskValue(
       {super.key,
       required this.index,
       this.field = Field.instance,
-      this.textStyle = const TextStyle()});
+      this.textStyle = const TextStyle(),
+      this.textWrap = true});
 
   @override
   State<StatefulWidget> createState() => _GetTasksState();
@@ -111,7 +113,7 @@ class _GetTasksState extends State<TaskValue> {
               return Text(
                 todo.description,
                 style: widget.textStyle,
-                softWrap: true,
+                softWrap: widget.textWrap,
               );
             case Field.startDate:
               return Text(todo.startDate, style: widget.textStyle);
