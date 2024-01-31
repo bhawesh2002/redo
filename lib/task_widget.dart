@@ -5,7 +5,8 @@ import 'package:redo/assets/colors/colors.dart';
 import 'package:redo/todo.dart';
 
 class TaskWidget extends StatelessWidget {
-  const TaskWidget({super.key});
+  final int index;
+  const TaskWidget({super.key, required this.index});
   @override
   Widget build(BuildContext context) {
     double width = MediaQuery.of(context).size.width;
@@ -123,7 +124,7 @@ class TaskWidget extends StatelessWidget {
                 height: constraints.maxHeight,
                 color: Colors.grey.shade300,
               ),
-              const CircularProgressWidget(index: 1)
+              CircularProgressWidget(index: index)
             ],
           );
         },
