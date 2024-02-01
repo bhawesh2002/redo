@@ -69,7 +69,7 @@ class _TestPageState extends State<TestPage> {
                   ),
                   Padding(
                     padding: EdgeInsets.symmetric(
-                        vertical: constraints.maxHeight * 0.005),
+                        vertical: constraints.maxHeight * 0.01),
                   ),
                   const TaskWidget(
                     index: 2,
@@ -88,10 +88,14 @@ class _TestPageState extends State<TestPage> {
                       ),
                     ),
                   ),
-                  TaskFilter(constraints: constraints),
                   Padding(
                     padding: EdgeInsets.symmetric(
                         vertical: constraints.maxHeight * 0.005),
+                  ),
+                  TaskFilter(constraints: constraints),
+                  Padding(
+                    padding: EdgeInsets.symmetric(
+                        vertical: constraints.maxHeight * 0.01),
                   ),
                   Expanded(
                     child: SizedBox(
