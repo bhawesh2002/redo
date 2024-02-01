@@ -227,3 +227,47 @@ class _TaskFilterState extends State<TaskFilter> {
     return Container();
   }
 }
+
+class FilterOption extends StatefulWidget {
+  final BoxConstraints constraints;
+  final String filterLabel;
+  const FilterOption(
+      {super.key, required this.constraints, required this.filterLabel});
+
+  @override
+  State<FilterOption> createState() => _FilterOptionState();
+}
+
+class _FilterOptionState extends State<FilterOption> {
+  bool _isSelected = false;
+  @override
+  Widget build(BuildContext context) {
+    return GestureDetector(
+      onTap: () {
+        setState(() {
+          _isSelected = !_isSelected;
+        });
+      },
+      child: Container(
+        decoration: BoxDecoration(
+            borderRadius:
+                BorderRadius.circular(widget.constraints.maxWidth * 0.05),
+            border: Border.all(width: 1, color: AppColor.primaryColor),
+            color: _isSelected ? AppColor.primaryColor : Colors.white),
+        child: Padding(
+          padding: EdgeInsets.symmetric(
+              horizontal: widget.constraints.maxWidth * 0.04),
+          child: Center(
+            child: Text(
+              widget.filterLabel,
+              style: TextStyle(
+                color: _isSelected ? Colors.white : Colors.black,
+                fontWeight: _isSelected ? FontWeight.bold : FontWeight.normal,
+              ),
+            ),
+          ),
+        ),
+      ),
+    );
+  }
+}
