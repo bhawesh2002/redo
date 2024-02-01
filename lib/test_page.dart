@@ -228,6 +228,7 @@ class TaskFilter extends StatefulWidget {
 }
 
 class _TaskFilterState extends State<TaskFilter> {
+  int? selectedIndex;
   @override
   Widget build(BuildContext context) {
     return SizedBox(
@@ -245,6 +246,12 @@ class _TaskFilterState extends State<TaskFilter> {
                 child: FilterOption(
                   constraints: constraints,
                   filterLabel: filterLabel[index],
+                  isSelected: selectedIndex == index,
+                  onSelected: () {
+                    setState(() {
+                      selectedIndex = index;
+                    });
+                  },
                 ),
               );
             },
@@ -255,41 +262,38 @@ class _TaskFilterState extends State<TaskFilter> {
   }
 }
 
-class FilterOption extends StatefulWidget {
+// ignore: must_be_immutable
+class FilterOption extends StatelessWidget {
   final BoxConstraints constraints;
   final String filterLabel;
-  const FilterOption(
-      {super.key, required this.constraints, required this.filterLabel});
+  bool isSelected;
+  final VoidCallback onSelected;
+  FilterOption({
+    super.key,
+    required this.constraints,
+    required this.filterLabel,
+    required this.isSelected,
+    required this.onSelected,
+  });
 
-  @override
-  State<FilterOption> createState() => _FilterOptionState();
-}
-
-class _FilterOptionState extends State<FilterOption> {
-  bool _isSelected = false;
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
-      onTap: () {
-        setState(() {
-          _isSelected = !_isSelected;
-        });
-      },
+      onTap: onSelected,
       child: Container(
         decoration: BoxDecoration(
-            borderRadius:
-                BorderRadius.circular(widget.constraints.maxWidth * 0.05),
+            borderRadius: BorderRadius.circular(constraints.maxWidth * 0.05),
             border: Border.all(width: 1, color: AppColor.primaryColor),
-            color: _isSelected ? AppColor.primaryColor : Colors.white),
+            color: isSelected ? AppColor.primaryColor : Colors.white),
         child: Padding(
-          padding: EdgeInsets.symmetric(
-              horizontal: widget.constraints.maxWidth * 0.04),
+          padding:
+              EdgeInsets.symmetric(horizontal: constraints.maxWidth * 0.04),
           child: Center(
             child: Text(
-              widget.filterLabel,
+              filterLabel,
               style: TextStyle(
-                color: _isSelected ? Colors.white : Colors.black,
-                fontWeight: _isSelected ? FontWeight.bold : FontWeight.normal,
+                color: isSelected ? Colors.white : Colors.black,
+                fontWeight: isSelected ? FontWeight.bold : FontWeight.normal,
               ),
             ),
           ),
