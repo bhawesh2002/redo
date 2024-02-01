@@ -19,7 +19,7 @@ class TaskWidget extends StatelessWidget {
         borderRadius: BorderRadius.circular(20),
       ),
       padding: EdgeInsets.symmetric(
-          vertical: height * 0.01, horizontal: width * 0.03),
+          vertical: height * 0.02, horizontal: width * 0.04),
       child: LayoutBuilder(
         builder: (context, BoxConstraints constraints) {
           return Row(
