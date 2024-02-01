@@ -4,6 +4,13 @@ import 'package:redo/task_widget.dart';
 import 'package:redo/todo.dart';
 import 'package:redo/widgets.dart';
 
+List<String> filterLabel = [
+  "Upcoming",
+  "All Tasks",
+  "Completed",
+  "Skipped",
+];
+
 class TestPage extends StatefulWidget {
   const TestPage({super.key});
 
