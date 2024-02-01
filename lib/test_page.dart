@@ -209,3 +209,16 @@ class _TaskTileState extends State<TaskTile> {
     );
   }
 }
+
+class TaskFilter extends StatefulWidget {
+  const TaskFilter({super.key});
+  @override
+  State<TaskFilter> createState() => _TaskFilterState();
+}
+
+class _TaskFilterState extends State<TaskFilter> {
+  @override
+  Widget build(BuildContext context) {
+    return Container();
+  }
+}
