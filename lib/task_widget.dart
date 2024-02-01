@@ -165,9 +165,6 @@ class _CircularProgressWidgetState extends State<CircularProgressWidget> {
 
   @override
   void dispose() {
-    if (progress == 1.0) {
-      timer.cancel();
-    }
     super.dispose();
   }
 
