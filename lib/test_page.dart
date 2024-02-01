@@ -216,7 +216,8 @@ class _TaskTileState extends State<TaskTile> {
 }
 
 class TaskFilter extends StatefulWidget {
-  const TaskFilter({super.key});
+  final BoxConstraints constraints;
+  const TaskFilter({super.key, required this.constraints});
   @override
   State<TaskFilter> createState() => _TaskFilterState();
 }
@@ -224,7 +225,28 @@ class TaskFilter extends StatefulWidget {
 class _TaskFilterState extends State<TaskFilter> {
   @override
   Widget build(BuildContext context) {
-    return Container();
+    return SizedBox(
+      width: widget.constraints.maxWidth,
+      height: widget.constraints.maxHeight * 0.035,
+      child: LayoutBuilder(
+        builder: (context, constraints) {
+          return ListView.builder(
+            scrollDirection: Axis.horizontal,
+            itemCount: 4,
+            itemBuilder: (context, index) {
+              return Padding(
+                padding: EdgeInsets.symmetric(
+                    horizontal: constraints.maxWidth * 0.01),
+                child: FilterOption(
+                  constraints: constraints,
+                  filterLabel: filterLabel[index],
+                ),
+              );
+            },
+          );
+        },
+      ),
+    );
   }
 }
 
