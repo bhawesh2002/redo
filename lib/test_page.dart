@@ -88,6 +88,7 @@ class _TestPageState extends State<TestPage> {
                       ),
                     ),
                   ),
+                  TaskFilter(constraints: constraints),
                   Padding(
                     padding: EdgeInsets.symmetric(
                         vertical: constraints.maxHeight * 0.005),
