@@ -71,8 +71,9 @@ class _TestPageState extends State<TestPage> {
                     padding: EdgeInsets.symmetric(
                         vertical: constraints.maxHeight * 0.01),
                   ),
-                  const TaskWidget(
+                  TaskWidget(
                     index: 2,
+                    taskList: taskList,
                   ),
                   Padding(
                     padding: EdgeInsets.symmetric(

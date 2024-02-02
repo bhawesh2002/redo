@@ -6,7 +6,8 @@ import 'package:redo/todo.dart';
 
 class TaskWidget extends StatelessWidget {
   final int index;
-  const TaskWidget({super.key, required this.index});
+  final List<Todo> taskList;
+  const TaskWidget({super.key, required this.index, required this.taskList});
   @override
   Widget build(BuildContext context) {
     double width = MediaQuery.of(context).size.width;
@@ -31,11 +32,12 @@ class TaskWidget extends StatelessWidget {
                 children: [
                   Flexible(
                     flex: 1,
-                    child: TaskValue(
-                      index: index,
-                      field: Field.title,
-                      textStyle: TextStyle(
-                          fontSize: width * 0.04, fontWeight: FontWeight.w600),
+                    child: Text(
+                      taskList[index].title,
+                      style: TextStyle(
+                        fontSize: constraints.maxWidth * 0.05,
+                        fontWeight: FontWeight.bold,
+                      ),
                     ),
                   ),
                   Expanded(
@@ -47,11 +49,12 @@ class TaskWidget extends StatelessWidget {
                         width: constraints.maxWidth * 0.70,
                         height: constraints.maxHeight * 0.5,
                         child: SingleChildScrollView(
-                          child: TaskValue(
-                            index: index,
-                            field: Field.description,
-                            textStyle: TextStyle(
-                              fontSize: width * 0.03,
+                          child: Text(
+                            taskList[index].description,
+                            softWrap: true,
+                            style: TextStyle(
+                              fontSize: constraints.maxWidth * 0.04,
+                              fontWeight: FontWeight.w400,
                             ),
                           ),
                         ),
