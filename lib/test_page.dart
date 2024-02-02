@@ -294,6 +294,7 @@ class FilterOption extends StatelessWidget {
               style: TextStyle(
                 color: isSelected ? Colors.white : Colors.black,
                 fontWeight: isSelected ? FontWeight.bold : FontWeight.normal,
+                fontSize: isSelected ? null : 12,
               ),
             ),
           ),
