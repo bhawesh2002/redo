@@ -187,15 +187,8 @@ class _TaskTileState extends State<TaskTile> {
                     padding: EdgeInsets.symmetric(vertical: 2),
                   ),
                   Expanded(
-                    child: AnimatedContainer(
-                      duration: const Duration(milliseconds: 200),
+                    child: SizedBox(
                       width: constraints.maxWidth * 0.7,
-                      constraints: BoxConstraints(
-                        maxWidth: constraints.maxWidth * 0.7,
-                        maxHeight: isExpanded
-                            ? constraints.maxHeight * 0.8
-                            : constraints.maxHeight * 0.1,
-                      ),
                       child: Text(
                         widget.taskList[widget.index].description,
                         softWrap: true,
