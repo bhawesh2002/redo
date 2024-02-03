@@ -108,7 +108,10 @@ class _TestPageState extends State<TestPage> {
                                   padding: EdgeInsets.symmetric(
                                       vertical: constraints.maxHeight * 0.01,
                                       horizontal: constraints.maxWidth * 0.02),
-                                  child: TaskTile(index: index),
+                                  child: TaskTile(
+                                    index: index,
+                                    taskList: taskList,
+                                  ),
                                 );
                               }),
                         ),
@@ -127,7 +130,8 @@ class _TestPageState extends State<TestPage> {
 
 class TaskTile extends StatefulWidget {
   final int index;
-  const TaskTile({super.key, required this.index});
+  final List<Todo> taskList;
+  const TaskTile({super.key, required this.index, required this.taskList});
 
   @override
   State<TaskTile> createState() => _TaskTileState();
@@ -172,13 +176,11 @@ class _TaskTileState extends State<TaskTile> {
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   Flexible(
-                    child: TaskValue(
-                      index: widget.index,
-                      field: Field.title,
-                      textStyle: const TextStyle(
-                        fontSize: 15,
-                        fontWeight: FontWeight.w600,
-                      ),
+                    child: Text(
+                      widget.taskList[widget.index].title,
+                      style: TextStyle(
+                          fontSize: constraints.maxWidth * 0.04,
+                          fontWeight: FontWeight.bold),
                     ),
                   ),
                   const Padding(
@@ -194,14 +196,13 @@ class _TaskTileState extends State<TaskTile> {
                             ? constraints.maxHeight * 0.8
                             : constraints.maxHeight * 0.1,
                       ),
-                      child: TaskValue(
-                        index: widget.index,
-                        field: Field.description,
-                        textStyle: const TextStyle(
-                          fontSize: 12,
-                        ),
-                        textWrap: isExpanded ? true : false,
-                        maxLines: isExpanded ? 3 : 1,
+                      child: Text(
+                        widget.taskList[widget.index].description,
+                        softWrap: true,
+                        overflow: isExpanded ? null : TextOverflow.ellipsis,
+                        style: TextStyle(
+                            fontSize: constraints.maxWidth * 0.035,
+                            fontWeight: FontWeight.normal),
                       ),
                     ),
                   )
