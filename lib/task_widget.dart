@@ -27,11 +27,10 @@ class TaskWidget extends StatelessWidget {
             mainAxisAlignment: MainAxisAlignment.spaceAround,
             children: [
               Column(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                mainAxisAlignment: MainAxisAlignment.start,
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   Flexible(
-                    flex: 1,
                     child: Text(
                       taskList[index].title,
                       style: TextStyle(
@@ -40,22 +39,20 @@ class TaskWidget extends StatelessWidget {
                       ),
                     ),
                   ),
+                  Padding(
+                    padding: EdgeInsets.symmetric(
+                        vertical: constraints.maxHeight * 0.05),
+                  ),
                   Expanded(
-                    flex: 3,
-                    child: Padding(
-                      padding: EdgeInsets.symmetric(
-                          vertical: constraints.maxHeight * 0.05),
-                      child: SizedBox(
-                        width: constraints.maxWidth * 0.70,
-                        height: constraints.maxHeight * 0.5,
-                        child: SingleChildScrollView(
-                          child: Text(
-                            taskList[index].description,
-                            softWrap: true,
-                            style: TextStyle(
-                              fontSize: constraints.maxWidth * 0.04,
-                              fontWeight: FontWeight.w400,
-                            ),
+                    child: SizedBox(
+                      width: constraints.maxWidth * 0.70,
+                      child: SingleChildScrollView(
+                        child: Text(
+                          taskList[index].description,
+                          softWrap: true,
+                          style: TextStyle(
+                            fontSize: constraints.maxWidth * 0.04,
+                            fontWeight: FontWeight.w400,
                           ),
                         ),
                       ),
