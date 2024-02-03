@@ -68,10 +68,15 @@ class Todo {
 }
 
 Future<List<Todo>> getTasks() async {
-  final jsonData = await rootBundle.loadString('lib/assets/tasks/tasks.json');
-  List<dynamic> jsonList = json.decode(jsonData);
-  List<Todo> tasks = jsonList.map((json) => Todo.fromJson(json)).toList();
-  return tasks;
+  try {
+    final jsonData = await rootBundle.loadString('lib/assets/tasks/tasks.json');
+    List<dynamic> jsonList = json.decode(jsonData);
+    List<Todo> tasks = jsonList.map((json) => Todo.fromJson(json)).toList();
+    return tasks;
+  } catch (e) {
+    debugPrint('Error fetching tasks: $e');
+    return [];
+  }
 }
 
 class TaskValue extends StatefulWidget {
