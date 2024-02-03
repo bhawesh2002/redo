@@ -26,13 +26,13 @@ class TaskWidget extends StatelessWidget {
           return Row(
             mainAxisAlignment: MainAxisAlignment.spaceAround,
             children: [
-              Column(
-                mainAxisAlignment: MainAxisAlignment.start,
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  Flexible(
-                    child: SizedBox(
-                      width: constraints.maxWidth * 0.65,
+              SizedBox(
+                width: constraints.maxWidth * 0.65,
+                child: Column(
+                  mainAxisAlignment: MainAxisAlignment.start,
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Flexible(
                       child: Text(
                         taskList[index].title,
                         style: TextStyle(
@@ -41,14 +41,11 @@ class TaskWidget extends StatelessWidget {
                         ),
                       ),
                     ),
-                  ),
-                  Padding(
-                    padding: EdgeInsets.symmetric(
-                        vertical: constraints.maxHeight * 0.05),
-                  ),
-                  Expanded(
-                    child: SizedBox(
-                      width: constraints.maxWidth * 0.65,
+                    Padding(
+                      padding: EdgeInsets.symmetric(
+                          vertical: constraints.maxHeight * 0.05),
+                    ),
+                    Expanded(
                       child: SingleChildScrollView(
                         child: Text(
                           taskList[index].description,
@@ -60,8 +57,8 @@ class TaskWidget extends StatelessWidget {
                         ),
                       ),
                     ),
-                  ),
-                ],
+                  ],
+                ),
               ),
               Container(
                 width: constraints.maxWidth * 0.005,
