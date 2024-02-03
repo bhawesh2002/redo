@@ -61,65 +61,6 @@ class TaskWidget extends StatelessWidget {
                       ),
                     ),
                   ),
-                  Flexible(
-                    flex: 1,
-                    child: SizedBox(
-                      width: constraints.maxWidth * 0.70,
-                      height: constraints.maxHeight * 0.20,
-                      child: Row(
-                        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                        children: [
-                          OutlinedButton(
-                            onPressed: () {},
-                            style: OutlinedButton.styleFrom(
-                                side: const BorderSide(
-                                    color: AppColor.primaryColor)),
-                            child: Row(
-                              mainAxisAlignment: MainAxisAlignment.center,
-                              children: [
-                                Icon(
-                                  Icons.keyboard_arrow_left_rounded,
-                                  size: width * 0.04,
-                                  color: Colors.black,
-                                ),
-                                Text(
-                                  "Prev",
-                                  overflow: TextOverflow.ellipsis,
-                                  style: TextStyle(
-                                      fontSize: width * 0.025,
-                                      color: Colors.black),
-                                ),
-                              ],
-                            ),
-                          ),
-                          OutlinedButton(
-                            onPressed: () {},
-                            style: OutlinedButton.styleFrom(
-                              side: const BorderSide(
-                                  color: AppColor.primaryColor),
-                            ),
-                            child: Row(
-                              mainAxisAlignment: MainAxisAlignment.center,
-                              children: [
-                                Text(
-                                  "Next",
-                                  overflow: TextOverflow.ellipsis,
-                                  style: TextStyle(
-                                      fontSize: width * 0.025,
-                                      color: Colors.black),
-                                ),
-                                Icon(
-                                  Icons.keyboard_arrow_right_rounded,
-                                  size: width * 0.04,
-                                  color: Colors.black,
-                                ),
-                              ],
-                            ),
-                          ),
-                        ],
-                      ),
-                    ),
-                  )
                 ],
               ),
               Container(
