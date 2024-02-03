@@ -177,10 +177,6 @@ class _CircularProgressWidgetState extends State<CircularProgressWidget> {
       startTime = tasks[index].start;
       endTime = tasks[index].end;
     });
-    DateTime now = DateTime.now();
-    debugPrint('nowTime: ${now.toString()}');
-    debugPrint('startTime: $startTime');
-    debugPrint('endTime: $endTime');
   }
 
   double calculateProgress() {
