@@ -127,7 +127,11 @@ class TaskWidget extends StatelessWidget {
                 height: constraints.maxHeight,
                 color: Colors.grey.shade300,
               ),
-              CircularProgressWidget(index: index)
+              CircularProgressWidget(
+                index: index,
+                startTime: taskList[index].start,
+                endTime: taskList[index].end,
+              )
             ],
           );
         },
@@ -138,26 +142,28 @@ class TaskWidget extends StatelessWidget {
 
 class CircularProgressWidget extends StatefulWidget {
   final int index;
+  final DateTime startTime;
+  final DateTime endTime;
   final Size indicatorSize;
-  const CircularProgressWidget(
-      {super.key,
-      required this.index,
-      this.indicatorSize = const Size(50, 50)});
+  const CircularProgressWidget({
+    super.key,
+    required this.index,
+    required this.startTime,
+    required this.endTime,
+    this.indicatorSize = const Size(50, 50),
+  });
 
   @override
   State<CircularProgressWidget> createState() => _CircularProgressWidgetState();
 }
 
 class _CircularProgressWidgetState extends State<CircularProgressWidget> {
-  DateTime startTime = DateTime.now();
-  DateTime endTime = DateTime.now();
   double progress = 0;
   double remaining = 0;
   late Timer timer;
   @override
   void initState() {
     super.initState();
-    _updateTimeValues(widget.index);
     timer = Timer.periodic(const Duration(seconds: 1), (timer) {
       setState(() {
         progress = calculateProgress();
@@ -172,31 +178,27 @@ class _CircularProgressWidgetState extends State<CircularProgressWidget> {
     super.dispose();
   }
 
-  Future<void> _updateTimeValues(int index) async {
-    List<Todo> tasks = await getTasks();
-    setState(() {
-      startTime = tasks[index].start;
-      endTime = tasks[index].end;
-    });
-  }
-
   double calculateProgress() {
     DateTime now = DateTime.now();
-    if (now.isBefore(startTime)) {
+    if (now.isBefore(widget.startTime)) {
       return 0.0;
-    } else if (now.isAfter(endTime)) {
+    } else if (now.isAfter(widget.endTime)) {
       return 1.0;
     } else {
-      double totalDuration = endTime.difference(startTime).inSeconds.toDouble();
-      double elapsedDuration = now.difference(startTime).inSeconds.toDouble();
+      double totalDuration =
+          widget.endTime.difference(widget.startTime).inSeconds.toDouble();
+      double elapsedDuration =
+          now.difference(widget.startTime).inSeconds.toDouble();
       return elapsedDuration / totalDuration;
     }
   }
 
   double calculateRemaining() {
     DateTime now = DateTime.now();
-    double totalDuration = endTime.difference(startTime).inMinutes.toDouble();
-    double elapsedDuration = now.difference(startTime).inMinutes.toDouble();
+    double totalDuration =
+        widget.endTime.difference(widget.startTime).inMinutes.toDouble();
+    double elapsedDuration =
+        now.difference(widget.startTime).inMinutes.toDouble();
     double remainingDuration = totalDuration - elapsedDuration;
     if (remainingDuration <= 0) {
       remainingDuration = 0;
