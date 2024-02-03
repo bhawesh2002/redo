@@ -43,9 +43,10 @@ class TaskWidget extends StatelessWidget {
                     ),
                     Padding(
                       padding: EdgeInsets.symmetric(
-                          vertical: constraints.maxHeight * 0.05),
+                          vertical: constraints.maxHeight * 0.02),
                     ),
                     Expanded(
+                      flex: 3,
                       child: SingleChildScrollView(
                         child: Text(
                           taskList[index].description,
