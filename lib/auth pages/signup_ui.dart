@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:redo/assets/colors/colors.dart';
 import 'package:redo/auth%20pages/auth_form.dart';
 import 'package:redo/auth%20pages/login_ui.dart';
-import 'package:redo/widgets.dart';
+import 'package:redo/widgets/widgets.dart';
 
 class SignupPage extends StatelessWidget {
   const SignupPage({super.key});

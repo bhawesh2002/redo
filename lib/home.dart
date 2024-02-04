@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:redo/widgets.dart';
+import 'package:redo/widgets/widgets.dart';
 import 'todo.dart';
 
 class Home extends StatefulWidget {
