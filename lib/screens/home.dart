@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:redo/assets/colors/colors.dart';
 import 'package:redo/widgets/appbar.dart';
 import 'package:redo/widgets/task_widget.dart';
 import 'package:redo/todo.dart';
@@ -114,6 +115,15 @@ class _HomePageState extends State<HomePage> {
               );
             }
           },
+        ),
+        floatingActionButton: FloatingActionButton(
+          backgroundColor: Colors.white,
+          splashColor: Colors.teal.shade50,
+          onPressed: () {},
+          child: const Icon(
+            Icons.add,
+            color: AppColor.primaryColor,
+          ),
         ),
       ),
     );
