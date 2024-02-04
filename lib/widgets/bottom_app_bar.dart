@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:redo/assets/colors/colors.dart';
 
+enum BottomNavItem { Home, Status }
+
 class TodoBottomAppBar extends StatefulWidget {
   const TodoBottomAppBar({super.key});
 
@@ -9,7 +11,7 @@ class TodoBottomAppBar extends StatefulWidget {
 }
 
 class _TodoBottomAppBarState extends State<TodoBottomAppBar> {
-  int _currentindex = 1;
+  BottomNavItem selectedNavItem = BottomNavItem.Home;
   @override
   Widget build(BuildContext context) {
     return BottomAppBar(
@@ -20,47 +22,39 @@ class _TodoBottomAppBarState extends State<TodoBottomAppBar> {
           GestureDetector(
             onTap: () {
               setState(() {
-                _currentindex = 1;
+                selectedNavItem = BottomNavItem.Home;
               });
-              debugPrint("Current index: $_currentindex");
             },
-            child: const Column(
-              mainAxisAlignment: MainAxisAlignment.spaceAround,
-              children: [
-                Icon(
-                  Icons.home,
-                  color: Colors.white,
-                ),
-                Text(
-                  "Home",
-                  style: TextStyle(color: Colors.white),
-                )
-              ],
-            ),
+            child: bottomAppBarItem(BottomNavItem.Home, Icons.home),
           ),
           GestureDetector(
-            onTap: () {
-              setState(() {
-                _currentindex = 2;
-              });
-              debugPrint("Current index: $_currentindex");
-            },
-            child: const Column(
-              mainAxisAlignment: MainAxisAlignment.spaceAround,
-              children: [
-                Icon(
-                  Icons.donut_large,
-                  color: Colors.black,
-                ),
-                Text(
-                  "Stats",
-                  style: TextStyle(color: Colors.black),
-                )
-              ],
-            ),
-          )
+              onTap: () {
+                setState(() {
+                  selectedNavItem = BottomNavItem.Status;
+                });
+              },
+              child: bottomAppBarItem(BottomNavItem.Status, Icons.donut_large))
         ],
       ),
+    );
+  }
+
+  Widget bottomAppBarItem(BottomNavItem item, IconData icon) {
+    bool isSelected = selectedNavItem == item;
+    return Column(
+      mainAxisAlignment: MainAxisAlignment.spaceAround,
+      children: [
+        Icon(
+          icon,
+          color: isSelected ? Colors.white : Colors.black,
+        ),
+        Text(
+          item.toString().split('.').last, // Extracting the enum name
+          style: TextStyle(
+            color: isSelected ? Colors.white : Colors.black,
+          ),
+        )
+      ],
     );
   }
 }
