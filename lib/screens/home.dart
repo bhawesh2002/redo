@@ -116,6 +116,7 @@ class _HomePageState extends State<HomePage> {
             }
           },
         ),
+        floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
         floatingActionButton: FloatingActionButton(
           backgroundColor: Colors.white,
           splashColor: Colors.teal.shade50,
