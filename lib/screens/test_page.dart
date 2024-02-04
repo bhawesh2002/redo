@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:redo/widgets/appbar.dart';
 import 'package:redo/widgets/task_widget.dart';
 import 'package:redo/todo.dart';
 import 'package:redo/widgets/taskfilter.dart';
@@ -29,16 +30,7 @@ class _TestPageState extends State<TestPage> {
   Widget build(BuildContext context) {
     return SafeArea(
       child: Scaffold(
-        appBar: AppBar(
-          title: const Text("Redo"),
-          leading: redoLogo(context, 0.2),
-          toolbarHeight: MediaQuery.of(context).size.height * 0.08,
-          actions: [
-            CircleAvatar(
-              radius: MediaQuery.of(context).size.height * 0.04,
-            )
-          ],
-        ),
+        appBar: TodoAppBar(context: context),
         body: FutureBuilder(
           future: getTasks(),
           builder: (context, snapshot) {
