@@ -143,7 +143,7 @@ class _HomePageState extends State<HomePage> {
                   mainAxisAlignment: MainAxisAlignment.spaceAround,
                   children: [
                     Icon(
-                      Icons.pie_chart_outline,
+                      Icons.donut_large,
                       color: Colors.black,
                     ),
                     Text(
