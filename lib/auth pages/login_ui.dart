@@ -22,7 +22,7 @@ class LoginPage extends StatelessWidget {
                   padding: EdgeInsets.symmetric(
                     vertical: height * 0.05,
                   ),
-                  child: redoLogo(context, 0.3),
+                  child: redoLogo(context, 0.3, true),
                 ),
                 const AuthForm(
                   authMode: AuthMode.login,

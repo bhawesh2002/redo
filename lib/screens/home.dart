@@ -20,7 +20,7 @@ class _HomeState extends State<Home> {
     return SafeArea(
       child: Scaffold(
           appBar: AppBar(
-            leading: redoLogo(context, 0.2),
+            leading: redoLogo(context, 0.2, true),
             title: const Text("Redo"),
           ),
           body: FutureBuilder<List<Todo>>(
