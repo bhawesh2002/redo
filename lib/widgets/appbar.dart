@@ -8,6 +8,7 @@ class TodoAppBar extends StatelessWidget implements PreferredSizeWidget {
   @override
   Widget build(BuildContext context) {
     double appBarHeight = MediaQuery.of(context).size.height * 0.1;
+    double appBarWidth = MediaQuery.of(context).size.width;
     return SizedBox(
       height: appBarHeight,
       child: Center(
@@ -16,20 +17,20 @@ class TodoAppBar extends StatelessWidget implements PreferredSizeWidget {
           children: [
             Padding(
               padding: EdgeInsets.symmetric(
-                horizontal: MediaQuery.of(context).size.width * 0.05,
+                horizontal: appBarWidth * 0.05,
               ),
               child: Row(
                 children: [
                   redoLogo(context, appBarHeight * 0.0015, false),
                   Padding(
                     padding: EdgeInsets.symmetric(
-                      horizontal: MediaQuery.of(context).size.width * 0.02,
+                      horizontal: appBarWidth * 0.02,
                     ),
                   ),
                   Text(
                     "Redo",
                     style: TextStyle(
-                      fontSize: appBarHeight * 0.3,
+                      fontSize: appBarWidth * 0.065,
                       fontWeight: FontWeight.bold,
                     ),
                   ),
@@ -38,7 +39,7 @@ class TodoAppBar extends StatelessWidget implements PreferredSizeWidget {
             ),
             Padding(
               padding: EdgeInsets.symmetric(
-                horizontal: MediaQuery.of(context).size.width * 0.05,
+                horizontal: appBarWidth * 0.05,
               ),
               child: CircleAvatar(
                 radius: appBarHeight * 0.4,
