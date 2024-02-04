@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:redo/test_page.dart';
+import 'package:redo/screens/test_page.dart';
 
 void main() => runApp(const Redo());
 
