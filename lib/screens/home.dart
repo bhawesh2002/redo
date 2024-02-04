@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:redo/assets/colors/colors.dart';
 import 'package:redo/widgets/appbar.dart';
+import 'package:redo/widgets/bottom_app_bar.dart';
 import 'package:redo/widgets/task_widget.dart';
 import 'package:redo/todo.dart';
 import 'package:redo/widgets/taskfilter.dart';
@@ -116,46 +117,7 @@ class _HomePageState extends State<HomePage> {
             }
           },
         ),
-        bottomNavigationBar: BottomAppBar(
-          color: AppColor.primaryColor,
-          child: Row(
-            mainAxisAlignment: MainAxisAlignment.spaceAround,
-            children: [
-              GestureDetector(
-                onTap: () {},
-                child: const Column(
-                  mainAxisAlignment: MainAxisAlignment.spaceAround,
-                  children: [
-                    Icon(
-                      Icons.home,
-                      color: Colors.white,
-                    ),
-                    Text(
-                      "Home",
-                      style: TextStyle(color: Colors.white),
-                    )
-                  ],
-                ),
-              ),
-              GestureDetector(
-                onTap: () {},
-                child: const Column(
-                  mainAxisAlignment: MainAxisAlignment.spaceAround,
-                  children: [
-                    Icon(
-                      Icons.donut_large,
-                      color: Colors.black,
-                    ),
-                    Text(
-                      "Stats",
-                      style: TextStyle(color: Colors.black),
-                    )
-                  ],
-                ),
-              )
-            ],
-          ),
-        ),
+        bottomNavigationBar: const TodoBottomAppBar(),
         floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
         floatingActionButton: FloatingActionButton(
           backgroundColor: Colors.white,
