@@ -51,8 +51,8 @@ class _TodoBottomAppBarState extends State<TodoBottomAppBar> {
         Text(
           item.toString().split('.').last, // Extracting the enum name
           style: TextStyle(
-            color: isSelected ? Colors.white : Colors.black,
-          ),
+              color: isSelected ? Colors.white : Colors.black,
+              fontWeight: isSelected ? FontWeight.bold : FontWeight.normal),
         )
       ],
     );
