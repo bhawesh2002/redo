@@ -6,11 +6,12 @@ class TodoAppBar extends StatelessWidget implements PreferredSizeWidget {
 
   @override
   Widget build(BuildContext context) {
-    // TODO: implement build
-    throw UnimplementedError();
+    return Container(
+      color: Colors.amber,
+    );
   }
 
   @override
   Size get preferredSize =>
-      Size.fromHeight(MediaQuery.of(context).size.height * 0.01);
+      Size.fromHeight(MediaQuery.of(context).size.height * 0.1);
 }
