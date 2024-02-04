@@ -116,6 +116,46 @@ class _HomePageState extends State<HomePage> {
             }
           },
         ),
+        bottomNavigationBar: BottomAppBar(
+          color: AppColor.primaryColor,
+          child: Row(
+            mainAxisAlignment: MainAxisAlignment.spaceAround,
+            children: [
+              GestureDetector(
+                onTap: () {},
+                child: const Column(
+                  mainAxisAlignment: MainAxisAlignment.spaceAround,
+                  children: [
+                    Icon(
+                      Icons.home,
+                      color: Colors.white,
+                    ),
+                    Text(
+                      "Home",
+                      style: TextStyle(color: Colors.white),
+                    )
+                  ],
+                ),
+              ),
+              GestureDetector(
+                onTap: () {},
+                child: const Column(
+                  mainAxisAlignment: MainAxisAlignment.spaceAround,
+                  children: [
+                    Icon(
+                      Icons.pie_chart_outline,
+                      color: Colors.black,
+                    ),
+                    Text(
+                      "Stats",
+                      style: TextStyle(color: Colors.black),
+                    )
+                  ],
+                ),
+              )
+            ],
+          ),
+        ),
         floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
         floatingActionButton: FloatingActionButton(
           backgroundColor: Colors.white,
