@@ -4,6 +4,31 @@ import 'package:redo/widgets/tasktile.dart';
 import 'package:redo/widgets/task_widget.dart';
 import 'package:redo/todo.dart';
 
+List<String> months = [
+  "January",
+  "Feburary",
+  "March",
+  "April",
+  "May",
+  "June",
+  "July",
+  "August",
+  "September",
+  "October",
+  "November",
+  "December",
+];
+
+List<String> weekday = [
+  "Monday",
+  "Tuesday",
+  "Wednesday",
+  "Thrusday",
+  "Friday",
+  "Saturday",
+  "Sunday",
+];
+
 class Tasks extends StatefulWidget {
   final List<Todo> taskList;
   const Tasks({super.key, required this.taskList});
@@ -22,6 +47,31 @@ class _TasksState extends State<Tasks> {
       child: LayoutBuilder(builder: (context, BoxConstraints constraints) {
         return Column(
           children: [
+            Align(
+              alignment: Alignment.topLeft,
+              child: RichText(
+                text: TextSpan(
+                  text: DateTime.now().day.toInt().toString(),
+                  style: const TextStyle(color: Colors.black, fontSize: 20),
+                  children: [
+                    const TextSpan(text: " "),
+                    TextSpan(
+                      text: months[DateTime.now().month.toInt() - 1],
+                      style: const TextStyle(color: Colors.black, fontSize: 20),
+                    ),
+                    const TextSpan(text: ", "),
+                    TextSpan(
+                      text: weekday[DateTime.now().weekday - 1],
+                      style: const TextStyle(color: Colors.black, fontSize: 20),
+                    )
+                  ],
+                ),
+              ),
+            ),
+            Padding(
+              padding:
+                  EdgeInsets.symmetric(vertical: constraints.maxHeight * 0.01),
+            ),
             const Align(
               alignment: Alignment.topLeft,
               child: Text(
