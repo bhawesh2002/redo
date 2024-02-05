@@ -41,11 +41,11 @@ class _HomePageState extends State<HomePage> {
           future: getTasks(),
           builder: (context, snapshot) {
             if (snapshot.connectionState == ConnectionState.waiting) {
-              return const CircularProgressIndicator();
+              return const Center(child: CircularProgressIndicator());
             } else if (snapshot.hasError) {
-              return Text("Error: ${snapshot.error}");
+              return Center(child: Text("Error: ${snapshot.error}"));
             } else if (!snapshot.hasData || snapshot.data!.isEmpty) {
-              return const Text("No tasks Available");
+              return const Center(child: Text("No tasks Available"));
             } else {
               List<Todo> taskList = snapshot.data ?? [];
               if (_selectedIndex == BottomNavItem.Stats.index) {
