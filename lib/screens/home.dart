@@ -141,10 +141,14 @@ class _HomePageState extends State<HomePage> {
                     });
                   }
                 },
-                child: TodoBottomAppBarItem(
-                  label: BottomNavItem.Home.toString().split(".").last,
-                  icon: Icons.home,
-                  isSelected: _selectedIndex.isEven,
+                child: Container(
+                  width: MediaQuery.of(context).size.width * 0.4,
+                  color: Colors.transparent,
+                  child: TodoBottomAppBarItem(
+                    label: BottomNavItem.Home.toString().split(".").last,
+                    icon: Icons.home,
+                    isSelected: _selectedIndex.isEven,
+                  ),
                 ),
               ),
               GestureDetector(
@@ -156,10 +160,14 @@ class _HomePageState extends State<HomePage> {
                     });
                   }
                 },
-                child: TodoBottomAppBarItem(
-                  label: BottomNavItem.Stats.toString().split(".").last,
-                  icon: Icons.donut_large,
-                  isSelected: _selectedIndex.isOdd,
+                child: Container(
+                  width: MediaQuery.of(context).size.width * 0.4,
+                  color: Colors.transparent,
+                  child: TodoBottomAppBarItem(
+                    label: BottomNavItem.Stats.toString().split(".").last,
+                    icon: Icons.donut_large,
+                    isSelected: _selectedIndex.isOdd,
+                  ),
                 ),
               ),
             ],
