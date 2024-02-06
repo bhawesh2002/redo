@@ -106,7 +106,21 @@ class _HomePageState extends State<HomePage> {
         floatingActionButton: FloatingActionButton(
           backgroundColor: Colors.white,
           splashColor: Colors.teal.shade50,
-          onPressed: () {},
+          onPressed: () {
+            showModalBottomSheet(
+                context: context,
+                builder: (BuildContext context) {
+                  return Container(
+                    width: MediaQuery.of(context).size.width,
+                    decoration:
+                        BoxDecoration(borderRadius: BorderRadius.circular(10)),
+                    child: const Column(
+                      mainAxisAlignment: MainAxisAlignment.start,
+                      children: [Text("Create New Task")],
+                    ),
+                  );
+                });
+          },
           child: const Icon(
             Icons.add,
             color: AppColor.primaryColor,
