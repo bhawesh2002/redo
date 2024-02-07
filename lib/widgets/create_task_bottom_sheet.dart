@@ -1,8 +1,17 @@
 import 'package:flutter/material.dart';
 import 'package:redo/assets/colors/colors.dart';
 
-Widget createTaskBottomSheet(BuildContext context) {
-  return BottomSheet(
+class CreateBottomTaskSheet extends StatefulWidget {
+  const CreateBottomTaskSheet({super.key});
+
+  @override
+  State<CreateBottomTaskSheet> createState() => _CreateBottomTaskSheetState();
+}
+
+class _CreateBottomTaskSheetState extends State<CreateBottomTaskSheet> {
+  @override
+  Widget build(BuildContext context) {
+    return BottomSheet(
       onClosing: () {},
       builder: (BuildContext context) {
         return Padding(
@@ -196,5 +205,7 @@ Widget createTaskBottomSheet(BuildContext context) {
             ],
           ),
         );
-      });
+      },
+    );
+  }
 }
