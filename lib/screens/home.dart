@@ -110,6 +110,7 @@ class _HomePageState extends State<HomePage> {
           onPressed: () {
             showModalBottomSheet(
               context: context,
+              showDragHandle: true,
               builder: (BuildContext context) {
                 return createTaskBottomSheet(context);
               },
