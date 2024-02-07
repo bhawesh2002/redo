@@ -11,6 +11,15 @@ class CreateBottomTaskSheet extends StatefulWidget {
 class _CreateBottomTaskSheetState extends State<CreateBottomTaskSheet> {
   final TextEditingController _titleController = TextEditingController();
   final TextEditingController _descriptionController = TextEditingController();
+  String? _title;
+  String? _description;
+  void setInputData() {
+    setState(() {
+      _title = _titleController.text;
+      _description = _descriptionController.text;
+    });
+  }
+
   @override
   Widget build(BuildContext context) {
     return BottomSheet(
