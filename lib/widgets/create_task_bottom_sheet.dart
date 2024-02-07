@@ -9,6 +9,8 @@ class CreateBottomTaskSheet extends StatefulWidget {
 }
 
 class _CreateBottomTaskSheetState extends State<CreateBottomTaskSheet> {
+  TextEditingController _titleController = TextEditingController();
+  TextEditingController _descriptionController = TextEditingController();
   @override
   Widget build(BuildContext context) {
     return BottomSheet(
@@ -41,6 +43,7 @@ class _CreateBottomTaskSheetState extends State<CreateBottomTaskSheet> {
                   vertical: MediaQuery.of(context).size.height * 0.01,
                 ),
                 child: TextFormField(
+                  controller: _titleController,
                   decoration: InputDecoration(
                     labelText: "Title",
                     focusedBorder: OutlineInputBorder(
@@ -64,6 +67,7 @@ class _CreateBottomTaskSheetState extends State<CreateBottomTaskSheet> {
                   vertical: MediaQuery.of(context).size.height * 0.01,
                 ),
                 child: TextFormField(
+                  controller: _descriptionController,
                   decoration: InputDecoration(
                     labelText: "Description",
                     focusedBorder: OutlineInputBorder(
