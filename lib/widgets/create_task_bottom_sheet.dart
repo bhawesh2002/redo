@@ -3,6 +3,7 @@ import 'package:redo/assets/colors/colors.dart';
 
 Widget createTaskBottomSheet(BuildContext context) {
   return BottomSheet(
+      showDragHandle: true,
       onClosing: () {},
       builder: (BuildContext context) {
         return Padding(

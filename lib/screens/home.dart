@@ -109,7 +109,6 @@ class _HomePageState extends State<HomePage> {
           splashColor: Colors.teal.shade50,
           onPressed: () {
             showModalBottomSheet(
-              showDragHandle: true,
               context: context,
               builder: (BuildContext context) {
                 return createTaskBottomSheet(context);
