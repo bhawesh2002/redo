@@ -196,20 +196,28 @@ class _CreateBottomTaskSheetState extends State<CreateBottomTaskSheet> {
               ),
               const Expanded(child: SizedBox()),
               Flexible(
-                child: Container(
-                  width: MediaQuery.of(context).size.width * 0.4,
-                  height: MediaQuery.of(context).size.height * 0.05,
-                  decoration: BoxDecoration(
-                    color: AppColor.primaryColor,
-                    borderRadius: BorderRadius.circular(5),
-                  ),
-                  child: Center(
-                    child: Text(
-                      "Create",
-                      style: TextStyle(
-                        fontSize: MediaQuery.of(context).size.width * 0.05,
-                        fontWeight: FontWeight.w600,
-                        color: Colors.white,
+                child: GestureDetector(
+                  onTap: () {
+                    setInputData();
+                    debugPrint("Title: $_title");
+                    debugPrint("Description: $_description");
+                    Navigator.of(context).pop();
+                  },
+                  child: Container(
+                    width: MediaQuery.of(context).size.width * 0.4,
+                    height: MediaQuery.of(context).size.height * 0.05,
+                    decoration: BoxDecoration(
+                      color: AppColor.primaryColor,
+                      borderRadius: BorderRadius.circular(5),
+                    ),
+                    child: Center(
+                      child: Text(
+                        "Create",
+                        style: TextStyle(
+                          fontSize: MediaQuery.of(context).size.width * 0.05,
+                          fontWeight: FontWeight.w600,
+                          color: Colors.white,
+                        ),
                       ),
                     ),
                   ),
