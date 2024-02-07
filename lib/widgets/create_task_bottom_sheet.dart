@@ -53,21 +53,7 @@ class _CreateBottomTaskSheetState extends State<CreateBottomTaskSheet> {
                 ),
                 child: TextFormField(
                   controller: _titleController,
-                  decoration: InputDecoration(
-                    labelText: "Title",
-                    focusedBorder: OutlineInputBorder(
-                        borderSide: const BorderSide(
-                          width: 3,
-                          color: AppColor.primaryColor,
-                        ),
-                        borderRadius: BorderRadius.circular(10)),
-                    enabledBorder: OutlineInputBorder(
-                      borderSide: BorderSide(
-                        width: 2,
-                        color: Colors.teal.shade100,
-                      ),
-                    ),
-                  ),
+                  decoration: textFieldDecoration(labelText: "Title"),
                 ),
               ),
               Padding(
@@ -77,21 +63,7 @@ class _CreateBottomTaskSheetState extends State<CreateBottomTaskSheet> {
                 ),
                 child: TextFormField(
                   controller: _descriptionController,
-                  decoration: InputDecoration(
-                    labelText: "Description",
-                    focusedBorder: OutlineInputBorder(
-                        borderSide: const BorderSide(
-                          width: 3,
-                          color: AppColor.primaryColor,
-                        ),
-                        borderRadius: BorderRadius.circular(10)),
-                    enabledBorder: OutlineInputBorder(
-                      borderSide: BorderSide(
-                        width: 2,
-                        color: Colors.teal.shade100,
-                      ),
-                    ),
-                  ),
+                  decoration: textFieldDecoration(labelText: "Description"),
                 ),
               ),
               SizedBox(
@@ -222,11 +194,29 @@ class _CreateBottomTaskSheetState extends State<CreateBottomTaskSheet> {
                     ),
                   ),
                 ),
-              )
+              ),
             ],
           ),
         );
       },
     );
   }
+}
+
+InputDecoration textFieldDecoration({required String labelText}) {
+  return InputDecoration(
+    labelText: labelText,
+    focusedBorder: OutlineInputBorder(
+        borderSide: const BorderSide(
+          width: 3,
+          color: AppColor.primaryColor,
+        ),
+        borderRadius: BorderRadius.circular(10)),
+    enabledBorder: OutlineInputBorder(
+      borderSide: BorderSide(
+        width: 2,
+        color: Colors.teal.shade100,
+      ),
+    ),
+  );
 }
