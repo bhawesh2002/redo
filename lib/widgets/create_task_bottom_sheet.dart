@@ -9,8 +9,8 @@ class CreateBottomTaskSheet extends StatefulWidget {
 }
 
 class _CreateBottomTaskSheetState extends State<CreateBottomTaskSheet> {
-  TextEditingController _titleController = TextEditingController();
-  TextEditingController _descriptionController = TextEditingController();
+  final TextEditingController _titleController = TextEditingController();
+  final TextEditingController _descriptionController = TextEditingController();
   @override
   Widget build(BuildContext context) {
     return BottomSheet(
