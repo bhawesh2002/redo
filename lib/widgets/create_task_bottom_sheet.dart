@@ -124,7 +124,7 @@ class _CreateBottomTaskSheetState extends State<CreateBottomTaskSheet> {
                       showTimePicker(
                           context: context, initialTime: TimeOfDay.now());
                     },
-                    child: const TimeSelector(label: "Start Time"),
+                    child: const TimeSelector(label: "End Time"),
                   ),
                 ],
               ),
