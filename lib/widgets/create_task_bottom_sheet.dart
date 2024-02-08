@@ -39,19 +39,19 @@ class _CreateBottomTaskSheetState extends State<CreateBottomTaskSheet> {
                     child: Text(
                       "Create New Task",
                       style: TextStyle(
-                        fontSize: MediaQuery.of(context).size.width * 0.06,
+                        fontSize: constraints.maxWidth * 0.06,
                         fontWeight: FontWeight.bold,
                       ),
                     ),
                   ),
                   SizedBox(
-                    width: MediaQuery.of(context).size.width,
-                    height: MediaQuery.of(context).size.height * 0.015,
+                    width: constraints.maxWidth,
+                    height: constraints.maxHeight * 0.02,
                   ),
                   Padding(
                     padding: EdgeInsets.symmetric(
-                      horizontal: MediaQuery.of(context).size.width * 0.01,
-                      vertical: MediaQuery.of(context).size.height * 0.01,
+                      horizontal: constraints.maxWidth * 0.01,
+                      vertical: constraints.maxHeight * 0.01,
                     ),
                     child: TextFormField(
                       controller: _titleController,
@@ -60,8 +60,8 @@ class _CreateBottomTaskSheetState extends State<CreateBottomTaskSheet> {
                   ),
                   Padding(
                     padding: EdgeInsets.symmetric(
-                      horizontal: MediaQuery.of(context).size.width * 0.01,
-                      vertical: MediaQuery.of(context).size.height * 0.01,
+                      horizontal: constraints.maxWidth * 0.01,
+                      vertical: constraints.maxHeight * 0.01,
                     ),
                     child: TextFormField(
                       controller: _descriptionController,
@@ -69,8 +69,8 @@ class _CreateBottomTaskSheetState extends State<CreateBottomTaskSheet> {
                     ),
                   ),
                   SizedBox(
-                    width: MediaQuery.of(context).size.width,
-                    height: MediaQuery.of(context).size.height * 0.015,
+                    width: constraints.maxWidth,
+                    height: constraints.maxHeight * 0.02,
                   ),
                   GestureDetector(
                     onTap: () {
@@ -87,19 +87,17 @@ class _CreateBottomTaskSheetState extends State<CreateBottomTaskSheet> {
                           children: [
                             Icon(
                               Icons.calendar_month_rounded,
-                              size: MediaQuery.of(context).size.width * 0.06,
+                              size: constraints.maxWidth * 0.06,
                             ),
                             Padding(
                               padding: EdgeInsets.symmetric(
-                                horizontal:
-                                    MediaQuery.of(context).size.width * 0.01,
+                                horizontal: constraints.maxWidth * 0.01,
                               ),
                             ),
                             Text(
                               "Task Date",
                               style: TextStyle(
-                                fontSize:
-                                    MediaQuery.of(context).size.width * 0.04,
+                                fontSize: constraints.maxWidth * 0.04,
                               ),
                             ),
                           ],
@@ -109,8 +107,8 @@ class _CreateBottomTaskSheetState extends State<CreateBottomTaskSheet> {
                     ),
                   ),
                   SizedBox(
-                    width: MediaQuery.of(context).size.width,
-                    height: MediaQuery.of(context).size.height * 0.02,
+                    width: constraints.maxWidth,
+                    height: constraints.maxHeight * 0.02,
                   ),
                   Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -120,9 +118,10 @@ class _CreateBottomTaskSheetState extends State<CreateBottomTaskSheet> {
                           showTimePicker(
                               context: context, initialTime: TimeOfDay.now());
                         },
-                        child: const TimeSelector(
+                        child: TimeSelector(
                           label: "Start Time",
                           icon: Icons.access_time_rounded,
+                          constraints: constraints,
                         ),
                       ),
                       GestureDetector(
@@ -130,9 +129,10 @@ class _CreateBottomTaskSheetState extends State<CreateBottomTaskSheet> {
                           showTimePicker(
                               context: context, initialTime: TimeOfDay.now());
                         },
-                        child: const TimeSelector(
+                        child: TimeSelector(
                           label: "End Time",
                           icon: Icons.access_time_filled_rounded,
+                          constraints: constraints,
                         ),
                       ),
                     ],
@@ -198,7 +198,13 @@ InputDecoration textFieldDecoration({required String labelText}) {
 class TimeSelector extends StatefulWidget {
   final String label;
   final IconData icon;
-  const TimeSelector({super.key, required this.label, required this.icon});
+  final BoxConstraints constraints;
+  const TimeSelector({
+    super.key,
+    required this.label,
+    required this.icon,
+    required this.constraints,
+  });
 
   @override
   State<TimeSelector> createState() => _TimeSelectorState();
@@ -211,17 +217,17 @@ class _TimeSelectorState extends State<TimeSelector> {
       children: [
         Icon(
           widget.icon,
-          size: MediaQuery.of(context).size.width * 0.06,
+          size: widget.constraints.maxWidth * 0.06,
         ),
         Padding(
           padding: EdgeInsets.symmetric(
-            horizontal: MediaQuery.of(context).size.width * 0.01,
+            horizontal: widget.constraints.maxWidth * 0.01,
           ),
         ),
         Text(
           widget.label,
           style: TextStyle(
-            fontSize: MediaQuery.of(context).size.width * 0.04,
+            fontSize: widget.constraints.maxWidth * 0.04,
           ),
         ),
       ],
