@@ -117,52 +117,14 @@ class _CreateBottomTaskSheetState extends State<CreateBottomTaskSheet> {
                       showTimePicker(
                           context: context, initialTime: TimeOfDay.now());
                     },
-                    child: Row(
-                      children: [
-                        Icon(
-                          Icons.access_time,
-                          size: MediaQuery.of(context).size.width * 0.06,
-                        ),
-                        Padding(
-                          padding: EdgeInsets.symmetric(
-                            horizontal:
-                                MediaQuery.of(context).size.width * 0.01,
-                          ),
-                        ),
-                        Text(
-                          "Start Time",
-                          style: TextStyle(
-                            fontSize: MediaQuery.of(context).size.width * 0.04,
-                          ),
-                        ),
-                      ],
-                    ),
+                    child: const TimeSelector(label: "Start Time"),
                   ),
                   GestureDetector(
                     onTap: () {
                       showTimePicker(
                           context: context, initialTime: TimeOfDay.now());
                     },
-                    child: Row(
-                      children: [
-                        Icon(
-                          Icons.access_time_filled,
-                          size: MediaQuery.of(context).size.width * 0.06,
-                        ),
-                        Padding(
-                          padding: EdgeInsets.symmetric(
-                            horizontal:
-                                MediaQuery.of(context).size.width * 0.01,
-                          ),
-                        ),
-                        Text(
-                          "End Time",
-                          style: TextStyle(
-                            fontSize: MediaQuery.of(context).size.width * 0.04,
-                          ),
-                        ),
-                      ],
-                    ),
+                    child: const TimeSelector(label: "Start Time"),
                   ),
                 ],
               ),
@@ -219,4 +181,37 @@ InputDecoration textFieldDecoration({required String labelText}) {
       ),
     ),
   );
+}
+
+class TimeSelector extends StatefulWidget {
+  final String label;
+  const TimeSelector({super.key, required this.label});
+
+  @override
+  State<TimeSelector> createState() => _TimeSelectorState();
+}
+
+class _TimeSelectorState extends State<TimeSelector> {
+  @override
+  Widget build(BuildContext context) {
+    return Row(
+      children: [
+        Icon(
+          Icons.access_time_filled,
+          size: MediaQuery.of(context).size.width * 0.06,
+        ),
+        Padding(
+          padding: EdgeInsets.symmetric(
+            horizontal: MediaQuery.of(context).size.width * 0.01,
+          ),
+        ),
+        Text(
+          widget.label,
+          style: TextStyle(
+            fontSize: MediaQuery.of(context).size.width * 0.04,
+          ),
+        ),
+      ],
+    );
+  }
 }
