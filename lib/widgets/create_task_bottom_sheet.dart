@@ -51,7 +51,7 @@ class _CreateBottomTaskSheetState extends State<CreateBottomTaskSheet> {
                   Padding(
                     padding: EdgeInsets.symmetric(
                       horizontal: constraints.maxWidth * 0.01,
-                      vertical: constraints.maxHeight * 0.01,
+                      vertical: constraints.maxHeight * 0.02,
                     ),
                     child: TextFormField(
                       controller: _titleController,
@@ -61,7 +61,7 @@ class _CreateBottomTaskSheetState extends State<CreateBottomTaskSheet> {
                   Padding(
                     padding: EdgeInsets.symmetric(
                       horizontal: constraints.maxWidth * 0.01,
-                      vertical: constraints.maxHeight * 0.01,
+                      vertical: constraints.maxHeight * 0.02,
                     ),
                     child: TextFormField(
                       controller: _descriptionController,
@@ -80,30 +80,34 @@ class _CreateBottomTaskSheetState extends State<CreateBottomTaskSheet> {
                         lastDate: DateTime(2050),
                       );
                     },
-                    child: Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                      children: [
-                        Row(
-                          children: [
-                            Icon(
-                              Icons.calendar_month_rounded,
-                              size: constraints.maxWidth * 0.06,
-                            ),
-                            Padding(
-                              padding: EdgeInsets.symmetric(
-                                horizontal: constraints.maxWidth * 0.01,
+                    child: Padding(
+                      padding: EdgeInsets.symmetric(
+                          vertical: constraints.maxHeight * 0.02),
+                      child: Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                        children: [
+                          Row(
+                            children: [
+                              Icon(
+                                Icons.calendar_month_rounded,
+                                size: constraints.maxWidth * 0.06,
                               ),
-                            ),
-                            Text(
-                              "Task Date",
-                              style: TextStyle(
-                                fontSize: constraints.maxWidth * 0.04,
+                              Padding(
+                                padding: EdgeInsets.symmetric(
+                                  horizontal: constraints.maxWidth * 0.01,
+                                ),
                               ),
-                            ),
-                          ],
-                        ),
-                        const Text("Select Date"),
-                      ],
+                              Text(
+                                "Task Date",
+                                style: TextStyle(
+                                  fontSize: constraints.maxWidth * 0.04,
+                                ),
+                              ),
+                            ],
+                          ),
+                          const Text("Select Date"),
+                        ],
+                      ),
                     ),
                   ),
                   SizedBox(
@@ -118,10 +122,14 @@ class _CreateBottomTaskSheetState extends State<CreateBottomTaskSheet> {
                           showTimePicker(
                               context: context, initialTime: TimeOfDay.now());
                         },
-                        child: TimeSelector(
-                          label: "Start Time",
-                          icon: Icons.access_time_rounded,
-                          constraints: constraints,
+                        child: Padding(
+                          padding: EdgeInsets.symmetric(
+                              vertical: constraints.maxHeight * 0.02),
+                          child: TimeSelector(
+                            label: "Start Time",
+                            icon: Icons.access_time_rounded,
+                            constraints: constraints,
+                          ),
                         ),
                       ),
                       GestureDetector(
@@ -129,10 +137,14 @@ class _CreateBottomTaskSheetState extends State<CreateBottomTaskSheet> {
                           showTimePicker(
                               context: context, initialTime: TimeOfDay.now());
                         },
-                        child: TimeSelector(
-                          label: "End Time",
-                          icon: Icons.access_time_filled_rounded,
-                          constraints: constraints,
+                        child: Padding(
+                          padding: EdgeInsets.symmetric(
+                              vertical: constraints.maxHeight * 0.02),
+                          child: TimeSelector(
+                            label: "End Time",
+                            icon: Icons.access_time_filled_rounded,
+                            constraints: constraints,
+                          ),
                         ),
                       ),
                     ],
