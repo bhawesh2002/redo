@@ -46,7 +46,7 @@ class _CreateBottomTaskSheetState extends State<CreateBottomTaskSheet> {
                   ),
                   SizedBox(
                     width: constraints.maxWidth,
-                    height: constraints.maxHeight * 0.02,
+                    height: constraints.maxHeight * 0.04,
                   ),
                   Padding(
                     padding: EdgeInsets.symmetric(
@@ -70,7 +70,7 @@ class _CreateBottomTaskSheetState extends State<CreateBottomTaskSheet> {
                   ),
                   SizedBox(
                     width: constraints.maxWidth,
-                    height: constraints.maxHeight * 0.02,
+                    height: constraints.maxHeight * 0.04,
                   ),
                   GestureDetector(
                     onTap: () {
@@ -108,7 +108,7 @@ class _CreateBottomTaskSheetState extends State<CreateBottomTaskSheet> {
                   ),
                   SizedBox(
                     width: constraints.maxWidth,
-                    height: constraints.maxHeight * 0.02,
+                    height: constraints.maxHeight * 0.04,
                   ),
                   Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
