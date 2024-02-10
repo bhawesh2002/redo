@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:redo/assets/colors/colors.dart';
+import 'package:redo/utilis/days.dart';
 
 class CreateBottomTaskSheet extends StatefulWidget {
   const CreateBottomTaskSheet({super.key});
@@ -13,6 +14,7 @@ class _CreateBottomTaskSheetState extends State<CreateBottomTaskSheet> {
   final TextEditingController _descriptionController = TextEditingController();
   String? _title;
   String? _description;
+  late DateTime? _selectedDate = DateTime.now();
   void setInputData() {
     setState(() {
       _title = _titleController.text;
@@ -73,12 +75,18 @@ class _CreateBottomTaskSheetState extends State<CreateBottomTaskSheet> {
                     height: constraints.maxHeight * 0.04,
                   ),
                   GestureDetector(
-                    onTap: () {
-                      showDatePicker(
+                    onTap: () async {
+                      DateTime? date = await showDatePicker(
                         context: context,
+                        initialDate: _selectedDate,
                         firstDate: DateTime.now(),
                         lastDate: DateTime(2050),
                       );
+                      setState(() {
+                        if (date != null) {
+                          _selectedDate = date;
+                        }
+                      });
                     },
                     child: Padding(
                       padding: EdgeInsets.symmetric(
@@ -98,14 +106,14 @@ class _CreateBottomTaskSheetState extends State<CreateBottomTaskSheet> {
                                 ),
                               ),
                               Text(
-                                "Task Date",
+                                _selectedDate.toString().split(" ").first,
                                 style: TextStyle(
                                   fontSize: constraints.maxWidth * 0.04,
                                 ),
                               ),
                             ],
                           ),
-                          const Text("Select Date"),
+                          Text(weekday[_selectedDate!.weekday - 1]),
                         ],
                       ),
                     ),
