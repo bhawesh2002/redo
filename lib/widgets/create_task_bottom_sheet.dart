@@ -89,34 +89,10 @@ class _CreateBottomTaskSheetState extends State<CreateBottomTaskSheet> {
                       });
                     },
                     child: Padding(
-                      padding: EdgeInsets.symmetric(
-                          vertical: constraints.maxHeight * 0.02),
-                      child: Row(
-                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                        children: [
-                          Row(
-                            children: [
-                              Icon(
-                                Icons.calendar_month_rounded,
-                                size: constraints.maxWidth * 0.06,
-                              ),
-                              Padding(
-                                padding: EdgeInsets.symmetric(
-                                  horizontal: constraints.maxWidth * 0.01,
-                                ),
-                              ),
-                              Text(
-                                _selectedDate.toString().split(" ").first,
-                                style: TextStyle(
-                                  fontSize: constraints.maxWidth * 0.04,
-                                ),
-                              ),
-                            ],
-                          ),
-                          Text(weekday[_selectedDate!.weekday - 1]),
-                        ],
-                      ),
-                    ),
+                        padding: EdgeInsets.symmetric(
+                            vertical: constraints.maxHeight * 0.02),
+                        child: DateSelector(
+                            date: _selectedDate, constraints: constraints)),
                   ),
                   SizedBox(
                     width: constraints.maxWidth,
@@ -213,6 +189,50 @@ InputDecoration textFieldDecoration({required String labelText}) {
       ),
     ),
   );
+}
+
+class DateSelector extends StatefulWidget {
+  final DateTime? date;
+  final BoxConstraints constraints;
+  const DateSelector({
+    super.key,
+    required this.date,
+    required this.constraints,
+  });
+
+  @override
+  State<DateSelector> createState() => _DateSelectorState();
+}
+
+class _DateSelectorState extends State<DateSelector> {
+  @override
+  Widget build(BuildContext context) {
+    return Row(
+      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+      children: [
+        Row(
+          children: [
+            Icon(
+              Icons.calendar_month_rounded,
+              size: widget.constraints.maxWidth * 0.06,
+            ),
+            Padding(
+              padding: EdgeInsets.symmetric(
+                horizontal: widget.constraints.maxWidth * 0.01,
+              ),
+            ),
+            Text(
+              widget.date.toString().split(" ").first,
+              style: TextStyle(
+                fontSize: widget.constraints.maxWidth * 0.04,
+              ),
+            ),
+          ],
+        ),
+        Text(weekday[widget.date!.weekday - 1]),
+      ],
+    );
+  }
 }
 
 class TimeSelector extends StatefulWidget {
