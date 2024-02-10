@@ -1,33 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:redo/utilis/days.dart';
 import 'package:redo/widgets/taskfilter.dart';
 import 'package:redo/widgets/tasktile.dart';
 import 'package:redo/widgets/task_widget.dart';
 import 'package:redo/todo.dart';
-
-List<String> months = [
-  "January",
-  "Feburary",
-  "March",
-  "April",
-  "May",
-  "June",
-  "July",
-  "August",
-  "September",
-  "October",
-  "November",
-  "December",
-];
-
-List<String> weekday = [
-  "Monday",
-  "Tuesday",
-  "Wednesday",
-  "Thrusday",
-  "Friday",
-  "Saturday",
-  "Sunday",
-];
 
 class Tasks extends StatefulWidget {
   final List<Todo> taskList;
