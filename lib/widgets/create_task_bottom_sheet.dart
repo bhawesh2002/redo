@@ -15,6 +15,8 @@ class _CreateBottomTaskSheetState extends State<CreateBottomTaskSheet> {
   String? _title;
   String? _description;
   late DateTime? _selectedDate = DateTime.now();
+  String _startTime = "Start Time";
+  String _endTime = "End Time";
   void setInputData() {
     setState(() {
       _title = _titleController.text;
@@ -102,30 +104,40 @@ class _CreateBottomTaskSheetState extends State<CreateBottomTaskSheet> {
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
                       GestureDetector(
-                        onTap: () {
-                          showTimePicker(
+                        onTap: () async {
+                          TimeOfDay? time = await showTimePicker(
                               context: context, initialTime: TimeOfDay.now());
+                          setState(() {
+                            if (time != null) {
+                              _startTime = time.toString().substring(10, 15);
+                            }
+                          });
                         },
                         child: Padding(
                           padding: EdgeInsets.symmetric(
                               vertical: constraints.maxHeight * 0.02),
                           child: TimeSelector(
-                            label: "Start Time",
+                            time: _startTime,
                             icon: Icons.access_time_rounded,
                             constraints: constraints,
                           ),
                         ),
                       ),
                       GestureDetector(
-                        onTap: () {
-                          showTimePicker(
+                        onTap: () async {
+                          TimeOfDay? time = await showTimePicker(
                               context: context, initialTime: TimeOfDay.now());
+                          setState(() {
+                            if (time != null) {
+                              _endTime = time.toString().substring(10, 15);
+                            }
+                          });
                         },
                         child: Padding(
                           padding: EdgeInsets.symmetric(
                               vertical: constraints.maxHeight * 0.02),
                           child: TimeSelector(
-                            label: "End Time",
+                            time: _endTime,
                             icon: Icons.access_time_filled_rounded,
                             constraints: constraints,
                           ),
@@ -236,12 +248,12 @@ class _DateSelectorState extends State<DateSelector> {
 }
 
 class TimeSelector extends StatefulWidget {
-  final String label;
+  final String time;
   final IconData icon;
   final BoxConstraints constraints;
   const TimeSelector({
     super.key,
-    required this.label,
+    required this.time,
     required this.icon,
     required this.constraints,
   });
@@ -265,7 +277,7 @@ class _TimeSelectorState extends State<TimeSelector> {
           ),
         ),
         Text(
-          widget.label,
+          widget.time,
           style: TextStyle(
             fontSize: widget.constraints.maxWidth * 0.04,
           ),
