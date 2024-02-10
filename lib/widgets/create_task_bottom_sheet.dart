@@ -100,50 +100,46 @@ class _CreateBottomTaskSheetState extends State<CreateBottomTaskSheet> {
                     width: constraints.maxWidth,
                     height: constraints.maxHeight * 0.04,
                   ),
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    children: [
-                      GestureDetector(
-                        onTap: () async {
-                          TimeOfDay? time = await showTimePicker(
-                              context: context, initialTime: TimeOfDay.now());
-                          setState(() {
-                            if (time != null) {
-                              _startTime = time.toString().substring(10, 15);
-                            }
-                          });
-                        },
-                        child: Padding(
-                          padding: EdgeInsets.symmetric(
-                              vertical: constraints.maxHeight * 0.02),
+                  Padding(
+                    padding: EdgeInsets.symmetric(
+                        vertical: constraints.maxHeight * 0.02),
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      children: [
+                        GestureDetector(
+                          onTap: () async {
+                            TimeOfDay? time = await showTimePicker(
+                                context: context, initialTime: TimeOfDay.now());
+                            setState(() {
+                              if (time != null) {
+                                _startTime = time.toString().substring(10, 15);
+                              }
+                            });
+                          },
                           child: TimeSelector(
                             time: _startTime,
                             icon: Icons.access_time_rounded,
                             constraints: constraints,
                           ),
                         ),
-                      ),
-                      GestureDetector(
-                        onTap: () async {
-                          TimeOfDay? time = await showTimePicker(
-                              context: context, initialTime: TimeOfDay.now());
-                          setState(() {
-                            if (time != null) {
-                              _endTime = time.toString().substring(10, 15);
-                            }
-                          });
-                        },
-                        child: Padding(
-                          padding: EdgeInsets.symmetric(
-                              vertical: constraints.maxHeight * 0.02),
+                        GestureDetector(
+                          onTap: () async {
+                            TimeOfDay? time = await showTimePicker(
+                                context: context, initialTime: TimeOfDay.now());
+                            setState(() {
+                              if (time != null) {
+                                _endTime = time.toString().substring(10, 15);
+                              }
+                            });
+                          },
                           child: TimeSelector(
                             time: _endTime,
                             icon: Icons.access_time_filled_rounded,
                             constraints: constraints,
                           ),
                         ),
-                      ),
-                    ],
+                      ],
+                    ),
                   ),
                   const Expanded(child: SizedBox()),
                   Flexible(
