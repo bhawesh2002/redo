@@ -157,10 +157,12 @@ class _CreateBottomTaskSheetState extends State<CreateBottomTaskSheet> {
                     Flexible(
                       child: GestureDetector(
                         onTap: () {
-                          setInputData();
+                          if (_formKey.currentState!.validate()) {
+                            setInputData();
+                            Navigator.of(context).pop();
+                          }
                           debugPrint("Title: $_title");
                           debugPrint("Description: $_description");
-                          Navigator.of(context).pop();
                         },
                         child: Container(
                           width: MediaQuery.of(context).size.width * 0.4,
