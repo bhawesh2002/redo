@@ -201,6 +201,18 @@ InputDecoration textFieldDecoration({required String labelText}) {
         color: Colors.teal.shade100,
       ),
     ),
+    errorBorder: const OutlineInputBorder(
+      borderSide: BorderSide(
+        width: 2,
+        color: Colors.redAccent,
+      ),
+    ),
+    focusedErrorBorder: OutlineInputBorder(
+        borderSide: const BorderSide(
+          width: 3,
+          color: AppColor.primaryColor,
+        ),
+        borderRadius: BorderRadius.circular(10)),
   );
 }
 
