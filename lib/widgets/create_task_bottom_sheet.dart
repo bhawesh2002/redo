@@ -210,7 +210,7 @@ InputDecoration textFieldDecoration({required String labelText}) {
     focusedErrorBorder: OutlineInputBorder(
         borderSide: const BorderSide(
           width: 3,
-          color: AppColor.primaryColor,
+          color: Colors.redAccent,
         ),
         borderRadius: BorderRadius.circular(10)),
   );
