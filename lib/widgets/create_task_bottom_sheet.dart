@@ -58,9 +58,10 @@ class _CreateBottomTaskSheetState extends State<CreateBottomTaskSheet> {
                       vertical: constraints.maxHeight * 0.02,
                     ),
                     child: TextFormField(
-                      controller: _titleController,
-                      decoration: textFieldDecoration(labelText: "Title"),
-                    ),
+                        controller: _titleController,
+                        textInputAction: TextInputAction.next,
+                        style: const TextStyle(fontWeight: FontWeight.bold),
+                        decoration: textFieldDecoration(labelText: "Title")),
                   ),
                   Padding(
                     padding: EdgeInsets.symmetric(
