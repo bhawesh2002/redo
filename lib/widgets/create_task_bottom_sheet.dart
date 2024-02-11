@@ -60,7 +60,11 @@ class _CreateBottomTaskSheetState extends State<CreateBottomTaskSheet> {
                     child: TextFormField(
                         controller: _titleController,
                         textInputAction: TextInputAction.next,
+                        autovalidateMode: AutovalidateMode.onUserInteraction,
                         style: const TextStyle(fontWeight: FontWeight.bold),
+                        validator: (value) {
+                          return value!.isEmpty ? "Title is required" : null;
+                        },
                         decoration: textFieldDecoration(labelText: "Title")),
                   ),
                   Padding(
