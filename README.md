@@ -1,6 +1,6 @@
 # redo
 
-A new Flutter project.
+Redo is a To-Do list app made using flutter
 
 ## Getting Started
 
