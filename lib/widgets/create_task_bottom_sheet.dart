@@ -11,6 +11,10 @@ class CreateBottomTaskSheet extends StatefulWidget {
 
 class _CreateBottomTaskSheetState extends State<CreateBottomTaskSheet> {
   final _formKey = GlobalKey<FormState>();
+  final GlobalKey<_TimeSelectorState> _startTimeSelectorKey =
+      GlobalKey<_TimeSelectorState>();
+  final GlobalKey<_TimeSelectorState> _endTimeSelectorKey =
+      GlobalKey<_TimeSelectorState>();
   final TextEditingController _titleController = TextEditingController();
   final TextEditingController _descriptionController = TextEditingController();
   String? _title;
@@ -121,14 +125,18 @@ class _CreateBottomTaskSheetState extends State<CreateBottomTaskSheet> {
                                 context: context,
                                 initialTime: TimeOfDay.now(),
                               );
+
                               setState(() {
                                 if (time != null) {
                                   _startTime =
                                       time.toString().substring(10, 15);
+                                  _startTimeSelectorKey.currentState!
+                                      .validate();
                                 }
                               });
                             },
                             child: TimeSelector(
+                              key: _startTimeSelectorKey,
                               time: _startTime,
                               icon: Icons.access_time_rounded,
                               constraints: constraints,
@@ -143,10 +151,12 @@ class _CreateBottomTaskSheetState extends State<CreateBottomTaskSheet> {
                               setState(() {
                                 if (time != null) {
                                   _endTime = time.toString().substring(10, 15);
+                                  _endTimeSelectorKey.currentState!.validate();
                                 }
                               });
                             },
                             child: TimeSelector(
+                              key: _endTimeSelectorKey,
                               time: _endTime,
                               icon: Icons.access_time_filled_rounded,
                               constraints: constraints,
@@ -161,8 +171,14 @@ class _CreateBottomTaskSheetState extends State<CreateBottomTaskSheet> {
                       child: GestureDetector(
                         onTap: () {
                           if (_formKey.currentState!.validate()) {
-                            setInputData();
-                            Navigator.of(context).pop();
+                            if (_startTimeSelectorKey.currentState!
+                                .validate()) {
+                              if (_endTimeSelectorKey.currentState!
+                                  .validate()) {
+                                setInputData();
+                                Navigator.of(context).pop();
+                              }
+                            }
                           }
                           debugPrint("Title: $_title");
                           debugPrint("Description: $_description");
@@ -289,12 +305,28 @@ class TimeSelector extends StatefulWidget {
 }
 
 class _TimeSelectorState extends State<TimeSelector> {
+  Color color = Colors.black;
+  bool validate() {
+    if (widget.time != "Start Time" || widget.time != "End Time") {
+      setState(() {
+        color = Colors.teal;
+      });
+      return true;
+    } else {
+      setState(() {
+        color = Colors.redAccent;
+      });
+      return false;
+    }
+  }
+
   @override
   Widget build(BuildContext context) {
     return Row(
       children: [
         Icon(
           widget.icon,
+          color: color,
           size: widget.constraints.maxWidth * 0.06,
         ),
         Padding(
@@ -305,6 +337,7 @@ class _TimeSelectorState extends State<TimeSelector> {
         Text(
           widget.time,
           style: TextStyle(
+            color: color,
             fontSize: widget.constraints.maxWidth * 0.04,
           ),
         ),
