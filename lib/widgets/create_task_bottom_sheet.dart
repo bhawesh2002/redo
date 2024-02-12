@@ -118,8 +118,9 @@ class _CreateBottomTaskSheetState extends State<CreateBottomTaskSheet> {
                           GestureDetector(
                             onTap: () async {
                               TimeOfDay? time = await showTimePicker(
-                                  context: context,
-                                  initialTime: TimeOfDay.now());
+                                context: context,
+                                initialTime: TimeOfDay.now(),
+                              );
                               setState(() {
                                 if (time != null) {
                                   _startTime =
@@ -136,8 +137,9 @@ class _CreateBottomTaskSheetState extends State<CreateBottomTaskSheet> {
                           GestureDetector(
                             onTap: () async {
                               TimeOfDay? time = await showTimePicker(
-                                  context: context,
-                                  initialTime: TimeOfDay.now());
+                                context: context,
+                                initialTime: TimeOfDay.now(),
+                              );
                               setState(() {
                                 if (time != null) {
                                   _endTime = time.toString().substring(10, 15);
@@ -155,6 +157,7 @@ class _CreateBottomTaskSheetState extends State<CreateBottomTaskSheet> {
                     ),
                     const Expanded(child: SizedBox()),
                     Flexible(
+                      flex: 3,
                       child: GestureDetector(
                         onTap: () {
                           if (_formKey.currentState!.validate()) {
