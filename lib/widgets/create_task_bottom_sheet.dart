@@ -137,8 +137,6 @@ class _CreateBottomTaskSheetState extends State<CreateBottomTaskSheet> {
                               setState(() {
                                 if (time != null) {
                                   _startTime = "${time.hour}:${time.minute}";
-                                  _startTimeSelectorKey.currentState!
-                                      .validate();
                                 }
                               });
                             },
@@ -160,7 +158,6 @@ class _CreateBottomTaskSheetState extends State<CreateBottomTaskSheet> {
                               setState(() {
                                 if (time != null) {
                                   _endTime = "${time.hour}:${time.minute}";
-                                  _endTimeSelectorKey.currentState!.validate();
                                 }
                               });
                             },
@@ -180,14 +177,8 @@ class _CreateBottomTaskSheetState extends State<CreateBottomTaskSheet> {
                       child: GestureDetector(
                         onTap: () {
                           if (_formKey.currentState!.validate()) {
-                            if (_startTimeSelectorKey.currentState!
-                                .validate()) {
-                              if (_endTimeSelectorKey.currentState!
-                                  .validate()) {
-                                setInputData();
-                                Navigator.of(context).pop();
-                              }
-                            }
+                            setInputData();
+                            Navigator.of(context).pop();
                           }
                         },
                         child: Container(
@@ -313,19 +304,6 @@ class TimeSelector extends StatefulWidget {
 
 class _TimeSelectorState extends State<TimeSelector> {
   Color color = Colors.black;
-  bool validate() {
-    if (widget.time != "Start Time" || widget.time != "End Time") {
-      setState(() {
-        color = Colors.teal;
-      });
-      return true;
-    } else {
-      setState(() {
-        color = Colors.redAccent;
-      });
-      return false;
-    }
-  }
 
   @override
   Widget build(BuildContext context) {
