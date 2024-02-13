@@ -136,8 +136,7 @@ class _CreateBottomTaskSheetState extends State<CreateBottomTaskSheet> {
 
                               setState(() {
                                 if (time != null) {
-                                  _startTime =
-                                      time.toString().substring(10, 15);
+                                  _startTime = "${time.hour}:${time.minute}";
                                   _startTimeSelectorKey.currentState!
                                       .validate();
                                 }
@@ -158,7 +157,7 @@ class _CreateBottomTaskSheetState extends State<CreateBottomTaskSheet> {
                               );
                               setState(() {
                                 if (time != null) {
-                                  _endTime = time.toString().substring(10, 15);
+                                  _endTime = "${time.hour}:${time.minute}";
                                   _endTimeSelectorKey.currentState!.validate();
                                 }
                               });
