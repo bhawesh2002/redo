@@ -20,8 +20,8 @@ class _CreateBottomTaskSheetState extends State<CreateBottomTaskSheet> {
   String? _title;
   String? _description;
   late DateTime? _selectedDate = DateTime.now();
-  String _startTime = "Start Time";
-  String _endTime = "End Time";
+  String _startTime = "";
+  String _endTime = "";
   void setInputData() {
     String start = "";
     String end = "";
@@ -144,7 +144,9 @@ class _CreateBottomTaskSheetState extends State<CreateBottomTaskSheet> {
                             },
                             child: TimeSelector(
                               key: _startTimeSelectorKey,
-                              time: _startTime,
+                              time: _startTime.isEmpty
+                                  ? "Start Time"
+                                  : _startTime,
                               icon: Icons.access_time_rounded,
                               constraints: constraints,
                             ),
@@ -164,7 +166,7 @@ class _CreateBottomTaskSheetState extends State<CreateBottomTaskSheet> {
                             },
                             child: TimeSelector(
                               key: _endTimeSelectorKey,
-                              time: _endTime,
+                              time: _endTime.isEmpty ? "End Time" : _endTime,
                               icon: Icons.access_time_filled_rounded,
                               constraints: constraints,
                             ),
