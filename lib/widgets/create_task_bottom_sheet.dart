@@ -27,6 +27,8 @@ class _CreateBottomTaskSheetState extends State<CreateBottomTaskSheet> {
       _title = _titleController.text;
       _description = _descriptionController.text;
     });
+    debugPrint("Title: $_title");
+    debugPrint("Description: $_description");
   }
 
   @override
@@ -180,8 +182,6 @@ class _CreateBottomTaskSheetState extends State<CreateBottomTaskSheet> {
                               }
                             }
                           }
-                          debugPrint("Title: $_title");
-                          debugPrint("Description: $_description");
                         },
                         child: Container(
                           width: MediaQuery.of(context).size.width * 0.4,
