@@ -23,12 +23,18 @@ class _CreateBottomTaskSheetState extends State<CreateBottomTaskSheet> {
   String _startTime = "Start Time";
   String _endTime = "End Time";
   void setInputData() {
+    String start = "";
+    String end = "";
     setState(() {
       _title = _titleController.text;
       _description = _descriptionController.text;
+      start = "${_selectedDate.toString().split(" ").first} $_startTime";
+      end = "${_selectedDate.toString().split(" ").first} $_endTime";
     });
     debugPrint("Title: $_title");
     debugPrint("Description: $_description");
+    debugPrint("Start: $start");
+    debugPrint("End: $end");
   }
 
   @override
