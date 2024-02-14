@@ -30,8 +30,10 @@ class _CreateBottomTaskSheetState extends State<CreateBottomTaskSheet> {
     setState(() {
       _title = _titleController.text;
       _description = _descriptionController.text;
-      start = "${_selectedDate.toString().split(" ").first} $_startTime";
-      end = "${_selectedDate.toString().split(" ").first} $_endTime";
+      start =
+          "${_selectedDate.toString().split(" ").first} ${_startTime?.hour.toString()}:${_startTime?.minute.toString()}";
+      end =
+          "${_selectedDate.toString().split(" ").first} ${_endTime?.hour.toString()}:${_endTime?.minute.toString()}";
     });
     debugPrint("Title: $_title");
     debugPrint("Description: $_description");
