@@ -51,7 +51,7 @@ class Todo {
       end: DateTime.parse(json['end']),
       endDate: end[0],
       endTime: end[1],
-      isCompleted: json['isComleted'] ?? false,
+      isCompleted: json['isCompleted'] ?? false,
     );
   }
 
