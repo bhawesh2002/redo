@@ -20,8 +20,10 @@ class _CreateBottomTaskSheetState extends State<CreateBottomTaskSheet> {
   String? _title;
   String? _description;
   late DateTime? _selectedDate = DateTime.now();
-  String _startTime = "";
-  String _endTime = "";
+  // ignore: avoid_init_to_null
+  late TimeOfDay? _startTime = null;
+  // ignore: avoid_init_to_null
+  late TimeOfDay? _endTime = null;
   void setInputData() {
     String start = "";
     String end = "";
@@ -131,20 +133,19 @@ class _CreateBottomTaskSheetState extends State<CreateBottomTaskSheet> {
                             onTap: () async {
                               TimeOfDay? time = await showTimePicker(
                                 context: context,
-                                initialTime: TimeOfDay.now(),
+                                initialTime: _startTime ?? TimeOfDay.now(),
                               );
-
                               setState(() {
                                 if (time != null) {
-                                  _startTime = "${time.hour}:${time.minute}";
+                                  _startTime = time;
                                 }
                               });
+                              _startTimeSelectorKey.currentState!.validate();
                             },
                             child: TimeSelector(
                               key: _startTimeSelectorKey,
-                              time: _startTime.isEmpty
-                                  ? "Start Time"
-                                  : _startTime,
+                              label: "Start Time",
+                              time: _startTime,
                               icon: Icons.access_time_rounded,
                               constraints: constraints,
                             ),
@@ -153,17 +154,20 @@ class _CreateBottomTaskSheetState extends State<CreateBottomTaskSheet> {
                             onTap: () async {
                               TimeOfDay? time = await showTimePicker(
                                 context: context,
-                                initialTime: TimeOfDay.now(),
+                                initialTime: _endTime ?? TimeOfDay.now(),
                               );
+
                               setState(() {
                                 if (time != null) {
-                                  _endTime = "${time.hour}:${time.minute}";
+                                  _endTime = time;
                                 }
                               });
+                              _endTimeSelectorKey.currentState!.validate();
                             },
                             child: TimeSelector(
                               key: _endTimeSelectorKey,
-                              time: _endTime.isEmpty ? "End Time" : _endTime,
+                              label: "End Time",
+                              time: _endTime,
                               icon: Icons.access_time_filled_rounded,
                               constraints: constraints,
                             ),
@@ -177,8 +181,14 @@ class _CreateBottomTaskSheetState extends State<CreateBottomTaskSheet> {
                       child: GestureDetector(
                         onTap: () {
                           if (_formKey.currentState!.validate()) {
-                            setInputData();
-                            Navigator.of(context).pop();
+                            if (!_startTimeSelectorKey.currentState!
+                                .validate()) {
+                              if (!_endTimeSelectorKey.currentState!
+                                  .validate()) {
+                                setInputData();
+                                Navigator.of(context).pop();
+                              }
+                            }
                           }
                         },
                         child: Container(
@@ -288,12 +298,14 @@ class _DateSelectorState extends State<DateSelector> {
 }
 
 class TimeSelector extends StatefulWidget {
-  final String time;
+  final TimeOfDay? time;
+  final String label;
   final IconData icon;
   final BoxConstraints constraints;
   const TimeSelector({
     super.key,
     required this.time,
+    required this.label,
     required this.icon,
     required this.constraints,
   });
@@ -304,6 +316,28 @@ class TimeSelector extends StatefulWidget {
 
 class _TimeSelectorState extends State<TimeSelector> {
   Color color = Colors.black;
+  bool nullCheck() {
+    if (widget.time == null) {
+      return true;
+    }
+    setState(() {
+      color = Colors.teal;
+    });
+    return false;
+  }
+
+  bool validate() {
+    if (widget.time == null) {
+      setState(() {
+        color = Colors.redAccent;
+      });
+      return true;
+    }
+    setState(() {
+      color = Colors.teal;
+    });
+    return false;
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -311,7 +345,7 @@ class _TimeSelectorState extends State<TimeSelector> {
       children: [
         Icon(
           widget.icon,
-          color: color,
+          color: nullCheck() ? color : Colors.teal,
           size: widget.constraints.maxWidth * 0.06,
         ),
         Padding(
@@ -320,7 +354,9 @@ class _TimeSelectorState extends State<TimeSelector> {
           ),
         ),
         Text(
-          widget.time,
+          nullCheck()
+              ? widget.label
+              : "${widget.time?.hour.toString()}:${widget.time?.minute.toString()}",
           style: TextStyle(
             color: color,
             fontSize: widget.constraints.maxWidth * 0.04,
