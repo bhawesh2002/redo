@@ -293,7 +293,10 @@ class _DateSelectorState extends State<DateSelector> {
             ),
           ],
         ),
-        Text(weekday[widget.date!.weekday - 1]),
+        Text(weekday[DateTime.now().weekday - 1] ==
+                weekday[widget.date!.weekday - 1]
+            ? "Today"
+            : weekday[widget.date!.weekday - 1]),
       ],
     );
   }
