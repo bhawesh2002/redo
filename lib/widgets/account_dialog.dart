@@ -132,7 +132,7 @@ Widget acDialogButton(
             ),
             Text(
               label,
-              style: TextStyle(fontWeight: FontWeight.w600),
+              style: const TextStyle(fontWeight: FontWeight.w600),
             ),
           ],
         ),
