@@ -125,7 +125,7 @@ Widget acDialogButton(
         ),
         child: Row(
           children: [
-            const Icon(Icons.settings),
+            Icon(icon),
             Padding(
               padding: EdgeInsets.symmetric(
                   horizontal: MediaQuery.of(context).size.width * 0.01),
