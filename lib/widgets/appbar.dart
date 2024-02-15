@@ -44,7 +44,7 @@ class TodoAppBar extends StatelessWidget implements PreferredSizeWidget {
               ),
               child: GestureDetector(
                 onTap: () {
-                  accountDialog(context);
+                  accountDialog(context, "Aditya Singh");
                 },
                 child: CircleAvatar(
                   radius: appBarHeight * 0.4,
