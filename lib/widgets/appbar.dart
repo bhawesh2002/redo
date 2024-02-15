@@ -41,10 +41,15 @@ class TodoAppBar extends StatelessWidget implements PreferredSizeWidget {
               padding: EdgeInsets.symmetric(
                 horizontal: appBarWidth * 0.05,
               ),
-              child: CircleAvatar(
-                radius: appBarHeight * 0.4,
-                backgroundColor: Colors.white,
-                child: Image.asset('lib/assets/images/avataaars.png'),
+              child: GestureDetector(
+                onTap: () {
+                  //TODO: showDialog allowing user to access his account and access settings
+                },
+                child: CircleAvatar(
+                  radius: appBarHeight * 0.4,
+                  backgroundColor: Colors.white,
+                  child: Image.asset('lib/assets/images/avataaars.png'),
+                ),
               ),
             )
           ],
