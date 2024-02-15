@@ -1,9 +1,16 @@
 import 'package:flutter/material.dart';
 
-class AccountDialog extends StatelessWidget {
-  const AccountDialog({super.key});
-  @override
-  Widget build(BuildContext context) {
-    return Container();
-  }
+Future<void> accountDialog(BuildContext context) {
+  return showDialog(
+    context: context,
+    builder: (BuildContext context) {
+      return const SimpleDialog(
+        children: [
+          Center(
+            child: Text("Account Dialog"),
+          )
+        ],
+      );
+    },
+  );
 }

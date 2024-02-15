@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:redo/widgets/account_dialog.dart';
 import 'package:redo/widgets/redologo.dart';
 
 class TodoAppBar extends StatelessWidget implements PreferredSizeWidget {
@@ -43,7 +44,7 @@ class TodoAppBar extends StatelessWidget implements PreferredSizeWidget {
               ),
               child: GestureDetector(
                 onTap: () {
-                  //TODO: showDialog allowing user to access his account and access settings
+                  accountDialog(context);
                 },
                 child: CircleAvatar(
                   radius: appBarHeight * 0.4,
