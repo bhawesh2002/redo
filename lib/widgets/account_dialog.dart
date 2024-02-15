@@ -9,6 +9,7 @@ Future<void> accountDialog(BuildContext context, String name) {
         contentPadding: EdgeInsets.symmetric(
             vertical: MediaQuery.of(context).size.height * 0.02,
             horizontal: MediaQuery.of(context).size.width * 0.05),
+        surfaceTintColor: Colors.white,
         children: [
           Column(
             children: [
