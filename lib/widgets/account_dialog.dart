@@ -130,8 +130,8 @@ Widget acDialogButton(
               padding: EdgeInsets.symmetric(
                   horizontal: MediaQuery.of(context).size.width * 0.01),
             ),
-            const Text(
-              "Settings",
+            Text(
+              label,
               style: TextStyle(fontWeight: FontWeight.w600),
             ),
           ],
