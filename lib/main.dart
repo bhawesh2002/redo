@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:redo/screens/test_page.dart';
+import 'package:redo/screens/home.dart';
 
 void main() => runApp(const Redo());
 
@@ -10,7 +10,7 @@ class Redo extends StatelessWidget {
     return MaterialApp(
       title: 'Redo',
       theme: ThemeData(primarySwatch: Colors.blue),
-      home: const TestPage(),
+      home: const HomePage(),
     );
   }
 }
