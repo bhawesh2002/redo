@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:redo/assets/colors/colors.dart';
+import 'package:redo/screens/test_page.dart';
 
 Future<void> accountDialog(BuildContext context, String name) {
   return showDialog(
@@ -56,7 +57,8 @@ Future<void> accountDialog(BuildContext context, String name) {
                           borderRadius: BorderRadius.circular(
                               MediaQuery.of(context).size.width * 0.02),
                           onTap: () {
-                            //TODO: Redirect to account page.
+                            Navigator.of(context).push(MaterialPageRoute(
+                                builder: (context) => const TestPage()));
                           },
                           splashColor: Colors.teal.shade100,
                           child: Padding(

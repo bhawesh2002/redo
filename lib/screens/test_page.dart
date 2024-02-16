@@ -17,7 +17,7 @@ class _TestPageState extends State<TestPage> {
   Widget build(BuildContext context) {
     return const Scaffold(
       body: Center(
-        child: Text("TestPage"),
+        child: Text("Account Page"),
       ),
     );
   }
