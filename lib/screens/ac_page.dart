@@ -91,15 +91,17 @@ class _TestPageState extends State<AccountPage> {
               ),
             ),
             //Change Password Button
-            actionButtons(context,
-                actionLabel: "Chnage Password", icon: Icons.key),
+            actionButtons(context, onTap: () {
+              //TODO: Implement Change Password Functionality
+            }, actionLabel: "Chnage Password", icon: Icons.key),
             SizedBox(
               width: double.infinity,
               height: MediaQuery.of(context).size.height * 0.02,
             ),
             //Backup Data to cloud
-            actionButtons(context,
-                actionLabel: "Backup Your Data", icon: Icons.cloud_upload),
+            actionButtons(context, onTap: () {
+              //TODO: Implement data backup Functionality
+            }, actionLabel: "Backup Your Data", icon: Icons.cloud_upload),
             SizedBox(
               width: double.infinity,
               height: MediaQuery.of(context).size.height * 0.02,
@@ -107,6 +109,9 @@ class _TestPageState extends State<AccountPage> {
             //Delete Tour Account
             actionButtons(
               context,
+              onTap: () {
+                //TODO: Implement account deletion Functionality
+              },
               actionLabel: "Delete Your Account",
               icon: Icons.delete_forever,
               buttonColor: Colors.white,
@@ -160,6 +165,7 @@ Widget actionButtons(
   BuildContext context, {
   required String actionLabel,
   required IconData icon,
+  required VoidCallback onTap,
   Color? buttonColor,
   Color? splashColor,
   Color? labelColor,
@@ -170,9 +176,7 @@ Widget actionButtons(
     borderRadius:
         BorderRadius.circular(MediaQuery.of(context).size.width * 0.04),
     child: InkWell(
-      onTap: () {
-        //TODO: Implement change password functionality
-      },
+      onTap: onTap,
       splashColor: splashColor ?? Colors.teal.shade100,
       borderRadius:
           BorderRadius.circular(MediaQuery.of(context).size.width * 0.04),
