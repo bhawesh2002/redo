@@ -57,6 +57,7 @@ Future<void> accountDialog(BuildContext context, String name) {
                           borderRadius: BorderRadius.circular(
                               MediaQuery.of(context).size.width * 0.02),
                           onTap: () {
+                            Navigator.of(context).pop();
                             Navigator.of(context).push(MaterialPageRoute(
                                 builder: (context) => const AccountPage()));
                           },
