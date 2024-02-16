@@ -152,7 +152,7 @@ Widget infoTile(BuildContext context,
           Text(
             data,
             style: TextStyle(
-                fontSize: MediaQuery.of(context).size.width * 0.05,
+                fontSize: MediaQuery.of(context).size.width * 0.04,
                 fontWeight: FontWeight.w500),
           ),
         ],
