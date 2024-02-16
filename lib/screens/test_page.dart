@@ -15,8 +15,11 @@ class _TestPageState extends State<TestPage> {
 
   @override
   Widget build(BuildContext context) {
-    return const Scaffold(
-      body: Center(
+    return Scaffold(
+      appBar: AppBar(
+        title: const Text("Account"),
+      ),
+      body: const Center(
         child: Text("Account Page"),
       ),
     );
