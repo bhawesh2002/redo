@@ -28,15 +28,13 @@ class _CreateBottomTaskSheetState extends State<CreateBottomTaskSheet> {
   // ignore: avoid_init_to_null
   late TimeOfDay? _endTime = null;
   void setInputData() {
-    String start = "";
-    String end = "";
     setState(
       () {
         _title = _titleController.text;
         _description = _descriptionController.text;
-        start =
+        String start =
             "${_selectedDate.toString().split(" ").first} ${_startTime?.hour.toString()}:${_startTime?.minute.toString()}";
-        end =
+        String end =
             "${_selectedDate.toString().split(" ").first} ${_endTime?.hour.toString()}:${_endTime?.minute.toString()}";
         final newTask = Todo(
             id: "20",
