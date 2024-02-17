@@ -9,8 +9,9 @@ Future<void> accountDialog(BuildContext context, String name) {
     builder: (BuildContext context) {
       return SimpleDialog(
         contentPadding: EdgeInsets.symmetric(
-            vertical: MediaQuery.of(context).size.height * 0.02,
-            horizontal: MediaQuery.of(context).size.width * 0.05),
+          vertical: MediaQuery.of(context).size.height * 0.02,
+          horizontal: MediaQuery.of(context).size.width * 0.05,
+        ),
         surfaceTintColor: Colors.white,
         children: [
           Column(
@@ -59,16 +60,20 @@ Future<void> accountDialog(BuildContext context, String name) {
                               MediaQuery.of(context).size.width * 0.02),
                           onTap: () {
                             Navigator.of(context).pop();
-                            Navigator.of(context).push(MaterialPageRoute(
-                                builder: (context) => const AccountPage()));
+                            Navigator.of(context).push(
+                              MaterialPageRoute(
+                                builder: (context) => const AccountPage(),
+                              ),
+                            );
                           },
                           splashColor: Colors.teal.shade100,
                           child: Padding(
                             padding: EdgeInsets.symmetric(
-                                vertical:
-                                    MediaQuery.of(context).size.height * 0.005,
-                                horizontal:
-                                    MediaQuery.of(context).size.width * 0.05),
+                              vertical:
+                                  MediaQuery.of(context).size.height * 0.005,
+                              horizontal:
+                                  MediaQuery.of(context).size.width * 0.05,
+                            ),
                             child: const Text(
                               "Access Account Settings",
                               style: TextStyle(fontWeight: FontWeight.w600),
@@ -96,8 +101,11 @@ Future<void> accountDialog(BuildContext context, String name) {
                 context,
                 onTap: () {
                   Navigator.of(context).pop();
-                  Navigator.of(context).push(MaterialPageRoute(
-                      builder: (context) => const SettingsPage()));
+                  Navigator.of(context).push(
+                    MaterialPageRoute(
+                      builder: (context) => const SettingsPage(),
+                    ),
+                  );
                 },
                 label: "Settings",
                 icon: Icons.settings,
