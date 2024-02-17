@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:redo/assets/colors/colors.dart';
 import 'package:redo/screens/ac_page.dart';
+import 'package:redo/screens/settings.dart';
 
 Future<void> accountDialog(BuildContext context, String name) {
   return showDialog(
@@ -94,7 +95,8 @@ Future<void> accountDialog(BuildContext context, String name) {
               acDialogButton(
                 context,
                 onTap: () {
-                  //TODO: Navigate to Settings Page
+                  Navigator.of(context).push(MaterialPageRoute(
+                      builder: (context) => const SettingsPage()));
                 },
                 label: "Settings",
                 icon: Icons.settings,
