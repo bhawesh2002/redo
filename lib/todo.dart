@@ -2,28 +2,28 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'dart:convert';
 
-enum Field {
-  id,
-  title,
-  description,
-  startDate,
-  startTime,
-  endDate,
-  endTime,
-  isCompleted,
-  instance
-}
+// enum Field {
+//   id,
+//   title,
+//   description,
+//   startDate,
+//   startTime,
+//   endDate,
+//   endTime,
+//   isCompleted,
+//   instance
+// }
 
 class Todo {
   final String id;
   final String title;
   final String description;
   final DateTime start;
-  final String startDate;
-  final String startTime;
+  //final String startDate;
+  //final String startTime;
   final DateTime end;
-  final String endDate;
-  final String endTime;
+  //final String endDate;
+  //final String endTime;
   final bool isCompleted;
 
   Todo({
@@ -31,26 +31,26 @@ class Todo {
     required this.title,
     required this.description,
     required this.start,
-    required this.startDate,
-    required this.startTime,
+    //required this.startDate,
+    //required this.startTime,
     required this.end,
-    required this.endDate,
-    required this.endTime,
+    //required this.endDate,
+    //required this.endTime,
     required this.isCompleted,
   });
   factory Todo.fromJson(Map<String, dynamic> json) {
-    final List<String> start = json['start'].toString().split(' ');
-    final List<String> end = json['end'].toString().split(' ');
+    //final List<String> start = json['start'].toString().split(' ');
+    //final List<String> end = json['end'].toString().split(' ');
     return Todo(
       id: json['id'],
       title: json['title'],
       description: json['description'],
       start: DateTime.parse(json['start']),
-      startDate: start[0],
-      startTime: start[1],
+      //startDate: start[0],
+      //startTime: start[1],
       end: DateTime.parse(json['end']),
-      endDate: end[0],
-      endTime: end[1],
+      //endDate: end[0],
+      //endTime: end[1],
       isCompleted: json['isCompleted'] ?? false,
     );
   }
@@ -70,7 +70,7 @@ class Todo {
 Future<List<Todo>> getTasks() async {
   try {
     final jsonData = await rootBundle.loadString('lib/assets/tasks/tasks.json');
-    List<dynamic> jsonList = json.decode(jsonData);
+    List<dynamic> jsonList = jsonDecode(jsonData);
     List<Todo> tasks = jsonList.map((json) => Todo.fromJson(json)).toList();
     return tasks;
   } catch (e) {
@@ -79,70 +79,70 @@ Future<List<Todo>> getTasks() async {
   }
 }
 
-class TaskValue extends StatefulWidget {
-  final int index;
-  final Field field;
-  final TextStyle textStyle;
-  final bool textWrap;
-  final int maxLines;
-  const TaskValue({
-    super.key,
-    required this.index,
-    this.field = Field.instance,
-    this.textStyle = const TextStyle(),
-    this.textWrap = true,
-    this.maxLines = 1,
-  });
+// class TaskValue extends StatefulWidget {
+//   final int index;
+//   final Field field;
+//   final TextStyle textStyle;
+//   final bool textWrap;
+//   final int maxLines;
+//   const TaskValue({
+//     super.key,
+//     required this.index,
+//     this.field = Field.instance,
+//     this.textStyle = const TextStyle(),
+//     this.textWrap = true,
+//     this.maxLines = 1,
+//   });
 
-  @override
-  State<StatefulWidget> createState() => _GetTasksState();
-}
+//   @override
+//   State<StatefulWidget> createState() => _GetTasksState();
+// }
 
-class _GetTasksState extends State<TaskValue> {
-  @override
-  Widget build(BuildContext context) {
-    return FutureBuilder<List<Todo>>(
-      future: getTasks(),
-      builder: (context, snapshot) {
-        if (snapshot.connectionState == ConnectionState.waiting) {
-          return const CircularProgressIndicator();
-        } else if (snapshot.hasError) {
-          return Text("Error : ${snapshot.error}");
-        } else if (!snapshot.hasData || snapshot.data!.isEmpty) {
-          return const Text('No tasks available.');
-        } else {
-          Todo todo = snapshot.data![widget.index];
-          switch (widget.field) {
-            case Field.id:
-              return Text(todo.id, style: widget.textStyle);
-            case Field.title:
-              return Text(todo.title, style: widget.textStyle);
-            case Field.description:
-              return Text(
-                todo.description,
-                style: widget.textStyle,
-                maxLines: widget.maxLines,
-                softWrap: widget.textWrap,
-                overflow: widget.textWrap
-                    ? null
-                    : TextOverflow
-                        .ellipsis, //Check textWrap Since overflow and softWrap cannot exist together
-              );
-            case Field.startDate:
-              return Text(todo.startDate, style: widget.textStyle);
-            case Field.startTime:
-              return Text(todo.startTime, style: widget.textStyle);
-            case Field.endDate:
-              return Text(todo.endDate, style: widget.textStyle);
-            case Field.endTime:
-              return Text(todo.endTime, style: widget.textStyle);
-            case Field.isCompleted:
-              return Text(todo.isCompleted.toString());
-            default:
-              return Text(todo.toString());
-          }
-        }
-      },
-    );
-  }
-}
+// class _GetTasksState extends State<TaskValue> {
+//   @override
+//   Widget build(BuildContext context) {
+//     return FutureBuilder<List<Todo>>(
+//       future: getTasks(),
+//       builder: (context, snapshot) {
+//         if (snapshot.connectionState == ConnectionState.waiting) {
+//           return const CircularProgressIndicator();
+//         } else if (snapshot.hasError) {
+//           return Text("Error : ${snapshot.error}");
+//         } else if (!snapshot.hasData || snapshot.data!.isEmpty) {
+//           return const Text('No tasks available.');
+//         } else {
+//           Todo todo = snapshot.data![widget.index];
+//           switch (widget.field) {
+//             case Field.id:
+//               return Text(todo.id, style: widget.textStyle);
+//             case Field.title:
+//               return Text(todo.title, style: widget.textStyle);
+//             case Field.description:
+//               return Text(
+//                 todo.description,
+//                 style: widget.textStyle,
+//                 maxLines: widget.maxLines,
+//                 softWrap: widget.textWrap,
+//                 overflow: widget.textWrap
+//                     ? null
+//                     : TextOverflow
+//                         .ellipsis, //Check textWrap Since overflow and softWrap cannot exist together
+//               );
+//             case Field.startDate:
+//               return Text(todo.startDate, style: widget.textStyle);
+//             case Field.startTime:
+//               return Text(todo.startTime, style: widget.textStyle);
+//             case Field.endDate:
+//               return Text(todo.endDate, style: widget.textStyle);
+//             case Field.endTime:
+//               return Text(todo.endTime, style: widget.textStyle);
+//             case Field.isCompleted:
+//               return Text(todo.isCompleted.toString());
+//             default:
+//               return Text(todo.toString());
+//           }
+//         }
+//       },
+//     );
+//   }
+// }
