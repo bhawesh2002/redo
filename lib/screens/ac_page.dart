@@ -16,110 +16,112 @@ class _TestPageState extends State<AccountPage> {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        title: const Text("Account"),
-        actions: [
-          IconButton(
-              onPressed: () {
-                //TODO: Implement Edit functionality
-              },
-              icon: const Icon(Icons.mode_edit_outline_rounded)),
-        ],
-      ),
-      body: Padding(
-        padding: EdgeInsets.symmetric(
-          vertical: MediaQuery.of(context).size.height * 0.01,
-          horizontal: MediaQuery.of(context).size.width * 0.05,
+    return SafeArea(
+      child: Scaffold(
+        appBar: AppBar(
+          title: const Text("Account"),
+          actions: [
+            IconButton(
+                onPressed: () {
+                  //TODO: Implement Edit functionality
+                },
+                icon: const Icon(Icons.mode_edit_outline_rounded)),
+          ],
         ),
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            //Profile picture
-            Center(
-              child: CircleAvatar(
-                radius: MediaQuery.of(context).size.width * 0.25,
-                child: Image.asset(
-                  'lib/assets/images/avataaars.png',
-                ),
-              ),
-            ),
-            SizedBox(
-              width: double.infinity,
-              height: MediaQuery.of(context).size.height * 0.04,
-            ),
-            //Username
-            infoTile(
-              context,
-              label: "Username",
-              data: "aditya.singh65",
-              icon: Icons.verified_user,
-            ),
-            SizedBox(
-              width: double.infinity,
-              height: MediaQuery.of(context).size.height * 0.03,
-            ),
-            //Name
-            infoTile(
-              context,
-              label: "Name",
-              data: "Aditya Singh",
-              icon: Icons.person,
-            ),
-            SizedBox(
-              width: double.infinity,
-              height: MediaQuery.of(context).size.height * 0.03,
-            ),
-            //Email Id
-            infoTile(
-              context,
-              label: "Email",
-              data: "adityasingh65@redo.com",
-              icon: Icons.email,
-            ),
-            Padding(
-              padding: EdgeInsets.symmetric(
-                  vertical: MediaQuery.of(context).size.height * 0.04),
-              child: Container(
-                decoration: BoxDecoration(
-                  color: Colors.grey,
-                  border: Border.all(
-                    width: 1,
-                    color: Colors.grey,
+        body: Padding(
+          padding: EdgeInsets.symmetric(
+            vertical: MediaQuery.of(context).size.height * 0.01,
+            horizontal: MediaQuery.of(context).size.width * 0.05,
+          ),
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              //Profile picture
+              Center(
+                child: CircleAvatar(
+                  radius: MediaQuery.of(context).size.width * 0.25,
+                  child: Image.asset(
+                    'lib/assets/images/avataaars.png',
                   ),
                 ),
               ),
-            ),
-            //Change Password Button
-            actionButtons(context, onTap: () {
-              //TODO: Implement Change Password Functionality
-            }, actionLabel: "Chnage Password", icon: Icons.key),
-            SizedBox(
-              width: double.infinity,
-              height: MediaQuery.of(context).size.height * 0.02,
-            ),
-            //Backup Data to cloud
-            actionButtons(context, onTap: () {
-              //TODO: Implement data backup Functionality
-            }, actionLabel: "Backup Your Data", icon: Icons.cloud_upload),
-            SizedBox(
-              width: double.infinity,
-              height: MediaQuery.of(context).size.height * 0.02,
-            ),
-            //Delete Tour Account
-            actionButtons(
-              context,
-              onTap: () {
-                //TODO: Implement account deletion Functionality
-              },
-              actionLabel: "Delete Your Account",
-              icon: Icons.delete_forever,
-              buttonColor: Colors.white,
-              splashColor: Colors.red.shade100,
-              labelColor: Colors.redAccent,
-              iconColor: Colors.redAccent,
-            ),
-          ],
+              SizedBox(
+                width: double.infinity,
+                height: MediaQuery.of(context).size.height * 0.04,
+              ),
+              //Username
+              infoTile(
+                context,
+                label: "Username",
+                data: "aditya.singh65",
+                icon: Icons.verified_user,
+              ),
+              SizedBox(
+                width: double.infinity,
+                height: MediaQuery.of(context).size.height * 0.03,
+              ),
+              //Name
+              infoTile(
+                context,
+                label: "Name",
+                data: "Aditya Singh",
+                icon: Icons.person,
+              ),
+              SizedBox(
+                width: double.infinity,
+                height: MediaQuery.of(context).size.height * 0.03,
+              ),
+              //Email Id
+              infoTile(
+                context,
+                label: "Email",
+                data: "adityasingh65@redo.com",
+                icon: Icons.email,
+              ),
+              Padding(
+                padding: EdgeInsets.symmetric(
+                    vertical: MediaQuery.of(context).size.height * 0.04),
+                child: Container(
+                  decoration: BoxDecoration(
+                    color: Colors.grey,
+                    border: Border.all(
+                      width: 1,
+                      color: Colors.grey,
+                    ),
+                  ),
+                ),
+              ),
+              //Change Password Button
+              actionButtons(context, onTap: () {
+                //TODO: Implement Change Password Functionality
+              }, actionLabel: "Chnage Password", icon: Icons.key),
+              SizedBox(
+                width: double.infinity,
+                height: MediaQuery.of(context).size.height * 0.02,
+              ),
+              //Backup Data to cloud
+              actionButtons(context, onTap: () {
+                //TODO: Implement data backup Functionality
+              }, actionLabel: "Backup Your Data", icon: Icons.cloud_upload),
+              SizedBox(
+                width: double.infinity,
+                height: MediaQuery.of(context).size.height * 0.02,
+              ),
+              //Delete Tour Account
+              actionButtons(
+                context,
+                onTap: () {
+                  //TODO: Implement account deletion Functionality
+                },
+                actionLabel: "Delete Your Account",
+                icon: Icons.delete_forever,
+                buttonColor: Colors.white,
+                splashColor: Colors.red.shade100,
+                labelColor: Colors.redAccent,
+                iconColor: Colors.redAccent,
+              ),
+            ],
+          ),
         ),
       ),
     );
