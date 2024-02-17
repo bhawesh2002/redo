@@ -1,5 +1,8 @@
+import 'dart:convert';
+
 import 'package:flutter/material.dart';
 import 'package:redo/assets/colors/colors.dart';
+import 'package:redo/todo.dart';
 import 'package:redo/utilis/days.dart';
 
 class CreateBottomTaskSheet extends StatefulWidget {
@@ -27,18 +30,26 @@ class _CreateBottomTaskSheetState extends State<CreateBottomTaskSheet> {
   void setInputData() {
     String start = "";
     String end = "";
-    setState(() {
-      _title = _titleController.text;
-      _description = _descriptionController.text;
-      start =
-          "${_selectedDate.toString().split(" ").first} ${_startTime?.hour.toString()}:${_startTime?.minute.toString()}";
-      end =
-          "${_selectedDate.toString().split(" ").first} ${_endTime?.hour.toString()}:${_endTime?.minute.toString()}";
-    });
-    debugPrint("Title: $_title");
-    debugPrint("Description: $_description");
-    debugPrint("Start: $start");
-    debugPrint("End: $end");
+    setState(
+      () {
+        _title = _titleController.text;
+        _description = _descriptionController.text;
+        start =
+            "${_selectedDate.toString().split(" ").first} ${_startTime?.hour.toString()}:${_startTime?.minute.toString()}";
+        end =
+            "${_selectedDate.toString().split(" ").first} ${_endTime?.hour.toString()}:${_endTime?.minute.toString()}";
+        final newTask = Todo(
+            id: "20",
+            title: _title!,
+            description: _description!,
+            start: DateTime.parse(start),
+            end: DateTime.parse(end),
+            isCompleted: false);
+        final jsonMap = newTask.toJson();
+        final encoded = json.encode(jsonMap);
+        debugPrint(encoded);
+      },
+    );
   }
 
   @override
