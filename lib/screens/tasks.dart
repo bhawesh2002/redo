@@ -63,7 +63,7 @@ class _TasksState extends State<Tasks> {
                   EdgeInsets.symmetric(vertical: constraints.maxHeight * 0.01),
             ),
             TaskWidget(
-              index: 2,
+              index: 0,
               taskList: widget.taskList,
             ),
             Padding(
