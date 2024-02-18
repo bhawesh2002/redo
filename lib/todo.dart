@@ -17,7 +17,7 @@ import 'package:path_provider/path_provider.dart';
 // }
 
 class Todo {
-  final String id;
+  //final String id;
   final String title;
   final String description;
   final DateTime start;
@@ -29,7 +29,7 @@ class Todo {
   final bool isCompleted;
 
   Todo({
-    required this.id,
+    //required this.id,
     required this.title,
     required this.description,
     required this.start,
@@ -44,7 +44,7 @@ class Todo {
     //final List<String> start = json['start'].toString().split(' ');
     //final List<String> end = json['end'].toString().split(' ');
     return Todo(
-      id: json['id'],
+      //id: json['id'],
       title: json['title'],
       description: json['description'],
       start: DateTime.parse(json['start']),
@@ -59,7 +59,7 @@ class Todo {
 
   Map<String, dynamic> toJson() {
     return {
-      'id': id,
+      //'id': id,
       'title': title,
       'description': description,
       'start': start.toString(),

@@ -37,7 +37,6 @@ class _CreateBottomTaskSheetState extends State<CreateBottomTaskSheet> {
           String end =
               "${_selectedDate.toString().split(" ").first} ${_endTime?.hour.toString().padLeft(2, '0')}:${_endTime?.minute.toString().padLeft(2, '0')}";
           final newTask = Todo(
-            id: "0",
             title: _title!,
             description: _description!,
             start: DateTime.parse(start),
