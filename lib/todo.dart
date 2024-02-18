@@ -62,8 +62,9 @@ Future<void> addTask(Todo task) async {
   try {
     List<Todo> existingTask = await getTasks();
     existingTask.add(task);
+    List<Todo> sorted = sortTasks(existingTask);
     List<Map<String, dynamic>> updated =
-        existingTask.map((todo) => todo.toJson()).toList();
+        sorted.map((todo) => todo.toJson()).toList();
     final encodedTask = json.encode(updated);
     final directory = await getApplicationDocumentsDirectory();
     File file = File("${directory.path}/tasks.json");
@@ -71,4 +72,12 @@ Future<void> addTask(Todo task) async {
   } catch (e) {
     debugPrint("Error while adding task: $e");
   }
+}
+
+List<Todo> sortTasks(List<Todo> tasks) {
+  List<Todo> sortedTasks = List.from(tasks);
+
+  sortedTasks.sort((a, b) => a.start.compareTo(b.start));
+
+  return sortedTasks;
 }
