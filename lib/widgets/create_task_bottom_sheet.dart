@@ -1,5 +1,3 @@
-import 'dart:convert';
-
 import 'package:flutter/material.dart';
 import 'package:redo/assets/colors/colors.dart';
 import 'package:redo/todo.dart';
@@ -27,25 +25,30 @@ class _CreateBottomTaskSheetState extends State<CreateBottomTaskSheet> {
   late TimeOfDay? _startTime = null;
   // ignore: avoid_init_to_null
   late TimeOfDay? _endTime = null;
+
   void setInputData() {
     setState(
       () {
-        _title = _titleController.text;
-        _description = _descriptionController.text;
-        String start =
-            "${_selectedDate.toString().split(" ").first} ${_startTime?.hour.toString()}:${_startTime?.minute.toString()}";
-        String end =
-            "${_selectedDate.toString().split(" ").first} ${_endTime?.hour.toString()}:${_endTime?.minute.toString()}";
-        final newTask = Todo(
-            id: "20",
+        try {
+          _title = _titleController.text;
+          _description = _descriptionController.text;
+          String start =
+              "${_selectedDate.toString().split(" ").first} ${_startTime?.hour.toString()}:${_startTime?.minute.toString()}";
+          String end =
+              "${_selectedDate.toString().split(" ").first} ${_endTime?.hour.toString()}:${_endTime?.minute.toString()}";
+          final newTask = Todo(
+            id: "0",
             title: _title!,
             description: _description!,
             start: DateTime.parse(start),
             end: DateTime.parse(end),
-            isCompleted: false);
-        final jsonMap = newTask.toJson();
-        final encoded = json.encode(jsonMap);
-        debugPrint(encoded);
+            isCompleted: false,
+          );
+          addTask(newTask);
+          debugPrint('Task added successfully!');
+        } catch (e) {
+          debugPrint('Error adding task: $e');
+        }
       },
     );
   }
