@@ -1,6 +1,8 @@
+import 'dart:io';
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
 import 'dart:convert';
+
+import 'package:path_provider/path_provider.dart';
 
 // enum Field {
 //   id,
@@ -69,13 +71,31 @@ class Todo {
 
 Future<List<Todo>> getTasks() async {
   try {
-    final jsonData = await rootBundle.loadString('lib/assets/tasks/tasks.json');
+    final directory = await getApplicationDocumentsDirectory();
+    File file = File("${directory.path}/tasks.json");
+    final jsonData = await file.readAsString();
     List<dynamic> jsonList = jsonDecode(jsonData);
     List<Todo> tasks = jsonList.map((json) => Todo.fromJson(json)).toList();
     return tasks;
   } catch (e) {
     debugPrint('Error fetching tasks: $e');
     return [];
+  }
+}
+
+Future<void> addTask(Todo task) async {
+  try {
+    List<Todo> existingTask = await getTasks();
+    existingTask.add(task);
+    List<Map<String, dynamic>> updated =
+        existingTask.map((todo) => todo.toJson()).toList();
+    final encodedTask = json.encode(updated);
+    final directory = await getApplicationDocumentsDirectory();
+    File file = File("${directory.path}/tasks.json");
+    debugPrint("File Path:$file.path");
+    file.writeAsString(encodedTask);
+  } catch (e) {
+    debugPrint("Error while adding task: $e");
   }
 }
 
