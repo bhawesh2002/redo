@@ -371,9 +371,7 @@ class _TimeSelectorState extends State<TimeSelector> {
           ),
         ),
         Text(
-          nullCheck()
-              ? widget.label
-              : "${widget.time?.hour.toString().padLeft(2, '0')}:${widget.time?.minute.toString().padLeft(2, '0')}",
+          nullCheck() ? widget.label : widget.time!.format(context),
           style: TextStyle(
             color: color,
             fontSize: widget.constraints.maxWidth * 0.04,
