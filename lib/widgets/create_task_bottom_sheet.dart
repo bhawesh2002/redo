@@ -33,9 +33,9 @@ class _CreateBottomTaskSheetState extends State<CreateBottomTaskSheet> {
           _title = _titleController.text;
           _description = _descriptionController.text;
           String start =
-              "${_selectedDate.toString().split(" ").first} ${_startTime?.hour.toString()}:${_startTime?.minute.toString()}";
+              "${_selectedDate.toString().split(" ").first} ${_startTime?.hour.toString().padLeft(2, '0')}:${_startTime?.minute.toString().padLeft(2, '0')}";
           String end =
-              "${_selectedDate.toString().split(" ").first} ${_endTime?.hour.toString()}:${_endTime?.minute.toString()}";
+              "${_selectedDate.toString().split(" ").first} ${_endTime?.hour.toString().padLeft(2, '0')}:${_endTime?.minute.toString().padLeft(2, '0')}";
           final newTask = Todo(
             id: "0",
             title: _title!,
@@ -373,7 +373,7 @@ class _TimeSelectorState extends State<TimeSelector> {
         Text(
           nullCheck()
               ? widget.label
-              : "${widget.time?.hour.toString()}:${widget.time?.minute.toString()}",
+              : "${widget.time?.hour.toString().padLeft(2, '0')}:${widget.time?.minute.toString().padLeft(2, '0')}",
           style: TextStyle(
             color: color,
             fontSize: widget.constraints.maxWidth * 0.04,
