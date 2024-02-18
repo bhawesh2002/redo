@@ -73,6 +73,11 @@ Future<List<Todo>> getTasks() async {
   try {
     final directory = await getApplicationDocumentsDirectory();
     File file = File("${directory.path}/tasks.json");
+    if (!await file.exists()) {
+      await file.create();
+      debugPrint("File created at: ${file.path}");
+      return [];
+    }
     final jsonData = await file.readAsString();
     List<dynamic> jsonList = jsonDecode(jsonData);
     List<Todo> tasks = jsonList.map((json) => Todo.fromJson(json)).toList();
@@ -92,7 +97,6 @@ Future<void> addTask(Todo task) async {
     final encodedTask = json.encode(updated);
     final directory = await getApplicationDocumentsDirectory();
     File file = File("${directory.path}/tasks.json");
-    debugPrint("File Path:$file.path");
     file.writeAsString(encodedTask);
   } catch (e) {
     debugPrint("Error while adding task: $e");
