@@ -5,11 +5,11 @@ import 'dart:convert';
 import 'package:path_provider/path_provider.dart';
 
 class Todo {
-  final String title;
-  final String description;
-  final DateTime start;
-  final DateTime end;
-  final bool isCompleted;
+  String title;
+  String description;
+  DateTime start;
+  DateTime end;
+  bool isCompleted;
 
   Todo({
     required this.title,
