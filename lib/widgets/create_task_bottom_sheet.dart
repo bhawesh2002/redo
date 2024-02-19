@@ -36,15 +36,23 @@ class _CreateBottomTaskSheetState extends State<CreateBottomTaskSheet> {
               "${_selectedDate.toString().split(" ").first} ${_startTime?.hour.toString().padLeft(2, '0')}:${_startTime?.minute.toString().padLeft(2, '0')}";
           String end =
               "${_selectedDate.toString().split(" ").first} ${_endTime?.hour.toString().padLeft(2, '0')}:${_endTime?.minute.toString().padLeft(2, '0')}";
-          final newTask = Todo(
-            title: _title!,
-            description: _description!,
-            start: DateTime.parse(start),
-            end: DateTime.parse(end),
-            isCompleted: false,
-          );
-          addTask(newTask);
-          debugPrint('Task added successfully!');
+          if (DateTime.parse(end).isBefore(DateTime.parse(start)) ||
+              DateTime.parse(end) == DateTime.parse(start)) {
+            ScaffoldMessenger.of(context).showSnackBar(const SnackBar(
+              content: Text("End Time cannot be before Start Time"),
+            ));
+            debugPrint('End time val error');
+          } else {
+            final newTask = Todo(
+              title: _title!,
+              description: _description!,
+              start: DateTime.parse(start),
+              end: DateTime.parse(end),
+              isCompleted: false,
+            );
+            addTask(newTask);
+            debugPrint('Task added successfully!');
+          }
         } catch (e) {
           debugPrint('Error adding task: $e');
         }
