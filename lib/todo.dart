@@ -81,3 +81,41 @@ List<Todo> sortTasks(List<Todo> tasks) {
 
   return sortedTasks;
 }
+
+Future<void> updateTask({
+  required Todo task,
+  String? newTitle,
+  String? newDescription,
+  DateTime? startModified,
+  DateTime? endModified,
+  bool? isCompleted,
+}) async {
+  try {
+    List<Todo> oldTasks = await getTasks();
+    if (newTitle != null) {
+      task.title = newTitle;
+    }
+    if (newDescription != null) {
+      task.description = newDescription;
+    }
+    if (startModified != null) {
+      task.start = startModified;
+    }
+    if (endModified != null) {
+      task.end = endModified;
+    }
+    if (isCompleted != null) {
+      task.isCompleted = isCompleted;
+    }
+    final sorted = sortTasks(oldTasks);
+    final updated = sorted.map((todo) => todo.toJson()).toList();
+    final encodedTasks = json.encode(updated);
+    final directory = await getApplicationCacheDirectory();
+    File file = File("${directory.path}/tasks.json");
+    await file.writeAsString(encodedTasks, flush: true);
+    final printTasks = await getTasks();
+    debugPrint(printTasks.toList().toString());
+  } catch (e) {
+    debugPrint("Error Updating task : $e");
+  }
+}
