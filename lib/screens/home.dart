@@ -5,7 +5,6 @@ import 'package:redo/screens/tasks.dart';
 import 'package:redo/widgets/appbar.dart';
 import 'package:redo/widgets/create_task_bottom_sheet.dart';
 import 'package:redo/widgets/todo_bottom_app_bar_item.dart';
-import 'package:redo/todo.dart';
 
 List<String> filterLabel = [
   "Upcoming",
@@ -36,27 +35,7 @@ class _HomePageState extends State<HomePage> {
     return SafeArea(
       child: Scaffold(
         appBar: TodoAppBar(context: context),
-        body: FutureBuilder(
-          future: getTasks(),
-          builder: (context, snapshot) {
-            if (snapshot.connectionState == ConnectionState.waiting) {
-              return const Center(child: CircularProgressIndicator());
-            } else if (snapshot.hasError) {
-              return Center(child: Text("Error: ${snapshot.error}"));
-            } else if (!snapshot.hasData || snapshot.data!.isEmpty) {
-              return const Center(child: Text("No tasks Available"));
-            } else {
-              List<Todo> taskList = snapshot.data ?? [];
-              if (_selectedIndex == BottomNavItem.Stats.index) {
-                return const Stats();
-              } else {
-                return Tasks(
-                  taskList: taskList,
-                );
-              }
-            }
-          },
-        ),
+        body: _selectedIndex == 0 ? const Tasks() : const Stats(),
         bottomNavigationBar: BottomAppBar(
           color: AppColor.primaryColor,
           child: Row(

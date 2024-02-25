@@ -2,17 +2,25 @@ import 'package:flutter/material.dart';
 import 'package:redo/assets/colors/colors.dart';
 import 'package:redo/todo.dart';
 
+// ignore: must_be_immutable
 class TaskTile extends StatefulWidget {
   final int index;
   final List<Todo> taskList;
-  const TaskTile({super.key, required this.index, required this.taskList});
+  bool isCompleted;
+  Function(bool?) ? onChecked;
+  TaskTile({
+    super.key,
+    required this.index,
+    required this.taskList,
+    required this.isCompleted,
+    required this.onChecked,
+  });
 
   @override
   State<TaskTile> createState() => _TaskTileState();
 }
 
 class _TaskTileState extends State<TaskTile> {
-  bool isCompleted = false;
   bool isExpanded = false;
   @override
   Widget build(BuildContext context) {
@@ -38,10 +46,10 @@ class _TaskTileState extends State<TaskTile> {
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               Checkbox(
-                value: isCompleted,
+                value: widget.isCompleted,
                 onChanged: (value) {
                   setState(() {
-                    isCompleted = value!;
+                    widget.isCompleted = widget.onChecked as bool;
                   });
                 },
                 activeColor: AppColor.primaryColor,
