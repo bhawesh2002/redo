@@ -19,6 +19,7 @@ class MainApp extends StatelessWidget {
     // List<Color> allColors = [...primary, ...neutral];
     // List<String> shadeValue = [...primaryShadeValue, ...neutralShadeValue];
     return MaterialApp(
+      theme: ThemeData(fontFamily: 'NeueHaasDisplay'),
       home: SafeArea(
         child: Scaffold(
           body: SingleChildScrollView(
@@ -39,7 +40,7 @@ class MainApp extends StatelessWidget {
                   padding: EdgeInsets.symmetric(vertical: 8.0, horizontal: 16),
                   child: Text("Emrald",
                       style:
-                          TextStyle(fontSize: 24, fontWeight: FontWeight.w500)),
+                          TextStyle(fontSize: 24, fontWeight: FontWeight.w600)),
                 ),
                 GridView.count(
                     physics: const NeverScrollableScrollPhysics(),
@@ -71,6 +72,7 @@ class MainApp extends StatelessWidget {
                               textAlign: TextAlign.center,
                               style: TextStyle(
                                 fontWeight: FontWeight.w500,
+                                letterSpacing: 0.5,
                                 color: primary[index].computeLuminance() > 0.5
                                     ? AppColors.black
                                     : AppColors.white,
@@ -84,7 +86,7 @@ class MainApp extends StatelessWidget {
                   padding: EdgeInsets.symmetric(vertical: 8.0, horizontal: 16),
                   child: Text("Silver",
                       style:
-                          TextStyle(fontSize: 24, fontWeight: FontWeight.w500)),
+                          TextStyle(fontSize: 24, fontWeight: FontWeight.w600)),
                 ),
                 GridView.count(
                     physics: const NeverScrollableScrollPhysics(),
