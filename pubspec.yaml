@@ -21,3 +21,19 @@ dev_dependencies:
 
 flutter:
   uses-material-design: true
+
+  fonts:
+    - family: NeueHaasDisplay
+      fonts:
+        - asset: lib/assets/fonts/NeueHaasDisplayThin.ttf
+          weight: 300
+        - asset: lib/assets/fonts/NeueHaasDisplayLight.ttf
+          weight: 400
+        - asset: lib/assets/fonts/NeueHaasDisplayRoman.ttf
+          weight: 500
+        - asset: lib/assets/fonts/NeueHaasDisplayMediu.ttf
+          weight: 600
+        - asset: lib/assets/fonts/NeueHaasDisplayBold.ttf
+          weight: 700
+        - asset: lib/assets/fonts/NeueHaasDisplayBlack.ttf
+          weight: 800
