@@ -3,7 +3,8 @@ import 'dart:ui';
 class AppColors {
   static const Color white = Color(0xffffffff);
   static const Color black = Color(0xff000000);
-
+  static Color primaryEmrald = emrald['500']!;
+  static Color primarySilver = silver['500']!;
   // Primary Color
   static const Map<String, Color> emrald = {
     '50': Color(0xffeffef6),
@@ -11,8 +12,8 @@ class AppColors {
     '200': Color(0xffb5fdde),
     '300': Color(0xff7bfac4),
     '400': Color(0xff3beda3),
-    '500': Color(0xff11d483),
-    '600': Color(0xff07b26b),
+    '500': Color(0xFF06DF85), //Primary Emrald
+    '600': Color(0xFF04BA6E),
     '700': Color(0xff0a8b56),
     '800': Color(0xff0e6d47),
     '900': Color(0xff0d5a3d),
@@ -25,7 +26,7 @@ class AppColors {
     '200': Color(0xffe3e3e3),
     '300': Color(0xffd1d1d1),
     '400': Color(0xffc2c2c2),
-    '500': Color(0xffaaaaaa),
+    '500': Color(0xffaaaaaa), //Primary Silver
     '600': Color(0xff969696),
     '700': Color(0xff818181),
     '800': Color(0xff6a6a6a),
