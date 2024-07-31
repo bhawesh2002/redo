@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:hive_flutter/adapters.dart';
-import 'package:redo/pages/about_page.dart';
+import 'package:redo/pages/home.dart';
 import 'package:redo/utils/enums/prirority.dart';
 import 'package:redo/utils/measurements/uisizes.dart';
 import 'package:redo/utils/models/todo.dart';
@@ -26,7 +26,7 @@ class MainApp extends StatelessWidget {
       theme: ThemeData(
           scaffoldBackgroundColor: AppColors.silver['50'],
           fontFamily: 'GalanoGrotesque'),
-      home: const AboutPage(),
+      home: const HomePage(),
     );
   }
 }
