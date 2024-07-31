@@ -19,13 +19,37 @@ class MainApp extends StatelessWidget {
     // List<Color> allColors = [...primary, ...neutral];
     // List<String> shadeValue = [...primaryShadeValue, ...neutralShadeValue];
     return MaterialApp(
-      theme: ThemeData(fontFamily: 'NeueHaasDisplay'),
+      theme: ThemeData(fontFamily: 'GalanoGrotesque'),
       home: SafeArea(
         child: Scaffold(
           body: SingleChildScrollView(
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
+                const Padding(
+                  padding: EdgeInsets.all(16),
+                  child: Text(
+                    "REDO",
+                    style: TextStyle(
+                      fontSize: 32,
+                      fontWeight: FontWeight.w700,
+                    ),
+                  ),
+                ),
+                const Padding(
+                  padding: EdgeInsets.all(16),
+                  child: Text(
+                    '''Redo is a Todo App that helps you to keep track of your daily tasks and goals. '''
+                    '''It is designed to be simple and easy to use. It is built with Flutter and Firebase. '''
+                    '''It is a work in progress and will be updated regularly. It is open source and contributions are welcome. '''
+                    '''You can find the source code on GitHub.''',
+                    style: TextStyle(
+                      fontSize: 16,
+                      fontWeight: FontWeight.w500,
+                      letterSpacing: 0.5,
+                    ),
+                  ),
+                ),
                 const Padding(
                   padding: EdgeInsets.all(16),
                   child: Text(
