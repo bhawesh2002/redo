@@ -1,3 +1,5 @@
+import 'dart:math';
+
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:redo/controllers/todos_hive_controller.dart';
@@ -20,7 +22,9 @@ class HomePage extends StatelessWidget {
         cancellationReason: 'cancellationReason',
         isDone: false,
         tags: ['work', 'home'],
-        colorHex: '#00fbff',
+        colorHex: Colors
+            .primaries[Random().nextInt(Colors.primaries.length)].value
+            .toRadixString(16),
         priority: Prirority.medium,
         createdAt: DateTime.now(),
         scheduledAt: DateTime(2024, 7, 31, 9, 30),
