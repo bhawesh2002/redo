@@ -100,7 +100,13 @@ class HomePage extends StatelessWidget {
                         itemCount: _todosHiveController.todos.length,
                         itemBuilder: (context, index) {
                           return ListTile(
-                            onTap: () {},
+                            onTap: () {
+                              _todosHiveController.updateTodo(
+                                index,
+                                title: 'Updated Title',
+                                description: 'Item is updated by REDO',
+                              );
+                            },
                             contentPadding:
                                 const EdgeInsets.symmetric(horizontal: 24),
                             title: Text(
