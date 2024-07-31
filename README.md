@@ -2,6 +2,8 @@
 
 Redo is a Todo list application that allows users to create, edit, and delete tasks. Users can also mark tasks as complete and filter tasks by their completion status. Redo is built with Flutter and Firebase.
 
+Redo uses GetX for state management and Hive for local data storage.
+
 ## Installation
 
 To run this application, you will need to have Flutter installed on your machine. You can find instructions on how to install Flutter [here](https://flutter.dev/docs/get-started/install).
