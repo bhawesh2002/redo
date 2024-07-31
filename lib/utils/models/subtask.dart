@@ -1,12 +1,22 @@
-import 'package:intl/intl.dart';
+import 'package:hive/hive.dart';
 
+part 'subtask.g.dart';
+
+@HiveType(typeId: 2)
 class Subtask {
+  @HiveField(0)
   final String todoId;
+  @HiveField(1)
   final String subTaskId;
+  @HiveField(2)
   final String name;
+  @HiveField(3)
   final String description;
+  @HiveField(4)
   final bool isDone;
+  @HiveField(5)
   final DateTime completedAt;
+  @HiveField(6)
   final DateTime scheduledAt;
 
   Subtask(
@@ -17,27 +27,4 @@ class Subtask {
       required this.isDone,
       required this.completedAt,
       required this.scheduledAt});
-  factory Subtask.fromJson(Map<String, dynamic> json) {
-    return Subtask(
-      todoId: json['todoId'],
-      name: json['name'],
-      description: json['description'],
-      subTaskId: json['subTaskId'],
-      isDone: json['isDone'],
-      completedAt: DateFormat('yyyy-MM-ddTHH:mm:ss').parse(json['completedAt']),
-      scheduledAt: DateFormat('yyyy-MM-ddTHH:mm:ss').parse(json['scheduledAt']),
-    );
-  }
-
-  Map<String, dynamic> toJson() {
-    return {
-      'todoId': todoId,
-      'name': name,
-      'description': description,
-      'subTaskId': subTaskId,
-      'isDone': isDone,
-      ' completedAt': DateFormat('yyyy-MM-ddTHH:mm:ss').format(completedAt),
-      'scheduledAt': DateFormat('yyyy-MM-ddTHH:mm:ss').format(scheduledAt),
-    };
-  }
 }
