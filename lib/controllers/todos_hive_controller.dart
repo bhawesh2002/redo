@@ -10,7 +10,8 @@ class TodosHiveController extends GetxController {
   void onInit() {
     super.onInit();
     todosBox = Hive.box<Todo>('todos'); // Open the Hive box
-    todos.addAll(todosBox.values); // Add all the todos to the list
+    todos.addAll(
+        todosBox.values.toList().cast<Todo>()); // Add all the todos to the list
   }
 
   // function to add a todo item
