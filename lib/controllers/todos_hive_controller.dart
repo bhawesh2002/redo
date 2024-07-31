@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:hive_flutter/adapters.dart';
+import 'package:redo/utils/enums/prirority.dart';
 import 'package:redo/utils/models/todo.dart';
 
 class TodosHiveController extends GetxController {
@@ -32,6 +33,44 @@ class TodosHiveController extends GetxController {
       todos.removeAt(index);
     } catch (e) {
       debugPrint('deleteTodo() error: $e');
+    }
+  }
+
+  // function to update a todo item at a given index
+  // Only the fields that need to be updated are passed as arguments
+  // If a field is not passed, it will remain the same
+  void updateTodo(
+    int index, {
+    String? title,
+    String? description,
+    String? location,
+    String? cancellationReason,
+    List<String>? tags,
+    String? colorHex,
+    Prirority? priority,
+    DateTime? scheduledAt,
+    DateTime? reminderAt,
+  }) async {
+    try {
+      final Todo? currentTodo = todosBox.getAt(index); // Get the current todo
+      final Todo updatedTodo = currentTodo!.copyWith(
+        // Create a new todo with updated fields
+        title: title ?? currentTodo.title,
+        description: description ?? currentTodo.description,
+        location: location ?? currentTodo.location,
+        cancellationReason:
+            cancellationReason ?? currentTodo.cancellationReason,
+        tags: tags ?? currentTodo.tags,
+        colorHex: colorHex ?? currentTodo.colorHex,
+        priority: priority ?? currentTodo.priority,
+        scheduledAt: scheduledAt ?? currentTodo.scheduledAt,
+        reminderAt: reminderAt ?? currentTodo.reminderAt,
+        updatedAt: DateTime.now(), //always update the updatedAt field
+      );
+      await todosBox.putAt(index, updatedTodo);
+      todos[index] = updatedTodo;
+    } catch (e) {
+      debugPrint('updateTodo() error: $e');
     }
   }
 }
