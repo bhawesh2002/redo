@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 
 class UiSizes {
-  static late final double _width;
-  static late final double _height;
-  static late final Orientation _orientation;
+  static late double _width;
+  static late double _height;
+  static late Orientation _orientation;
 
   UiSizes();
 
