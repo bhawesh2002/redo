@@ -1,8 +1,14 @@
 import 'package:flutter/material.dart';
+import 'package:hive_flutter/adapters.dart';
+import 'package:redo/utils/enums/prirority.dart';
 import 'package:redo/utils/measurements/uisizes.dart';
+import 'package:redo/utils/models/todo.dart';
 import 'package:redo/utils/theme/app_colors.dart';
 
-void main() {
+void main() async {
+  await Hive.initFlutter();
+  Hive.registerAdapter(PrirorityAdapter());
+  Hive.registerAdapter(TodoAdapter());
   runApp(const MainApp());
 }
 
@@ -89,17 +95,21 @@ class MainApp extends StatelessWidget {
                             : null,
                         borderRadius:
                             index != 5 ? BorderRadius.circular(22) : null,
-                        child: SizedBox(
-                          child: Center(
-                            child: Text(
-                              '${primary[index].value.toRadixString(16).replaceFirst('ff', '#')}\n${primaryShadeValue[index]}',
-                              textAlign: TextAlign.center,
-                              style: TextStyle(
-                                fontWeight: FontWeight.w500,
-                                letterSpacing: 0.5,
-                                color: primary[index].computeLuminance() > 0.5
-                                    ? AppColors.black
-                                    : AppColors.white,
+                        child: InkWell(
+                          onTap: () {},
+                          splashColor: primary[index],
+                          child: SizedBox(
+                            child: Center(
+                              child: Text(
+                                '${primary[index].value.toRadixString(16).replaceFirst('ff', '#')}\n${primaryShadeValue[index]}',
+                                textAlign: TextAlign.center,
+                                style: TextStyle(
+                                  fontWeight: FontWeight.w500,
+                                  letterSpacing: 0.5,
+                                  color: primary[index].computeLuminance() > 0.5
+                                      ? AppColors.black
+                                      : AppColors.white,
+                                ),
                               ),
                             ),
                           ),
@@ -113,13 +123,15 @@ class MainApp extends StatelessWidget {
                           TextStyle(fontSize: 24, fontWeight: FontWeight.w600)),
                 ),
                 GridView.count(
-                    physics: const NeverScrollableScrollPhysics(),
-                    shrinkWrap: true,
-                    crossAxisCount: 3,
-                    mainAxisSpacing: 16,
-                    crossAxisSpacing: 16,
-                    padding: const EdgeInsets.all(16),
-                    children: List.generate(neutral.length, (index) {
+                  physics: const NeverScrollableScrollPhysics(),
+                  shrinkWrap: true,
+                  crossAxisCount: 3,
+                  mainAxisSpacing: 16,
+                  crossAxisSpacing: 16,
+                  padding: const EdgeInsets.all(16),
+                  children: List.generate(
+                    neutral.length,
+                    (index) {
                       return Material(
                         elevation: 15,
                         color: neutral[index],
@@ -135,22 +147,28 @@ class MainApp extends StatelessWidget {
                             : null,
                         borderRadius:
                             index != 5 ? BorderRadius.circular(22) : null,
-                        child: SizedBox(
-                          child: Center(
-                            child: Text(
-                              '${neutral[index].value.toRadixString(16).replaceFirst('ff', '#')}\n${neutralShadeValue[index]}',
-                              textAlign: TextAlign.center,
-                              style: TextStyle(
-                                fontWeight: FontWeight.w500,
-                                color: neutral[index].computeLuminance() > 0.5
-                                    ? AppColors.black
-                                    : AppColors.white,
+                        child: InkWell(
+                          onTap: () {},
+                          splashColor: neutral[index],
+                          child: SizedBox(
+                            child: Center(
+                              child: Text(
+                                '${neutral[index].value.toRadixString(16).replaceFirst('ff', '#')}\n${neutralShadeValue[index]}',
+                                textAlign: TextAlign.center,
+                                style: TextStyle(
+                                  fontWeight: FontWeight.w500,
+                                  color: neutral[index].computeLuminance() > 0.5
+                                      ? AppColors.black
+                                      : AppColors.white,
+                                ),
                               ),
                             ),
                           ),
                         ),
                       );
-                    })),
+                    },
+                  ),
+                ),
               ],
             ),
           ),
