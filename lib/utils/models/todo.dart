@@ -10,7 +10,7 @@ class Todo {
   @HiveField(1)
   final String title;
   @HiveField(2)
-  final String description;
+  String description;
   @HiveField(3)
   final String location;
   @HiveField(4)
@@ -58,4 +58,44 @@ class Todo {
       required this.deletedAt,
       required this.cancelledAt,
       required this.reminderAt});
+
+  Todo copyWith({
+    String? todoId,
+    String? title,
+    String? description,
+    String? location,
+    String? cancellationReason,
+    bool? isDone,
+    List<String>? tags,
+    String? colorHex,
+    Prirority? priority,
+    DateTime? createdAt,
+    DateTime? scheduledAt,
+    DateTime? completionDate,
+    DateTime? completedAt,
+    DateTime? updatedAt,
+    DateTime? deletedAt,
+    DateTime? cancelledAt,
+    DateTime? reminderAt,
+  }) {
+    return Todo(
+      todoId: todoId ?? this.todoId,
+      title: title ?? this.title,
+      description: description ?? this.description,
+      location: location ?? this.location,
+      cancellationReason: cancellationReason ?? this.cancellationReason,
+      isDone: isDone ?? this.isDone,
+      tags: tags ?? this.tags,
+      colorHex: colorHex ?? this.colorHex,
+      priority: priority ?? this.priority,
+      createdAt: createdAt ?? this.createdAt,
+      scheduledAt: scheduledAt ?? this.scheduledAt,
+      completionDate: completionDate ?? this.completionDate,
+      completedAt: completedAt ?? this.completedAt,
+      updatedAt: updatedAt ?? this.updatedAt,
+      deletedAt: deletedAt ?? this.deletedAt,
+      cancelledAt: cancelledAt ?? this.cancelledAt,
+      reminderAt: reminderAt ?? this.reminderAt,
+    );
+  }
 }
