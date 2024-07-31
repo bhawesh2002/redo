@@ -11,6 +11,7 @@ void main() async {
   Hive.registerAdapter(TodoAdapter());
   await Hive.openBox<Todo>('todos');
   await Hive.openBox<Todo>('archivedTodos');
+  await Hive.openBox<Todo>('completedTodos');
   runApp(const MainApp());
 }
 
