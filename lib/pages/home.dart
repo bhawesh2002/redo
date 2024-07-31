@@ -1,18 +1,17 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
+import 'package:redo/controllers/todos_hive_controller.dart';
 import 'package:redo/utils/enums/prirority.dart';
 import 'package:redo/utils/measurements/uisizes.dart';
 import 'package:redo/utils/models/todo.dart';
 import 'package:redo/utils/theme/app_colors.dart';
 
-class HomePage extends StatefulWidget {
-  const HomePage({super.key});
+class HomePage extends StatelessWidget {
+  HomePage({super.key});
 
-  @override
-  State<HomePage> createState() => _HomePageState();
-}
+  final TodosHiveController _todosHiveController =
+      Get.put(TodosHiveController());
 
-class _HomePageState extends State<HomePage> {
-  List<Todo> todos = <Todo>[];
   Todo _sampleTodoItem() => Todo(
         todoId: '6544565654',
         title: 'Test Todo Item',
@@ -36,104 +35,104 @@ class _HomePageState extends State<HomePage> {
   @override
   Widget build(BuildContext conrext) {
     return SafeArea(
-      child: Scaffold(
-        body: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 18),
-              child: Text(
-                "REDO",
-                style: TextStyle(
-                  fontSize: 32,
-                  fontWeight: FontWeight.w700,
-                  color: AppColors.emrald['500'],
+      child: Obx(
+        () => Scaffold(
+          body: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              Padding(
+                padding:
+                    const EdgeInsets.symmetric(horizontal: 16, vertical: 18),
+                child: Text(
+                  "REDO",
+                  style: TextStyle(
+                    fontSize: 32,
+                    fontWeight: FontWeight.w700,
+                    color: AppColors.emrald['500'],
+                  ),
                 ),
               ),
-            ),
-            Expanded(
-              child: todos.isEmpty
-                  ? Center(
-                      child: Column(
-                        mainAxisSize: MainAxisSize.min,
-                        children: [
-                          SizedBox(
-                            width: UiSizes().w80,
-                            child: const Text(
-                              "Start by creating a new Todo",
-                              textAlign: TextAlign.center,
-                              style: TextStyle(
-                                fontSize: 18,
-                                fontWeight: FontWeight.w500,
-                              ),
-                            ),
-                          ),
-                          const SizedBox(
-                            height: 24,
-                          ),
-                          IconButton(
-                            onPressed: () {
-                              setState(() {
-                                todos.add(_sampleTodoItem());
-                              });
-                            },
-                            style: IconButton.styleFrom(
-                              foregroundColor: AppColors.emrald['500'],
-                              backgroundColor: Colors.white,
-                              elevation: 10,
-                              padding: EdgeInsets.all(UiSizes().w4),
-                              shadowColor: AppColors.emrald['300'],
-                              shape: RoundedRectangleBorder(
-                                borderRadius: BorderRadius.circular(
-                                  12,
+              Expanded(
+                child: _todosHiveController.todos.isEmpty
+                    ? Center(
+                        child: Column(
+                          mainAxisSize: MainAxisSize.min,
+                          children: [
+                            SizedBox(
+                              width: UiSizes().w80,
+                              child: const Text(
+                                "Start by creating a new Todo",
+                                textAlign: TextAlign.center,
+                                style: TextStyle(
+                                  fontSize: 18,
+                                  fontWeight: FontWeight.w500,
                                 ),
                               ),
-                              iconSize: 32,
                             ),
-                            icon: const Icon(Icons.add),
-                          ),
-                        ],
+                            const SizedBox(
+                              height: 24,
+                            ),
+                            IconButton(
+                              onPressed: () {
+                                _todosHiveController
+                                    .addTodoItem(_sampleTodoItem());
+                              },
+                              style: IconButton.styleFrom(
+                                foregroundColor: AppColors.emrald['500'],
+                                backgroundColor: Colors.white,
+                                elevation: 10,
+                                padding: EdgeInsets.all(UiSizes().w4),
+                                shadowColor: AppColors.emrald['300'],
+                                shape: RoundedRectangleBorder(
+                                  borderRadius: BorderRadius.circular(
+                                    12,
+                                  ),
+                                ),
+                                iconSize: 32,
+                              ),
+                              icon: const Icon(Icons.add),
+                            ),
+                          ],
+                        ),
+                      )
+                    : ListView.builder(
+                        shrinkWrap: true,
+                        itemCount: _todosHiveController.todos.length,
+                        itemBuilder: (context, index) {
+                          return ListTile(
+                            onTap: () {},
+                            contentPadding:
+                                const EdgeInsets.symmetric(horizontal: 24),
+                            title:
+                                Text(_todosHiveController.todos[index].title),
+                            subtitle: Text(
+                                _todosHiveController.todos[index].description),
+                            trailing: IconButton(
+                              onPressed: () {
+                                _todosHiveController.deleteTodo(index);
+                              },
+                              icon: const Icon(Icons.delete),
+                            ),
+                          );
+                        },
                       ),
-                    )
-                  : ListView.builder(
-                      shrinkWrap: true,
-                      itemCount: todos.length,
-                      itemBuilder: (context, index) {
-                        return ListTile(
-                          onTap: () {},
-                          contentPadding:
-                              const EdgeInsets.symmetric(horizontal: 24),
-                          title: const Text("Title"),
-                          subtitle: const Text("Description"),
-                          trailing: IconButton(
-                            onPressed: () {
-                              setState(() {
-                                todos.removeAt(index);
-                              });
-                            },
-                            icon: const Icon(Icons.delete),
-                          ),
-                        );
-                      },
-                    ),
-            ),
-          ],
+              ),
+            ],
+          ),
+          floatingActionButton: _todosHiveController.todos.isNotEmpty
+              ? FloatingActionButton(
+                  onPressed: () {
+                    _todosHiveController.addTodoItem(_sampleTodoItem());
+                  },
+                  backgroundColor: AppColors.emrald['500'],
+                  child: Icon(
+                    size: 32,
+                    Icons.add,
+                    color: AppColors.emrald['50'],
+                  ),
+                )
+              : null,
         ),
-        floatingActionButton: todos.isNotEmpty
-            ? FloatingActionButton(
-                onPressed: () {
-                  setState(() {
-                    todos.add(_sampleTodoItem());
-                  });
-                },
-                backgroundColor: AppColors.emrald['500'],
-                child: Icon(
-                  size: 32,
-                  Icons.add,
-                  color: AppColors.emrald['50'],
-                ),
-              )
-            : null,
       ),
     );
   }
