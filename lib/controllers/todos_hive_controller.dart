@@ -1,3 +1,4 @@
+import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:hive_flutter/adapters.dart';
 import 'package:redo/utils/models/todo.dart';
@@ -15,14 +16,22 @@ class TodosHiveController extends GetxController {
   }
 
   // function to add a todo item
-  void addTodoItem(Todo todo) {
-    todosBox.add(todo);
-    todos.add(todo);
+  void addTodoItem(Todo todo) async {
+    try {
+      await todosBox.add(todo);
+      todos.add(todo);
+    } catch (e) {
+      debugPrint('addTodoItem() error: $e');
+    }
   }
 
   // function to delete a todo item at a given index
-  void deleteTodo(int index) {
-    todosBox.deleteAt(index);
-    todos.removeAt(index);
+  void deleteTodo(int index) async {
+    try {
+      await todosBox.deleteAt(index);
+      todos.removeAt(index);
+    } catch (e) {
+      debugPrint('deleteTodo() error: $e');
+    }
   }
 }
