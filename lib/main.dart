@@ -10,6 +10,7 @@ void main() async {
   Hive.registerAdapter(PrirorityAdapter());
   Hive.registerAdapter(TodoAdapter());
   await Hive.openBox<Todo>('todos');
+  await Hive.openBox<Todo>('archivedTodos');
   runApp(const MainApp());
 }
 
