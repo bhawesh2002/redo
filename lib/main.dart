@@ -27,7 +27,7 @@ class MainApp extends StatelessWidget {
       theme: ThemeData(
           scaffoldBackgroundColor: AppColors.silver['50'],
           fontFamily: 'GalanoGrotesque'),
-      home: const HomePage(),
+      home: HomePage(),
     );
   }
 }
