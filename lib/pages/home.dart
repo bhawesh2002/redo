@@ -20,7 +20,7 @@ class HomePage extends StatelessWidget {
         cancellationReason: 'cancellationReason',
         isDone: false,
         tags: ['work', 'home'],
-        colorHex: '#06DF85',
+        colorHex: '#00fbff',
         priority: Prirority.medium,
         createdAt: DateTime.now(),
         scheduledAt: DateTime(2024, 7, 31, 9, 30),
@@ -105,8 +105,15 @@ class HomePage extends StatelessWidget {
                                 const EdgeInsets.symmetric(horizontal: 24),
                             title: Text(
                               '${_todosHiveController.todos[index].title} #${index + 1}',
-                              style: const TextStyle(
+                              style: TextStyle(
                                 fontWeight: FontWeight.w500,
+                                color: Color(0xff000000 +
+                                    int.parse(
+                                        _todosHiveController
+                                                .todos[index].colorHex!
+                                                .replaceAll('#', '') ??
+                                            '000000',
+                                        radix: 16)),
                               ),
                             ),
                             subtitle: Text(
