@@ -19,7 +19,7 @@ class HomePage extends StatelessWidget {
         location: 'Kalmeshwar',
         cancellationReason: 'cancellationReason',
         isDone: false,
-        tags: [],
+        tags: ['work', 'home'],
         colorHex: '#06DF85',
         priority: Prirority.medium,
         createdAt: DateTime.now(),
@@ -33,7 +33,7 @@ class HomePage extends StatelessWidget {
       );
 
   @override
-  Widget build(BuildContext conrext) {
+  Widget build(BuildContext context) {
     return SafeArea(
       child: Obx(
         () => Scaffold(
@@ -103,10 +103,15 @@ class HomePage extends StatelessWidget {
                             onTap: () {},
                             contentPadding:
                                 const EdgeInsets.symmetric(horizontal: 24),
-                            title:
-                                Text(_todosHiveController.todos[index].title),
+                            title: Text(
+                              '${_todosHiveController.todos[index].title} #${index + 1}',
+                              style: const TextStyle(
+                                fontWeight: FontWeight.w500,
+                              ),
+                            ),
                             subtitle: Text(
-                                _todosHiveController.todos[index].description),
+                              _todosHiveController.todos[index].description,
+                            ),
                             trailing: IconButton(
                               onPressed: () {
                                 _todosHiveController.deleteTodo(index);
