@@ -9,6 +9,7 @@ void main() async {
   await Hive.initFlutter();
   Hive.registerAdapter(PrirorityAdapter());
   Hive.registerAdapter(TodoAdapter());
+  await Hive.openBox<Todo>('todos');
   runApp(const MainApp());
 }
 
