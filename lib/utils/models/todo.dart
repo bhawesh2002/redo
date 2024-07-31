@@ -1,23 +1,43 @@
-import 'package:intl/intl.dart';
+import 'package:hive/hive.dart';
 import 'package:redo/utils/enums/prirority.dart';
 
+part 'todo.g.dart';
+
+@HiveType(typeId: 0)
 class Todo {
+  @HiveField(0)
   final String todoId;
+  @HiveField(1)
   final String title;
+  @HiveField(2)
   final String description;
+  @HiveField(3)
   final String location;
+  @HiveField(4)
   final String cancellationReason;
+  @HiveField(5)
   final bool isDone;
+  @HiveField(6)
   final List<String>? tags;
+  @HiveField(7)
   final String? colorHex;
+  @HiveField(8)
   final Prirority priority;
+  @HiveField(9)
   final DateTime createdAt;
+  @HiveField(10)
   final DateTime scheduledAt;
+  @HiveField(11)
   final DateTime completionDate;
+  @HiveField(12)
   final DateTime completedAt;
+  @HiveField(13)
   final DateTime updatedAt;
+  @HiveField(14)
   final DateTime deletedAt;
+  @HiveField(15)
   final DateTime cancelledAt;
+  @HiveField(16)
   final DateTime reminderAt;
 
   Todo(
@@ -38,52 +58,4 @@ class Todo {
       required this.deletedAt,
       required this.cancelledAt,
       required this.reminderAt});
-
-  factory Todo.fromJson(Map<String, dynamic> json) {
-    return Todo(
-      todoId: json['todoId'],
-      title: json['title'],
-      description: json['description'],
-      location: json['location'],
-      cancellationReason: json['cancellationReason'],
-      isDone: json['isDone'],
-      tags: json['tags'] != null
-          ? List<String>.from(json['tags'] as List<dynamic>)
-          : null,
-      colorHex: json['colorHex'],
-      priority: Prirority.values[json['priority'] as int],
-      createdAt: DateFormat('yyyy-MM-ddTHH:mm:ss').parse(json['createdAt']),
-      scheduledAt: DateFormat('yyyy-MM-ddTHH:mm:ss').parse(json['scheduledAt']),
-      completionDate:
-          DateFormat('yyyy-MM-ddTHH:mm:ss').parse(json['completionDate']),
-      completedAt: DateFormat('yyyy-MM-ddTHH:mm:ss').parse(json['completedAt']),
-      updatedAt: DateFormat('yyyy-MM-ddTHH:mm:ss').parse(json['updatedAt']),
-      deletedAt: DateFormat('yyyy-MM-ddTHH:mm:ss').parse(json['deletedAt']),
-      cancelledAt: DateFormat('yyyy-MM-ddTHH:mm:ss').parse(json['cancelledAt']),
-      reminderAt: DateFormat('yyyy-MM-ddTHH:mm:ss').parse(json['reminderAt']),
-    );
-  }
-
-  Map<String, dynamic> toJson() {
-    return {
-      'todoId': todoId,
-      'title': title,
-      'description': description,
-      'location': location,
-      'cancellationReason': cancellationReason,
-      'isDone': isDone,
-      'tags': tags,
-      'colorHex': colorHex,
-      'priority': priority.index,
-      'createdAt': DateFormat('yyyy-MM-ddTHH:mm:ss').format(createdAt),
-      'scheduledAt': DateFormat('yyyy-MM-ddTHH:mm:ss').format(scheduledAt),
-      'completionDate':
-          DateFormat('yyyy-MM-ddTHH:mm:ss').format(completionDate),
-      'completedAt': DateFormat('yyyy-MM-ddTHH:mm:ss').format(completedAt),
-      'updatedAt': DateFormat('yyyy-MM-ddTHH:mm:ss').format(updatedAt),
-      'deletedAt': DateFormat('yyyy-MM-ddTHH:mm:ss').format(deletedAt),
-      'cancelledAt': DateFormat('yyyy-MM-ddTHH:mm:ss').format(cancelledAt),
-      'reminderAt': DateFormat('yyyy-MM-ddTHH:mm:ss').format(reminderAt),
-    };
-  }
 }
