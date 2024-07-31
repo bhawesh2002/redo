@@ -23,17 +23,23 @@ flutter:
   uses-material-design: true
 
   fonts:
-    - family: NeueHaasDisplay
+    - family: GalanoGrotesque
       fonts:
-        - asset: lib/assets/fonts/NeueHaasDisplayThin.ttf
+        - asset: lib/assets/fonts/GalanoGrotesqueThin.otf
+          weight: 100
+        - asset: lib/assets/fonts/GalanoGrotesqueExtraLight.otf
+          weight: 200
+        - asset: lib/assets/fonts/GalanoGrotesqueLight.otf
           weight: 300
-        - asset: lib/assets/fonts/NeueHaasDisplayLight.ttf
+        - asset: lib/assets/fonts/GalanoGrotesqueRegular.otf
           weight: 400
-        - asset: lib/assets/fonts/NeueHaasDisplayRoman.ttf
+        - asset: lib/assets/fonts/GalanoGrotesqueMedium.otf
           weight: 500
-        - asset: lib/assets/fonts/NeueHaasDisplayMediu.ttf
+        - asset: lib/assets/fonts/GalanoGrotesqueSemiBold.otf
           weight: 600
-        - asset: lib/assets/fonts/NeueHaasDisplayBold.ttf
+        - asset: lib/assets/fonts/GalanoGrotesqueBold.otf
           weight: 700
-        - asset: lib/assets/fonts/NeueHaasDisplayBlack.ttf
+        - asset: lib/assets/fonts/GalanoGrotesqueExtraBold.otf
           weight: 800
+        - asset: lib/assets/fonts/GalanoGrotesqueBlack.otf
+          weight: 900
