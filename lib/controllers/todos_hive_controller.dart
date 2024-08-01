@@ -68,7 +68,7 @@ class TodosHiveController extends GetxController {
     try {
       final Todo currentTodo = todos[index];
       final Todo updatedTodo = currentTodo.copyWith(
-        isDone: !currentTodo.isDone,
+        isDone: !currentTodo.isDone, // Toggle the isDone field
         completedAt: currentTodo.isDone ? null : DateTime.now(),
       );
       // Update the todo item in the todos box
