@@ -26,7 +26,7 @@ class Todo {
   @HiveField(8)
   Prirority priority;
   @HiveField(9)
-  DateTime createdAt;
+  final DateTime createdAt;
   @HiveField(10)
   DateTime scheduledAt;
   @HiveField(11)
