@@ -25,6 +25,7 @@ class MainApp extends StatelessWidget {
     return GetMaterialApp(
       debugShowCheckedModeBanner: false,
       theme: ThemeData(
+          primaryColor: AppColors.emrald['500'],
           scaffoldBackgroundColor: AppColors.silver['50'],
           fontFamily: 'GalanoGrotesque'),
       home: HomePage(),
