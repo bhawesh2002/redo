@@ -8,9 +8,9 @@ import 'package:uuid/uuid.dart';
 class TodosHiveController extends GetxController {
   List<Todo> todos = <Todo>[].obs; // Track the todos list
   List<Todo> archivedTodos = <Todo>[].obs; // Track the archived todos list
+  List<Todo> completedTodos = <Todo>[].obs; // Track the completed todos list
   late final Box<Todo> todosBox; // Hive box to store the todos
   late final Box<Todo> archivedTodosBox; // Hive box to store the archived todos
-
   @override
   void onInit() {
     super.onInit();
@@ -25,7 +25,6 @@ class TodosHiveController extends GetxController {
         .cast<Todo>()); // Add all the archived todos to the list
     debugPrint('todos length: ${todos.length}');
     debugPrint('archived length: ${archivedTodos.length}');
-    // debugPrint('archived Box length: ${archivedTodosBox.}');
   }
 
   // function to add a todo item
@@ -60,6 +59,22 @@ class TodosHiveController extends GetxController {
       todos.add(newTodo);
     } catch (e) {
       debugPrint('addTodoItem() error: $e');
+    }
+  }
+
+  void toggleTodoStatus(int index) async {
+    try {
+      final Todo currentTodo = todos[index];
+      final Todo updatedTodo = currentTodo.copyWith(
+        isDone: !currentTodo.isDone,
+        completedAt: currentTodo.isDone ? null : DateTime.now(),
+      );
+      // Update the todo item in the todos box
+      await todosBox.putAt(index, updatedTodo);
+      // Update the todos list
+      todos[index] = updatedTodo;
+    } catch (e) {
+      debugPrint('toggleTodoStatus() error: $e');
     }
   }
 
