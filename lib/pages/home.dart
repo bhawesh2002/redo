@@ -1,7 +1,10 @@
+import 'dart:math';
+
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:redo/controllers/todos_hive_controller.dart';
 import 'package:redo/utils/measurements/uisizes.dart';
+import 'package:redo/utils/sample%20data/sample_todo_data.dart';
 import 'package:redo/utils/theme/app_colors.dart';
 
 class HomePage extends StatelessWidget {
@@ -12,6 +15,7 @@ class HomePage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final List<Map<String, dynamic>> testTodos = TestTodos().todos;
     return SafeArea(
       child: Obx(
         () => Scaffold(
@@ -60,11 +64,30 @@ class HomePage extends StatelessWidget {
                                         ? TextDecoration.lineThrough
                                         : TextDecoration.none),
                               ),
-                              trailing: IconButton(
-                                onPressed: () {
-                                  _todosHiveController.deletePermanently(index);
-                                },
-                                icon: const Icon(Icons.delete_forever),
+                              trailing: Row(
+                                mainAxisSize: MainAxisSize.min,
+                                children: [
+                                  IconButton(
+                                    onPressed: () {
+                                      _todosHiveController
+                                          .undoDeleteTodo(index);
+                                    },
+                                    icon: Icon(
+                                      Icons.undo,
+                                      color: AppColors.emrald['400'],
+                                    ),
+                                  ),
+                                  IconButton(
+                                    onPressed: () {
+                                      _todosHiveController
+                                          .deletePermanently(index);
+                                    },
+                                    icon: const Icon(
+                                      Icons.delete_forever,
+                                      color: Colors.redAccent,
+                                    ),
+                                  ),
+                                ],
                               ),
                             );
                           },
@@ -137,11 +160,25 @@ class HomePage extends StatelessWidget {
                             IconButton(
                               onPressed: () {
                                 _todosHiveController.addTodoItem(
-                                    title: 'Buy Milk and Bread',
-                                    description:
-                                        'Buy Milk and Bread from the store near the house',
-                                    scheduledAt: DateTime.now()
-                                        .add(const Duration(days: 1)));
+                                  title: testTodos[Random()
+                                      .nextInt(testTodos.length)]['title'],
+                                  description: testTodos[
+                                          Random().nextInt(testTodos.length)]
+                                      ['description'],
+                                  location: testTodos[Random()
+                                      .nextInt(testTodos.length)]['location'],
+                                  tags: testTodos[Random()
+                                      .nextInt(testTodos.length)]['tags'],
+                                  colorHex: testTodos[Random()
+                                      .nextInt(testTodos.length)]['colorHex'],
+                                  priority: testTodos[Random()
+                                      .nextInt(testTodos.length)]['priority'],
+                                  scheduledAt: testTodos[
+                                          Random().nextInt(testTodos.length)]
+                                      ['scheduledAt'],
+                                  reminderAt: testTodos[Random()
+                                      .nextInt(testTodos.length)]['reminderAt'],
+                                );
                               },
                               style: IconButton.styleFrom(
                                 foregroundColor: AppColors.emrald['500'],
@@ -230,11 +267,22 @@ class HomePage extends StatelessWidget {
               ? FloatingActionButton(
                   onPressed: () {
                     _todosHiveController.addTodoItem(
-                      title: 'workout at the gym',
-                      description: 'workout at the gym for 1 hour daily',
-                      scheduledAt: DateTime.now().add(
-                        const Duration(days: 1),
-                      ),
+                      title: testTodos[Random().nextInt(testTodos.length)]
+                          ['title'],
+                      description: testTodos[Random().nextInt(testTodos.length)]
+                          ['description'],
+                      location: testTodos[Random().nextInt(testTodos.length)]
+                          ['location'],
+                      tags: testTodos[Random().nextInt(testTodos.length)]
+                          ['tags'],
+                      colorHex: testTodos[Random().nextInt(testTodos.length)]
+                          ['colorHex'],
+                      priority: testTodos[Random().nextInt(testTodos.length)]
+                          ['priority'],
+                      scheduledAt: testTodos[Random().nextInt(testTodos.length)]
+                          ['scheduledAt'],
+                      reminderAt: testTodos[Random().nextInt(testTodos.length)]
+                          ['reminderAt'],
                     );
                   },
                   backgroundColor: AppColors.emrald['500'],
