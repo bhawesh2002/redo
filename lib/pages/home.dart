@@ -42,7 +42,11 @@ class HomePage extends StatelessWidget {
                             return ListTile(
                               title: Text(
                                 _todosHiveController.archivedTodos[index].title,
-                                style: const TextStyle(
+                                style: TextStyle(
+                                  decoration: _todosHiveController
+                                          .archivedTodos[index].isDone
+                                      ? TextDecoration.lineThrough
+                                      : TextDecoration.none,
                                   fontWeight: FontWeight.w500,
                                 ),
                               ),
@@ -157,9 +161,9 @@ class HomePage extends StatelessWidget {
                             onTap: () {
                               _todosHiveController.updateTodo(
                                 index,
-                                title: 'Buy Milk, Bread and Eggs',
+                                title: 'Buy Stationary Items',
                                 description:
-                                    'Buy Milk, Bread and Eggs from the store near the house called "The Milk Store" and "The Bread Store"',
+                                    'Buy Stationary Items from the store near the house',
                               );
                             },
                             contentPadding:
@@ -167,6 +171,10 @@ class HomePage extends StatelessWidget {
                             title: Text(
                               _todosHiveController.todos[index].title,
                               style: TextStyle(
+                                decoration:
+                                    _todosHiveController.todos[index].isDone
+                                        ? TextDecoration.lineThrough
+                                        : TextDecoration.none,
                                 fontWeight: FontWeight.w500,
                                 color: Color(0xff000000 +
                                     int.parse(
@@ -180,6 +188,13 @@ class HomePage extends StatelessWidget {
                             subtitle: Text(
                               _todosHiveController.todos[index].description ??
                                   'No Description Provided',
+                              style: TextStyle(
+                                decoration:
+                                    _todosHiveController.todos[index].isDone
+                                        ? TextDecoration.lineThrough
+                                        : TextDecoration.none,
+                                fontWeight: FontWeight.w400,
+                              ),
                             ),
                             trailing: IconButton(
                               onPressed: () {
@@ -187,6 +202,16 @@ class HomePage extends StatelessWidget {
                               },
                               icon: const Icon(Icons.archive),
                             ),
+                            leading: IconButton(
+                                onPressed: () {
+                                  _todosHiveController.toggleTodoStatus(index);
+                                },
+                                icon: Icon(
+                                  _todosHiveController.todos[index].isDone
+                                      ? Icons.check_box
+                                      : Icons.check_box_outline_blank,
+                                  color: AppColors.emrald['500'],
+                                )),
                           );
                         },
                       ),
