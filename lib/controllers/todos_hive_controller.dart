@@ -53,6 +53,16 @@ class TodosHiveController extends GetxController {
     }
   }
 
+  // function to delete a todo item permanently at a given index
+  void deletePermanently(int index) async {
+    try {
+      await archivedTodosBox.deleteAt(index);
+      archivedTodos.removeAt(index);
+    } catch (e) {
+      debugPrint('deletePermanently() error: $e');
+    }
+  }
+
   // function to update a todo item at a given index
   // Only the fields that need to be updated are passed as arguments
   // If a field is not passed, it will remain the same
