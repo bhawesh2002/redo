@@ -61,8 +61,45 @@ class TodosHiveController extends GetxController {
     }
   }
 
-// function to toggle the status of a todo item at a given index
-// If the todo item is done, it will be marked as not done and vice versa
+  // function to update a todo item at a given index
+  // Only the fields that need to be updated are passed as arguments
+  // If a field is not passed, it will remain the same
+  void updateTodo(
+    int index, {
+    String? title,
+    String? description,
+    String? location,
+    String? cancellationReason,
+    List<String>? tags,
+    String? colorHex,
+    Prirority? priority,
+    DateTime? scheduledAt,
+    DateTime? reminderAt,
+  }) async {
+    try {
+      final Todo? currentTodo = todosBox.getAt(index); // Get the current todo
+      final Todo updatedTodo = currentTodo!.copyWith(
+        // Create a new todo with updated fields
+        title: title ?? currentTodo.title,
+        description: description ?? currentTodo.description,
+        location: location ?? currentTodo.location,
+        cancellationReason:
+            cancellationReason ?? currentTodo.cancellationReason,
+        tags: tags ?? currentTodo.tags,
+        colorHex: colorHex ?? currentTodo.colorHex,
+        priority: priority ?? currentTodo.priority,
+        scheduledAt: scheduledAt ?? currentTodo.scheduledAt,
+        reminderAt: reminderAt ?? currentTodo.reminderAt,
+      );
+      await todosBox.putAt(index, updatedTodo);
+      todos[index] = updatedTodo;
+    } catch (e) {
+      debugPrint('updateTodo() error: $e');
+    }
+  }
+
+  // function to toggle the status of a todo item at a given index
+  // If the todo item is done, it will be marked as not done and vice versa
   void toggleTodoStatus(int index) async {
     try {
       final Todo currentTodo = todos[index];
@@ -115,43 +152,6 @@ class TodosHiveController extends GetxController {
       archivedTodos.removeAt(index);
     } catch (e) {
       debugPrint('deletePermanently() error: $e');
-    }
-  }
-
-  // function to update a todo item at a given index
-  // Only the fields that need to be updated are passed as arguments
-  // If a field is not passed, it will remain the same
-  void updateTodo(
-    int index, {
-    String? title,
-    String? description,
-    String? location,
-    String? cancellationReason,
-    List<String>? tags,
-    String? colorHex,
-    Prirority? priority,
-    DateTime? scheduledAt,
-    DateTime? reminderAt,
-  }) async {
-    try {
-      final Todo? currentTodo = todosBox.getAt(index); // Get the current todo
-      final Todo updatedTodo = currentTodo!.copyWith(
-        // Create a new todo with updated fields
-        title: title ?? currentTodo.title,
-        description: description ?? currentTodo.description,
-        location: location ?? currentTodo.location,
-        cancellationReason:
-            cancellationReason ?? currentTodo.cancellationReason,
-        tags: tags ?? currentTodo.tags,
-        colorHex: colorHex ?? currentTodo.colorHex,
-        priority: priority ?? currentTodo.priority,
-        scheduledAt: scheduledAt ?? currentTodo.scheduledAt,
-        reminderAt: reminderAt ?? currentTodo.reminderAt,
-      );
-      await todosBox.putAt(index, updatedTodo);
-      todos[index] = updatedTodo;
-    } catch (e) {
-      debugPrint('updateTodo() error: $e');
     }
   }
 }
