@@ -63,7 +63,7 @@ class TodosHiveController extends GetxController {
     }
   }
 
-  // function to delete a todo item at a given index
+  // function to delete a todo item at a given index which moves it to the archived todos
   void deleteTodo(int index) async {
     try {
       // First: Delete the todo item from the Hive box
