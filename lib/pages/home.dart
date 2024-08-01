@@ -1,9 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:redo/controllers/todos_hive_controller.dart';
-import 'package:redo/utils/enums/prirority.dart';
 import 'package:redo/utils/measurements/uisizes.dart';
-import 'package:redo/utils/models/todo.dart';
 import 'package:redo/utils/theme/app_colors.dart';
 
 class HomePage extends StatelessWidget {
@@ -11,16 +9,6 @@ class HomePage extends StatelessWidget {
 
   final TodosHiveController _todosHiveController =
       Get.put(TodosHiveController());
-
-  Todo _sampleTodoItem1() => Todo(
-        todoId: '6544565654',
-        title: 'Test Todo Item(Minimal)',
-        isDone: false,
-        priority: Prirority.medium,
-        createdAt: DateTime.now(),
-        scheduledAt: DateTime(2024, 7, 31, 9, 30),
-        updatedAt: DateTime.now(),
-      );
 
   @override
   Widget build(BuildContext context) {
@@ -53,7 +41,7 @@ class HomePage extends StatelessWidget {
                           itemBuilder: (context, index) {
                             return ListTile(
                               title: Text(
-                                '${_todosHiveController.archivedTodos[index].title} #${index + 1}',
+                                _todosHiveController.archivedTodos[index].title,
                                 style: const TextStyle(
                                   fontWeight: FontWeight.w500,
                                 ),
@@ -136,8 +124,12 @@ class HomePage extends StatelessWidget {
                             ),
                             IconButton(
                               onPressed: () {
-                                _todosHiveController
-                                    .addTodoItem(_sampleTodoItem1());
+                                _todosHiveController.addTodoItem(
+                                    title: 'Buy Milk and Bread',
+                                    description:
+                                        'Buy Milk and Bread from the store near the house',
+                                    scheduledAt: DateTime.now()
+                                        .add(const Duration(days: 1)));
                               },
                               style: IconButton.styleFrom(
                                 foregroundColor: AppColors.emrald['500'],
@@ -165,14 +157,15 @@ class HomePage extends StatelessWidget {
                             onTap: () {
                               _todosHiveController.updateTodo(
                                 index,
-                                title: 'Updated Title',
-                                description: 'Item is updated by REDO',
+                                title: 'Buy Milk, Bread and Eggs',
+                                description:
+                                    'Buy Milk, Bread and Eggs from the store near the house called "The Milk Store" and "The Bread Store"',
                               );
                             },
                             contentPadding:
                                 const EdgeInsets.symmetric(horizontal: 24),
                             title: Text(
-                              '${_todosHiveController.todos[index].title} #${index + 1}',
+                              _todosHiveController.todos[index].title,
                               style: TextStyle(
                                 fontWeight: FontWeight.w500,
                                 color: Color(0xff000000 +
@@ -192,7 +185,7 @@ class HomePage extends StatelessWidget {
                               onPressed: () {
                                 _todosHiveController.deleteTodo(index);
                               },
-                              icon: const Icon(Icons.delete),
+                              icon: const Icon(Icons.archive),
                             ),
                           );
                         },
@@ -203,7 +196,13 @@ class HomePage extends StatelessWidget {
           floatingActionButton: _todosHiveController.todos.isNotEmpty
               ? FloatingActionButton(
                   onPressed: () {
-                    _todosHiveController.addTodoItem(_sampleTodoItem1());
+                    _todosHiveController.addTodoItem(
+                      title: 'workout at the gym',
+                      description: 'workout at the gym for 1 hour daily',
+                      scheduledAt: DateTime.now().add(
+                        const Duration(days: 1),
+                      ),
+                    );
                   },
                   backgroundColor: AppColors.emrald['500'],
                   child: Icon(

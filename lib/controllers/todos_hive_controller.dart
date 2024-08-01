@@ -3,6 +3,7 @@ import 'package:get/get.dart';
 import 'package:hive_flutter/adapters.dart';
 import 'package:redo/utils/enums/prirority.dart';
 import 'package:redo/utils/models/todo.dart';
+import 'package:uuid/uuid.dart';
 
 class TodosHiveController extends GetxController {
   List<Todo> todos = <Todo>[].obs; // Track the todos list
@@ -22,13 +23,41 @@ class TodosHiveController extends GetxController {
     archivedTodos.addAll(archivedTodosBox.values
         .toList()
         .cast<Todo>()); // Add all the archived todos to the list
+    debugPrint('todos length: ${todos.length}');
+    debugPrint('archived length: ${archivedTodos.length}');
+    // debugPrint('archived Box length: ${archivedTodosBox.}');
   }
 
   // function to add a todo item
-  void addTodoItem(Todo todo) async {
+  void addTodoItem(
+      {required String title,
+      String? description,
+      String? location,
+      List<String>? tags,
+      String? colorHex,
+      Prirority? priority,
+      required DateTime scheduledAt,
+      DateTime? reminderAt}) async {
     try {
-      await todosBox.add(todo);
-      todos.add(todo);
+      final String todoId =
+          const Uuid().v4(); //Generate a unique id for the todo of format
+      Todo newTodo = Todo(
+        todoId: todoId,
+        title: title,
+        description: description ?? '', //Description is optional
+        location: location ?? '', //Location is optional
+        tags: tags ?? <String>[], //Tags is optional
+        colorHex: colorHex ?? '#000000', //Color is optional
+        priority: priority ?? Prirority.low, //Priority is optional
+        scheduledAt: scheduledAt,
+        reminderAt: reminderAt,
+        createdAt: DateTime
+            .now(), //Set the createdAt field to the current time (non-modifiable)
+        updatedAt: DateTime.now(),
+        isDone: false,
+      );
+      await todosBox.add(newTodo);
+      todos.add(newTodo);
     } catch (e) {
       debugPrint('addTodoItem() error: $e');
     }
