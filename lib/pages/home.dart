@@ -97,7 +97,10 @@ class HomePage extends StatelessWidget {
                             SizedBox(
                               height: UiSizes().h10,
                             ),
-                            const Text(' No Archived Todos'),
+                            const Text(' No Archived Todos',
+                                style: TextStyle(
+                                  fontWeight: FontWeight.w500,
+                                )),
                           ],
                         ),
                 ),
