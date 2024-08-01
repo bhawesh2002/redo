@@ -12,7 +12,7 @@ class Todo {
   @HiveField(1)
   final String title;
   @HiveField(2)
-  String? description;
+  final String? description;
   @HiveField(3)
   final String? location;
   @HiveField(4)
@@ -30,16 +30,6 @@ class Todo {
   @HiveField(10)
   final DateTime scheduledAt;
   @HiveField(11)
-  final DateTime? completionDate;
-  @HiveField(12)
-  final DateTime? completedAt;
-  @HiveField(13)
-  final DateTime updatedAt;
-  @HiveField(14)
-  final DateTime? deletedAt;
-  @HiveField(15)
-  final DateTime? cancelledAt;
-  @HiveField(16)
   final DateTime? reminderAt;
   Todo({
     required this.todoId,
@@ -53,11 +43,6 @@ class Todo {
     required this.priority,
     required this.createdAt,
     required this.scheduledAt,
-    this.completionDate,
-    this.completedAt,
-    required this.updatedAt,
-    this.deletedAt,
-    this.cancelledAt,
     this.reminderAt,
   });
 
@@ -73,11 +58,6 @@ class Todo {
     Prirority? priority,
     DateTime? createdAt,
     DateTime? scheduledAt,
-    DateTime? completionDate,
-    DateTime? completedAt,
-    DateTime? updatedAt,
-    DateTime? deletedAt,
-    DateTime? cancelledAt,
     DateTime? reminderAt,
   }) {
     return Todo(
@@ -92,11 +72,6 @@ class Todo {
       priority: priority ?? this.priority,
       createdAt: createdAt ?? this.createdAt,
       scheduledAt: scheduledAt ?? this.scheduledAt,
-      completionDate: completionDate ?? this.completionDate,
-      completedAt: completedAt ?? this.completedAt,
-      updatedAt: updatedAt ?? this.updatedAt,
-      deletedAt: deletedAt ?? this.deletedAt,
-      cancelledAt: cancelledAt ?? this.cancelledAt,
       reminderAt: reminderAt ?? this.reminderAt,
     );
   }

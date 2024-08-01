@@ -50,8 +50,9 @@ class HomePage extends StatelessWidget {
                                   fontWeight: FontWeight.w500,
                                 ),
                               ),
-                              subtitle: Text(
-                                  'Deleted At: ${_todosHiveController.archivedTodos[index].deletedAt!.toIso8601String().split('T')[1].split('.')[0]}'),
+                              subtitle: Text(_todosHiveController
+                                      .archivedTodos[index].description ??
+                                  ''),
                               trailing: IconButton(
                                 onPressed: () {
                                   _todosHiveController.deletePermanently(index);
@@ -187,7 +188,7 @@ class HomePage extends StatelessWidget {
                             ),
                             subtitle: Text(
                               _todosHiveController.todos[index].description ??
-                                  'No Description Provided',
+                                  '',
                               style: TextStyle(
                                 decoration:
                                     _todosHiveController.todos[index].isDone

@@ -52,7 +52,6 @@ class TodosHiveController extends GetxController {
         reminderAt: reminderAt,
         createdAt: DateTime
             .now(), //Set the createdAt field to the current time (non-modifiable)
-        updatedAt: DateTime.now(),
         isDone: false,
       );
       await todosBox.add(newTodo);
@@ -67,9 +66,9 @@ class TodosHiveController extends GetxController {
   void toggleTodoStatus(int index) async {
     try {
       final Todo currentTodo = todos[index];
+      debugPrint('currentTodo: ${currentTodo.isDone}');
       final Todo updatedTodo = currentTodo.copyWith(
-        isDone: !currentTodo.isDone, // Toggle the isDone field
-        completedAt: currentTodo.isDone ? null : DateTime.now(),
+        isDone: !currentTodo.isDone,
       );
       // Update the todo item in the todos box
       await todosBox.putAt(index, updatedTodo);
@@ -86,9 +85,7 @@ class TodosHiveController extends GetxController {
       // First: Delete the todo item from the Hive box
       await todosBox.deleteAt(index);
       // Second: Copy the todo item (not deleted yet) from the todos list
-      final Todo archivedTodo = todos[index].copyWith(
-        deletedAt: DateTime.now(),
-      );
+      final Todo archivedTodo = todos[index];
       // Third: Add the copied todo item to the archivedTodos box and archivedTodos list
       archivedTodosBox.add(archivedTodo);
       archivedTodos.add(archivedTodo);
@@ -138,7 +135,6 @@ class TodosHiveController extends GetxController {
         priority: priority ?? currentTodo.priority,
         scheduledAt: scheduledAt ?? currentTodo.scheduledAt,
         reminderAt: reminderAt ?? currentTodo.reminderAt,
-        updatedAt: DateTime.now(), //always update the updatedAt field
       );
       await todosBox.putAt(index, updatedTodo);
       todos[index] = updatedTodo;
