@@ -10,27 +10,27 @@ class Todo {
   @HiveField(0)
   final String todoId;
   @HiveField(1)
-  final String title;
+  String title;
   @HiveField(2)
-  final String? description;
+  String? description;
   @HiveField(3)
-  final String? location;
+  String? location;
   @HiveField(4)
-  final String? cancellationReason;
+  String? cancellationReason;
   @HiveField(5)
-  final bool isDone;
+  bool isDone;
   @HiveField(6)
-  final List<String>? tags;
+  List<String>? tags;
   @HiveField(7)
-  final String? colorHex;
+  String? colorHex;
   @HiveField(8)
-  final Prirority priority;
+  Prirority priority;
   @HiveField(9)
-  final DateTime createdAt;
+  DateTime createdAt;
   @HiveField(10)
-  final DateTime scheduledAt;
+  DateTime scheduledAt;
   @HiveField(11)
-  final DateTime? reminderAt;
+  DateTime? reminderAt;
   Todo({
     required this.todoId,
     required this.title,
