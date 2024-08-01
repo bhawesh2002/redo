@@ -62,6 +62,8 @@ class TodosHiveController extends GetxController {
     }
   }
 
+// function to toggle the status of a todo item at a given index
+// If the todo item is done, it will be marked as not done and vice versa
   void toggleTodoStatus(int index) async {
     try {
       final Todo currentTodo = todos[index];
