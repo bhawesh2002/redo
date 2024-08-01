@@ -60,6 +60,12 @@ class HomePage extends StatelessWidget {
                               ),
                               subtitle: Text(
                                   'Deleted At: ${_todosHiveController.archivedTodos[index].deletedAt!.toIso8601String().split('T')[1].split('.')[0]}'),
+                              trailing: IconButton(
+                                onPressed: () {
+                                  _todosHiveController.deletePermanently(index);
+                                },
+                                icon: const Icon(Icons.delete_forever),
+                              ),
                             );
                           },
                         )
