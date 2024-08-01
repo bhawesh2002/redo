@@ -203,16 +203,9 @@ class HomePage extends StatelessWidget {
                         itemCount: _todosHiveController.todos.length,
                         itemBuilder: (context, index) {
                           return ListTile(
-                            onTap: () {
-                              _todosHiveController.updateTodo(
-                                index,
-                                title: 'Buy Stationary Items',
-                                description:
-                                    'Buy Stationary Items from the store near the house',
-                              );
-                            },
+                            onTap: () {},
                             contentPadding:
-                                const EdgeInsets.symmetric(horizontal: 24),
+                                const EdgeInsets.symmetric(horizontal: 12),
                             title: Text(
                               _todosHiveController.todos[index].title,
                               style: TextStyle(
@@ -238,14 +231,18 @@ class HomePage extends StatelessWidget {
                                     _todosHiveController.todos[index].isDone
                                         ? TextDecoration.lineThrough
                                         : TextDecoration.none,
-                                fontWeight: FontWeight.w400,
+                                fontWeight: FontWeight.w500,
+                                color: AppColors.silver['700'],
                               ),
                             ),
                             trailing: IconButton(
                               onPressed: () {
                                 _todosHiveController.deleteTodo(index);
                               },
-                              icon: const Icon(Icons.archive),
+                              icon: Icon(
+                                Icons.archive,
+                                color: AppColors.silver['400'],
+                              ),
                             ),
                             leading: IconButton(
                                 onPressed: () {
@@ -256,6 +253,7 @@ class HomePage extends StatelessWidget {
                                       ? Icons.check_box
                                       : Icons.check_box_outline_blank,
                                   color: AppColors.emrald['500'],
+                                  size: 26,
                                 )),
                           );
                         },
