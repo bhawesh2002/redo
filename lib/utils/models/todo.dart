@@ -1,4 +1,6 @@
+// ignore_for_file: public_member_api_docs, sort_constructors_first
 import 'package:hive/hive.dart';
+
 import 'package:redo/utils/enums/prirority.dart';
 
 part 'todo.g.dart';
@@ -10,11 +12,11 @@ class Todo {
   @HiveField(1)
   final String title;
   @HiveField(2)
-  String description;
+  String? description;
   @HiveField(3)
-  final String location;
+  final String? location;
   @HiveField(4)
-  final String cancellationReason;
+  final String? cancellationReason;
   @HiveField(5)
   final bool isDone;
   @HiveField(6)
@@ -28,36 +30,36 @@ class Todo {
   @HiveField(10)
   final DateTime scheduledAt;
   @HiveField(11)
-  final DateTime completionDate;
+  final DateTime? completionDate;
   @HiveField(12)
-  final DateTime completedAt;
+  final DateTime? completedAt;
   @HiveField(13)
   final DateTime updatedAt;
   @HiveField(14)
-  final DateTime deletedAt;
+  final DateTime? deletedAt;
   @HiveField(15)
-  final DateTime cancelledAt;
+  final DateTime? cancelledAt;
   @HiveField(16)
-  final DateTime reminderAt;
-
-  Todo(
-      {required this.todoId,
-      required this.title,
-      required this.description,
-      required this.location,
-      required this.cancellationReason,
-      required this.isDone,
-      required this.tags,
-      required this.colorHex,
-      required this.priority,
-      required this.createdAt,
-      required this.scheduledAt,
-      required this.completionDate,
-      required this.completedAt,
-      required this.updatedAt,
-      required this.deletedAt,
-      required this.cancelledAt,
-      required this.reminderAt});
+  final DateTime? reminderAt;
+  Todo({
+    required this.todoId,
+    required this.title,
+    this.description,
+    this.location,
+    this.cancellationReason,
+    required this.isDone,
+    this.tags,
+    this.colorHex,
+    required this.priority,
+    required this.createdAt,
+    required this.scheduledAt,
+    this.completionDate,
+    this.completedAt,
+    required this.updatedAt,
+    this.deletedAt,
+    this.cancelledAt,
+    this.reminderAt,
+  });
 
   Todo copyWith({
     String? todoId,
