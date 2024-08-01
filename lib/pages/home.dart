@@ -1,5 +1,3 @@
-import 'dart:math';
-
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:redo/controllers/todos_hive_controller.dart';
@@ -14,26 +12,14 @@ class HomePage extends StatelessWidget {
   final TodosHiveController _todosHiveController =
       Get.put(TodosHiveController());
 
-  Todo _sampleTodoItem() => Todo(
+  Todo _sampleTodoItem1() => Todo(
         todoId: '6544565654',
-        title: 'Test Todo Item',
-        description: 'Item used during the testing of REDO',
-        location: 'Kalmeshwar',
-        cancellationReason: 'cancellationReason',
+        title: 'Test Todo Item(Minimal)',
         isDone: false,
-        tags: ['work', 'home'],
-        colorHex: Colors
-            .primaries[Random().nextInt(Colors.primaries.length)].value
-            .toRadixString(16),
         priority: Prirority.medium,
         createdAt: DateTime.now(),
         scheduledAt: DateTime(2024, 7, 31, 9, 30),
-        completionDate: DateTime(2024, 7, 31, 11, 59),
-        completedAt: DateTime(2024, 7, 31),
-        updatedAt: DateTime(2024, 7, 31),
-        deletedAt: DateTime.now(),
-        cancelledAt: DateTime.now(),
-        reminderAt: DateTime(2024, 7, 31, 9, 15),
+        updatedAt: DateTime.now(),
       );
 
   @override
@@ -41,19 +27,85 @@ class HomePage extends StatelessWidget {
     return SafeArea(
       child: Obx(
         () => Scaffold(
+          drawer: Drawer(
+            child: Column(
+              children: [
+                DrawerHeader(
+                  decoration: BoxDecoration(
+                    color: AppColors.emrald['500'],
+                  ),
+                  child: Center(
+                    child: Text(
+                      "ARCHIVES",
+                      style: TextStyle(
+                        fontSize: 32,
+                        fontWeight: FontWeight.w700,
+                        color: AppColors.emrald['50'],
+                      ),
+                    ),
+                  ),
+                ),
+                Expanded(
+                  child: _todosHiveController.archivedTodos.isNotEmpty
+                      ? ListView.builder(
+                          shrinkWrap: true,
+                          itemCount: _todosHiveController.archivedTodos.length,
+                          itemBuilder: (context, index) {
+                            return ListTile(
+                              title: Text(
+                                '${_todosHiveController.archivedTodos[index].title} #${index + 1}',
+                                style: const TextStyle(
+                                  fontWeight: FontWeight.w500,
+                                ),
+                              ),
+                              subtitle: Text(
+                                  'Deleted At: ${_todosHiveController.archivedTodos[index].deletedAt!.toIso8601String().split('T')[1].split('.')[0]}'),
+                            );
+                          },
+                        )
+                      : Column(
+                          children: [
+                            SizedBox(
+                              height: UiSizes().h10,
+                            ),
+                            const Text(' No Archived Todos'),
+                          ],
+                        ),
+                ),
+              ],
+            ),
+          ),
           body: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               Padding(
                 padding:
                     const EdgeInsets.symmetric(horizontal: 16, vertical: 18),
-                child: Text(
-                  "REDO",
-                  style: TextStyle(
-                    fontSize: 32,
-                    fontWeight: FontWeight.w700,
-                    color: AppColors.emrald['500'],
-                  ),
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    Text(
+                      "REDO",
+                      style: TextStyle(
+                        fontSize: 32,
+                        fontWeight: FontWeight.w700,
+                        color: AppColors.emrald['500'],
+                      ),
+                    ),
+                    Builder(builder: (context) {
+                      return IconButton(
+                        onPressed: () {
+                          Scaffold.of(context).openDrawer();
+                        },
+                        style: IconButton.styleFrom(
+                            backgroundColor: AppColors.emrald['500']),
+                        icon: Icon(
+                          Icons.archive,
+                          color: AppColors.emrald['50'],
+                        ),
+                      );
+                    })
+                  ],
                 ),
               ),
               Expanded(
@@ -79,7 +131,7 @@ class HomePage extends StatelessWidget {
                             IconButton(
                               onPressed: () {
                                 _todosHiveController
-                                    .addTodoItem(_sampleTodoItem());
+                                    .addTodoItem(_sampleTodoItem1());
                               },
                               style: IconButton.styleFrom(
                                 foregroundColor: AppColors.emrald['500'],
@@ -120,14 +172,15 @@ class HomePage extends StatelessWidget {
                                 color: Color(0xff000000 +
                                     int.parse(
                                         _todosHiveController
-                                                .todos[index].colorHex!
-                                                .replaceAll('#', '') ??
+                                                .todos[index].colorHex
+                                                ?.replaceAll('#', '') ??
                                             '000000',
                                         radix: 16)),
                               ),
                             ),
                             subtitle: Text(
-                              _todosHiveController.todos[index].description,
+                              _todosHiveController.todos[index].description ??
+                                  'No Description Provided',
                             ),
                             trailing: IconButton(
                               onPressed: () {
@@ -144,7 +197,7 @@ class HomePage extends StatelessWidget {
           floatingActionButton: _todosHiveController.todos.isNotEmpty
               ? FloatingActionButton(
                   onPressed: () {
-                    _todosHiveController.addTodoItem(_sampleTodoItem());
+                    _todosHiveController.addTodoItem(_sampleTodoItem1());
                   },
                   backgroundColor: AppColors.emrald['500'],
                   child: Icon(
