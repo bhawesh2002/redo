@@ -66,7 +66,6 @@ class TodosHiveController extends GetxController {
   void toggleTodoStatus(int index) async {
     try {
       final Todo currentTodo = todos[index];
-      debugPrint('currentTodo: ${currentTodo.isDone}');
       final Todo updatedTodo = currentTodo.copyWith(
         isDone: !currentTodo.isDone,
       );
@@ -93,6 +92,19 @@ class TodosHiveController extends GetxController {
       todos.removeAt(index);
     } catch (e) {
       debugPrint('deleteTodo() error: $e');
+    }
+  }
+
+  void undoDeleteTodo(int index) async {
+    try {
+      final deletedTodo = archivedTodos[index];
+      await todosBox.add(deletedTodo);
+      todos.add(deletedTodo);
+
+      await archivedTodosBox.deleteAt(index);
+      archivedTodos.removeAt(index);
+    } catch (e) {
+      debugPrint('undoDeleteTodo() error: $e');
     }
   }
 
