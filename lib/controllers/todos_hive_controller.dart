@@ -24,7 +24,7 @@ class TodosHiveController extends GetxController {
         .toList()
         .cast<Todo>()); // Add all the archived todos to the list
     debugPrint('todos length: ${todos.length}');
-    debugPrint('archived length: ${archivedTodos.length}');
+    debugPrint('archived todos length: ${archivedTodos.length}');
   }
 
   // function to add a todo item
