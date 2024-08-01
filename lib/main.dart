@@ -24,6 +24,7 @@ class MainApp extends StatelessWidget {
   Widget build(BuildContext context) {
     UiSizes().init(context); //initialize UiSizes
     return GetMaterialApp(
+      debugShowCheckedModeBanner: false,
       theme: ThemeData(
           scaffoldBackgroundColor: AppColors.silver['50'],
           fontFamily: 'GalanoGrotesque'),
