@@ -6,14 +6,22 @@ import 'package:redo/utils/models/todo.dart';
 
 class TodosHiveController extends GetxController {
   List<Todo> todos = <Todo>[].obs; // Track the todos list
+  List<Todo> archivedTodos = <Todo>[].obs; // Track the archived todos list
   late final Box<Todo> todosBox; // Hive box to store the todos
+  late final Box<Todo> archivedTodosBox; // Hive box to store the archived todos
 
   @override
   void onInit() {
     super.onInit();
-    todosBox = Hive.box<Todo>('todos'); // Open the Hive box
-    todos.addAll(
-        todosBox.values.toList().cast<Todo>()); // Add all the todos to the list
+    todosBox = Hive.box<Todo>('todos'); // Open the todos Hive box
+    todos.addAll(todosBox.values
+        .toList()
+        .cast<Todo>()); // Add all the todos to the todos list
+    archivedTodosBox =
+        Hive.box<Todo>('archivedTodos'); // Open the archived todos Hive box
+    archivedTodos.addAll(archivedTodosBox.values
+        .toList()
+        .cast<Todo>()); // Add all the archived todos to the list
   }
 
   // function to add a todo item
@@ -29,7 +37,16 @@ class TodosHiveController extends GetxController {
   // function to delete a todo item at a given index
   void deleteTodo(int index) async {
     try {
+      // First: Delete the todo item from the Hive box
       await todosBox.deleteAt(index);
+      // Second: Copy the todo item (not deleted yet) from the todos list
+      final Todo archivedTodo = todos[index].copyWith(
+        deletedAt: DateTime.now(),
+      );
+      // Third: Add the copied todo item to the archivedTodos box and archivedTodos list
+      archivedTodosBox.add(archivedTodo);
+      archivedTodos.add(archivedTodo);
+      // Fourth: Remove the todo item from the todos list
       todos.removeAt(index);
     } catch (e) {
       debugPrint('deleteTodo() error: $e');
