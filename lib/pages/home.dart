@@ -50,9 +50,16 @@ class HomePage extends StatelessWidget {
                                   fontWeight: FontWeight.w500,
                                 ),
                               ),
-                              subtitle: Text(_todosHiveController
-                                      .archivedTodos[index].description ??
-                                  ''),
+                              subtitle: Text(
+                                _todosHiveController
+                                        .archivedTodos[index].description ??
+                                    '',
+                                style: TextStyle(
+                                    decoration: _todosHiveController
+                                            .archivedTodos[index].isDone
+                                        ? TextDecoration.lineThrough
+                                        : TextDecoration.none),
+                              ),
                               trailing: IconButton(
                                 onPressed: () {
                                   _todosHiveController.deletePermanently(index);
