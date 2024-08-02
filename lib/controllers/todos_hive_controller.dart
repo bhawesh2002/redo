@@ -165,4 +165,11 @@ class TodosHiveController extends GetxController {
       debugPrint('eraseAllTodos() error: $e');
     }
   }
+
+  @override
+  void dispose() {
+    todosBox.close();
+    archivedTodosBox.close();
+    super.dispose();
+  }
 }
