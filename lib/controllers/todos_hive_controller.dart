@@ -8,7 +8,6 @@ import 'package:uuid/uuid.dart';
 class TodosHiveController extends GetxController {
   List<Todo> todos = <Todo>[].obs; // Track the todos list
   List<Todo> archivedTodos = <Todo>[].obs; // Track the archived todos list
-  List<Todo> completedTodos = <Todo>[].obs; // Track the completed todos list
   late final Box<Todo> todosBox; // Hive box to store the todos
   late final Box<Todo> archivedTodosBox; // Hive box to store the archived todos
   @override
@@ -152,6 +151,18 @@ class TodosHiveController extends GetxController {
       archivedTodos.removeAt(index);
     } catch (e) {
       debugPrint('deletePermanently() error: $e');
+    }
+  }
+
+  // function to erase all todos and archived todos
+  void eraseAllTodos() async {
+    try {
+      await todosBox.clear();
+      await archivedTodosBox.clear();
+      todos.clear();
+      archivedTodos.clear();
+    } catch (e) {
+      debugPrint('eraseAllTodos() error: $e');
     }
   }
 }
