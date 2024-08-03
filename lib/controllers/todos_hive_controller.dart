@@ -178,6 +178,45 @@ class TodosHiveController extends GetxController {
     }
   }
 
+  //Functions to reset and clear the hive boxes and todo lists
+
+  // ignore: unused_element
+  void _resetTodosinHiveandList(
+      List<Box<Todo>> hiveBoxes, List<List<Todo>> todoLists) {
+    try {
+      debugPrint('Reset initiated');
+      _clearAllHiveBoxes(hiveBoxes);
+      _clearAllTodosLists(todoLists);
+      debugPrint('Reset Completed');
+    } catch (e) {
+      debugPrint('_resetTodosinHiveandList() error: $e');
+    }
+  }
+
+  void _clearAllHiveBoxes(List<Box<Todo>> hiveBoxes) {
+    try {
+      for (var box in hiveBoxes) {
+        debugPrint("clearing ${box.name} Box");
+        box.clear();
+        debugPrint('cleared ${box.name} Box');
+      }
+    } catch (e) {
+      debugPrint('_clearAllHiveBoxes() error : $e');
+    }
+  }
+
+  void _clearAllTodosLists(List<List<Todo>> todoLists) {
+    try {
+      debugPrint("clearing Todo Lists");
+      for (var todoList in todoLists) {
+        todoList.clear();
+      }
+      debugPrint('cleared Todo Lists');
+    } catch (e) {
+      debugPrint('_clearAllTodosLists() error: $e');
+    }
+  }
+
   @override
   void dispose() {
     todosBox.close();
