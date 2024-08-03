@@ -8,18 +8,19 @@ import 'package:uuid/uuid.dart';
 class TodosHiveController extends GetxController {
   List<Todo> todos = <Todo>[].obs; // Track the todos list
   List<Todo> archivedTodos = <Todo>[].obs; // Track the archived todos list
-  late final Box<Todo> todosBox; // Hive box to store the todos
-  late final Box<Todo> archivedTodosBox; // Hive box to store the archived todos
+  late final Box<Todo> _todosBox; // Hive box to store the todos
+  late final Box<Todo>
+      _archivedtodosBox; // Hive box to store the archived todos
   @override
   void onInit() {
     super.onInit();
-    todosBox = Hive.box<Todo>('todos'); // Open the todos Hive box
-    todos.addAll(todosBox.values
+    _todosBox = Hive.box<Todo>('todos'); // Open the todos Hive box
+    todos.addAll(_todosBox.values
         .toList()
         .cast<Todo>()); // Add all the todos to the todos list
-    archivedTodosBox =
+    _archivedtodosBox =
         Hive.box<Todo>('archivedTodos'); // Open the archived todos Hive box
-    archivedTodos.addAll(archivedTodosBox.values
+    archivedTodos.addAll(_archivedtodosBox.values
         .toList()
         .cast<Todo>()); // Add all the archived todos to the list
     debugPrint('todos length: ${todos.length}');
@@ -53,7 +54,7 @@ class TodosHiveController extends GetxController {
             .now(), //Set the createdAt field to the current time (non-modifiable)
         isDone: false,
       );
-      await todosBox.put(newTodo.todoId, newTodo);
+      await _todosBox.put(newTodo.todoId, newTodo);
       todos.add(newTodo);
     } catch (e) {
       debugPrint('addTodoItem() error: $e');
@@ -76,7 +77,7 @@ class TodosHiveController extends GetxController {
     DateTime? reminderAt,
   }) async {
     try {
-      final Todo? currentTodo = todosBox.getAt(index); // Get the current todo
+      final Todo? currentTodo = _todosBox.getAt(index); // Get the current todo
       final Todo updatedTodo = currentTodo!.copyWith(
         // Create a new todo with updated fields
         title: title ?? currentTodo.title,
@@ -90,7 +91,7 @@ class TodosHiveController extends GetxController {
         scheduledAt: scheduledAt ?? currentTodo.scheduledAt,
         reminderAt: reminderAt ?? currentTodo.reminderAt,
       );
-      await todosBox.putAt(index, updatedTodo);
+      await _todosBox.putAt(index, updatedTodo);
       todos[index] = updatedTodo;
     } catch (e) {
       debugPrint('updateTodo() error: $e');
@@ -106,7 +107,7 @@ class TodosHiveController extends GetxController {
         isDone: !currentTodo.isDone,
       );
       // Update the todo item in the todos box
-      await todosBox.putAt(index, updatedTodo);
+      await _todosBox.putAt(index, updatedTodo);
       // Update the todos list
       todos[index] = updatedTodo;
     } catch (e) {
@@ -118,11 +119,11 @@ class TodosHiveController extends GetxController {
   void archiveTodo(int index) async {
     try {
       // First: Delete the todo item from the Hive box
-      await todosBox.deleteAt(index);
+      await _todosBox.deleteAt(index);
       // Second: Copy the todo item (not deleted yet) from the todos list
       final Todo archivedTodo = todos[index];
       // Third: Add the copied todo item to the archivedTodos box and archivedTodos list
-      archivedTodosBox.put(archivedTodo.todoId, archivedTodo);
+      _archivedtodosBox.put(archivedTodo.todoId, archivedTodo);
       archivedTodos.add(archivedTodo);
       // Fourth: Remove the todo item from the todos list
       todos.removeAt(index);
@@ -134,10 +135,10 @@ class TodosHiveController extends GetxController {
   void undoArchivedTodo(int index) async {
     try {
       final deletedTodo = archivedTodos[index];
-      await todosBox.put(deletedTodo.todoId, deletedTodo);
+      await _todosBox.put(deletedTodo.todoId, deletedTodo);
       todos.add(deletedTodo);
 
-      await archivedTodosBox.deleteAt(index);
+      await _archivedtodosBox.deleteAt(index);
       archivedTodos.removeAt(index);
     } catch (e) {
       debugPrint('undoDeleteTodo() error: $e');
@@ -147,7 +148,7 @@ class TodosHiveController extends GetxController {
   // function to delete a todo item permanently at a given index
   void deletePermanently(int index) async {
     try {
-      await archivedTodosBox.deleteAt(index);
+      await _archivedtodosBox.deleteAt(index);
       archivedTodos.removeAt(index);
     } catch (e) {
       debugPrint('deletePermanently() error: $e');
@@ -157,8 +158,8 @@ class TodosHiveController extends GetxController {
   // function to erase all todos and archived todos
   void eraseAllTodos() async {
     try {
-      await todosBox.clear();
-      await archivedTodosBox.clear();
+      await _todosBox.clear();
+      await _archivedtodosBox.clear();
       todos.clear();
       archivedTodos.clear();
     } catch (e) {
@@ -220,8 +221,8 @@ class TodosHiveController extends GetxController {
 
   @override
   void dispose() {
-    todosBox.close();
-    archivedTodosBox.close();
+    _todosBox.close();
+    _archivedtodosBox.close();
     super.dispose();
   }
 }
