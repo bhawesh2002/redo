@@ -166,6 +166,13 @@ class TodosHiveController extends GetxController {
     }
   }
 
+  int _findTodosIndexInBox(String uuid) {
+    final Map<String, Todo> todosMap = todosBox.toMap().cast();
+    final tarketKey = todosMap.entries.where((e) => e.key == uuid).first.key;
+    final pos = todosMap.keys.toList().indexOf(tarketKey);
+    return pos;
+  }
+
   @override
   void dispose() {
     todosBox.close();
