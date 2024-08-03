@@ -166,14 +166,14 @@ class TodosHiveController extends GetxController {
     }
   }
 
-  int findTodosIndexInBox(String uuid) {
+  int _findTodosIndexInBox(Box<Todo> box, String uuid) {
     try {
-      final Map<String, Todo> todosMap = todosBox.toMap().cast();
+      final Map<String, Todo> todosMap = box.toMap().cast();
       final tarketKey = todosMap.entries.where((e) => e.key == uuid).first.key;
       final pos = todosMap.keys.toList().indexOf(tarketKey);
       return pos;
     } catch (e) {
-      debugPrint('findTodosIndexInBox() error: $e');
+      debugPrint('_findTodosIndexInBox() error: $e');
       throw (e.toString());
     }
   }
