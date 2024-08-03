@@ -70,7 +70,7 @@ class HomePage extends StatelessWidget {
                                   IconButton(
                                     onPressed: () {
                                       _todosHiveController
-                                          .undoDeleteTodo(index);
+                                          .undoArchivedTodo(index);
                                     },
                                     icon: Icon(
                                       Icons.undo,
@@ -240,7 +240,7 @@ class HomePage extends StatelessWidget {
                             ),
                             trailing: IconButton(
                               onPressed: () {
-                                _todosHiveController.deleteTodo(index);
+                                _todosHiveController.archiveTodo(index);
                               },
                               icon: Icon(
                                 Icons.archive,
