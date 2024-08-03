@@ -171,6 +171,7 @@ class TodosHiveController extends GetxController {
       final Map<String, Todo> todosMap = box.toMap().cast();
       final tarketKey = todosMap.entries.where((e) => e.key == uuid).first.key;
       final pos = todosMap.keys.toList().indexOf(tarketKey);
+      debugPrint('$tarketKey Found at: $pos');
       return pos;
     } catch (e) {
       debugPrint('_findTodosIndexInBox() error: $e');
